@@ -24,24 +24,36 @@
   \item[11.]
     The accompanying specific gravity values for various wood types used in construction appeared in the article ``Bolted Connection Design Values Based on European Yield Model'' (\textit{J. of Structural Engr., 1993: 2169-2186}):
     \begin{center}
-    \begin{tabular}{l l l l l l l l l}
-      .31 & .35 & .36 & .36 & .37 & .38 & .40 & .40 & .40 \\
-      .41 & .41 & .42 & .42 & .42 & .42 & .42 & .43 & .44 \\
-      .45 & .46 & .46 & .47 & .48 & .48 & .48 & .51 & .54 \\
-      .54 & .55 & .58 & .62 & .66 & .66 & .67 & .68 & .75
-    \end{tabular}
+      \begin{tabular}{l l l l l l l l l}
+        .31 & .35 & .36 & .36 & .37 & .38 & .40 & .40 & .40 \\
+        .41 & .41 & .42 & .42 & .42 & .42 & .42 & .43 & .44 \\
+        .45 & .46 & .46 & .47 & .48 & .48 & .48 & .51 & .54 \\
+        .54 & .55 & .58 & .62 & .66 & .66 & .67 & .68 & .75
+      \end{tabular}
     \end{center}
     Construct a stem-and-leaf display using repeated stems, and comment on any interesting features of the display.
-
+    \begin{center}
+      \begin{tabular}{c | c c c c c c c c c c c c c c c c c c c}
+        % Stem & \multicolumn{19}{l}{Leaf} \\
+        % \hline
+        3 & 1 & 5 & 6 & 6 & 7 & 8 \\
+        4 & 0 & 0 & 0 & 1 & 1 & 2 & 2 & 2 & 2 & 2 & 3 & 4 & 5 & 6 & 6 & 7 & 8 & 8 & 8 \\
+        5 & 1 & 4 & 4 & 5 & 8 \\
+        6 & 2 & 6 & 6 & 7 & 8\\
+        7 & 5 \\
+        \multicolumn{20}{r}{Key: 1 | 2 = 0.12}
+      \end{tabular}
+    \end{center}
+    The display has one peak at stem 4. It suggests that a typical value is in stem 4, perhaps 0.42. The data is not quite symmetric since the larger values tend to be more stretched out than the smaller ones. There is a bit of a gap between the largest value and the rest of the data (0.68 versus 0.75).
   \item[12.]
     The accompanying summary data on \ch{CeO2} particle sizes (nm) under certain experimental conditions was read from a graph in the article ``Nanoceria – Energetics of Surfaces, Interfaces and Water Adsorption'' (\textit{J. of the Amer. Ceramic Soc.}, 2011: 3992–3999):
     \begin{center}
-    \begin{tabular}{c c c c c}
-      3.0-<3.5 & 3.5-<4.0 & 4.0-<4.5 & 4.5-<5.0 & 5.0-<5.5 \\
-      5 & 15 & 27 & 34 & 22 \\
-      5.5-<6.0 & 6.0-<6.5 & 6.5-<7.0 &  7.0-<7.5 & 7.5-<8.0 \\
-      14 & 7 & 2 & 4 & 1
-    \end{tabular}
+      \begin{tabular}{c c c c c}
+        3.0-<3.5 & 3.5-<4.0 & 4.0-<4.5 & 4.5-<5.0 & 5.0-<5.5 \\
+        5 & 15 & 27 & 34 & 22 \\
+        5.5-<6.0 & 6.0-<6.5 & 6.5-<7.0 &  7.0-<7.5 & 7.5-<8.0 \\
+        14 & 7 & 2 & 4 & 1
+      \end{tabular}
     \end{center}
     \begin{enumerate}
       \item[a.]
@@ -56,19 +68,19 @@
   \item[17.]
     The accompanying data came from a study of collusion in bidding within the construction industry (``Detection of Collusive Behavior,'' \textit{J. of Construction Engr. and Mgmnt}, 2012: 1251–1258).
     \begin{center}
-    \begin{tabular}{S[table-format=2.0]S[table-format=2.0]}
-      \textbf{No. Bidders} & \textbf{No. Contracts} \\
-      2 & 7 \\
-      3 & 20 \\
-      4 & 26 \\
-      5 & 16 \\
-      6 & 11 \\
-      7 & 9 \\
-      8 & 6 \\
-      9 & 8 \\
-      10 & 3 \\
-      11 & 2
-    \end{tabular}
+      \begin{tabular}{S[table-format=2.0]S[table-format=2.0]}
+        \textbf{No. Bidders} & \textbf{No. Contracts} \\
+        2 & 7 \\
+        3 & 20 \\
+        4 & 26 \\
+        5 & 16 \\
+        6 & 11 \\
+        7 & 9 \\
+        8 & 6 \\
+        9 & 8 \\
+        10 & 3 \\
+        11 & 2
+      \end{tabular}
     \end{center}
     \begin{enumerate}
       \item[a.]
@@ -81,22 +93,22 @@
   \item[19.]
     The number of contaminating particles on a silicon wafer prior to a certain rinsing process was determined for each wafer in a sample of size 100, resulting in the following frequencies:
     \begin{center}
-    \begin{tabular}{
-      l
-      S[table-format=2.0]
-      S[table-format=2.0]
-      S[table-format=2.0]
-      S[table-format=2.0]
-      S[table-format=2.0]
-      S[table-format=2.0]
-      S[table-format=2.0]
-      S[table-format=2.0]
-    }
-      \textit{Number of particles} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-      \textit{Frequency} & 1 & 2 & 3 & 12 & 11 & 15 & 18 & 10 \\
-      \textit{Number of particles} & 8 & 9 & 10 & 11 & 12 & 13 & 1 \\
-      \textit{Frequency} & 12 & 4 & 5 & 3 & 1 & 2 & 1
-    \end{tabular}
+      \begin{tabular}{
+        l
+        S[table-format=2.0]
+        S[table-format=2.0]
+        S[table-format=2.0]
+        S[table-format=2.0]
+        S[table-format=2.0]
+        S[table-format=2.0]
+        S[table-format=2.0]
+        S[table-format=2.0]
+      }
+        \textit{Number of particles} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+        \textit{Frequency} & 1 & 2 & 3 & 12 & 11 & 15 & 18 & 10 \\
+        \textit{Number of particles} & 8 & 9 & 10 & 11 & 12 & 13 & 1 \\
+        \textit{Frequency} & 12 & 4 & 5 & 3 & 1 & 2 & 1
+      \end{tabular}
     \end{center}
     \begin{enumerate}
       \item[a.]
