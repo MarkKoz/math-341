@@ -1,0 +1,28 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mathhw}
+
+% Requirements
+\RequirePackage{xkeyval}
+
+% Options
+\newcommand{\hwsection}{}
+
+\DeclareOptionX{section}{\renewcommand{\hwsection}{#1}}
+\DeclareOptionX*{\PackageWarning{mathhw}{`\CurrentOption' ignored}}
+\ProcessOptionsX
+
+% Preamble
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts}
+
+% remove spacing around date and author
+\usepackage{titling}
+\predate{}
+\postdate{}
+\preauthor{}
+\postauthor{}
+
+\author{}
+\title{MATH 341 - Homework \hwsection}
+\date{} % clear date
