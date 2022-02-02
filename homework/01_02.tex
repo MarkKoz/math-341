@@ -1,25 +1,8 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=1.2]{mathhw}
+\usepackage{plotting}
 \usepackage{siunitx}
 \usepackage{chemformula}
-\usepackage{pgfplots}
-\usepackage{pgfplotstable}
-
-\pgfplotsset{
-  compat=newest,
-  histogram/.style={
-    axis lines=middle,
-    axis line style={-Latex},
-    xlabel near ticks,
-    ylabel near ticks,
-    xtick=data,
-    xticklabel style={/pgf/number format/fixed},
-    yticklabel style={/pgf/number format/fixed},
-    enlargelimits=upper,
-    enlarge x limits=0.1,
-    area style
-  }
-}
 
 \begin{document}
 
@@ -188,6 +171,7 @@
         Construct a histogram and comment on interesting features.
         \begin{center}
           \begin{tikzpicture}
+            \sumcol{1}{\datacontracts}{\datacontractssum}
             \begin{axis}[
               histogram,
               xlabel={Bidders},
@@ -195,7 +179,7 @@
             ]
               \addplot+[ybar interval] table[
                 % Skip header, divide y value by sum of y col, and convert to percentage.
-                y expr={\coordindex<0 ? nan : \thisrowno{1}/108*100},
+                y expr={\skipheaderexpr{1} / \datacontractssum*100}
               ] {\datacontracts};
             \end{axis}
           \end{tikzpicture}

@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{plotting}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\pgfplotsset{
+  compat=newest,
+  histogram/.style={
+    axis lines=middle,
+    axis line style={-Latex},
+    xlabel near ticks,
+    ylabel near ticks,
+    xtick=data,
+    xticklabel style={/pgf/number format/fixed},
+    yticklabel style={/pgf/number format/fixed},
+    enlargelimits=upper,
+    enlarge x limits=0.1,
+    area style
+  }
+}
+
+% Sum all values in a column and store the output in a pgfmath macro.
+%
+% arg1: index of column to sum
+% arg2: input table
+% arg3: output macro
+\newcommand{\sumcol}[3]{
+  % Add a column in the table summing up the values % accumulatively
+  % with the sum of all values one can calculate the percentages of the values.
+  \pgfplotstablecreatecol[
+    expr accum={
+      round(\pgfmathaccuma) + \thisrowno{#1}
+    }{0}
+  ]{sum}{#2}
+
+  % Get the number of data rows of the loaded table.
+  \pgfplotstablegetrowsof{#2}
+    \pgfmathsetmacro{\LastRow}{\pgfplotsretval-1}
+  % Now get the last entry of the «sum» column which contains the sum of the values.
+  \pgfplotstablegetelem{\LastRow}{sum}\of{#2}
+    \pgfmathsetmacro{#3}{\pgfplotsretval}
+}
+
+% Use in an x/y expr of a table plot to skip the header row.
+%
+% arg1: column index
+\newcommand{\skipheaderexpr}[1]{
+    % coordindex does not count comments/header, hence <0 rather than ==0.
+    \coordindex<0 ? nan : \thisrowno{#1}
+}
