@@ -3,6 +3,7 @@
 \usepackage{siunitx}
 \usepackage{chemformula}
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
 
 \pgfplotsset{
   compat=newest,
@@ -14,6 +15,8 @@
     xtick=data,
     xticklabel style={/pgf/number format/fixed},
     yticklabel style={/pgf/number format/fixed},
+    enlargelimits=upper,
+    enlarge x limits=0.1,
     area style
   }
 }
@@ -83,12 +86,10 @@
           \begin{tikzpicture}
             \begin{axis}[
               histogram,
-              ymax=30,
               xlabel={\ch{CeO2} particle size (nm)},
               ylabel={Relative Frequency \%},
               xtick distance=0.5,
-              ytick distance=5,
-              enlarge x limits=0.1,
+              ytick distance=5
             ]
               \addplot+[
                 ybar interval,
@@ -108,12 +109,10 @@
           \begin{tikzpicture}
             \begin{axis}[
               histogram,
-              ymax=0.16,
               xlabel={\ch{CeO2} particle size (nm)},
               ylabel={Density},
               xtick distance=0.5,
-              ytick distance=0.02,
-              enlarge x limits=0.1,
+              ytick distance=0.02
             ]
               \addplot+[
                 ybar interval,
@@ -130,28 +129,79 @@
     \end{enumerate}
   \item[17.]
     The accompanying data came from a study of collusion in bidding within the construction industry (``Detection of Collusive Behavior,'' \textit{J. of Construction Engr. and Mgmnt}, 2012: 1251–1258).
+    \pgfplotstableread[col sep=comma]{
+      No. Bidders, No. Contracts
+      2, 7
+      3, 20
+      4, 26
+      5, 16
+      6, 11
+      7, 9
+      8, 6
+      9, 8
+      10, 3
+      11, 2
+      12, 0
+    }{\datacontracts}
     \begin{center}
-      \begin{tabular}{S[table-format=2.0]S[table-format=2.0]}
-        \textbf{No. Bidders} & \textbf{No. Contracts} \\
-        2 & 7 \\
-        3 & 20 \\
-        4 & 26 \\
-        5 & 16 \\
-        6 & 11 \\
-        7 & 9 \\
-        8 & 6 \\
-        9 & 8 \\
-        10 & 3 \\
-        11 & 2
-      \end{tabular}
+      \pgfplotstabletypeset[
+        assign column name/.style={/pgfplots/table/column name={\textbf{#1}}},
+        every column/.append style={
+          column type={S[]},
+          string type,
+        },
+        % Skip last row.
+        row predicate/.code={
+          \pgfmathtruncatemacro\maxrowindex{\pgfplotstablerows-1}
+          \ifnum#1=\maxrowindex\relax
+            \pgfplotstableuserowfalse
+          \fi
+        }
+      ]{\datacontracts}
     \end{center}
     \begin{enumerate}
       \item[a.]
-        What proportion of the contracts involved at most five bidders? At least five bidders?
+        What proportion of the contracts involved at most five bidders?
+        \begin{align*}
+          7 + 20 + 26 + 16 &= 69 \\
+          69 + 11 + 9 + 6 + 8 + 3 + 2 &= 108 \\
+          \frac{69}{108} \approx 0.639 \approx 63.9\%
+        \end{align*}
+        At least five bidders?
+        \begin{align*}
+          16 + 11 + 9 + 6 + 8 + 3 + 2 &= 55 \\
+          \frac{55}{108} \approx 0.51 \approx 51\%
+        \end{align*}
       \item[b.]
-        What proportion of the contracts involved between five and 10 bidders, inclusive? Strictly between five and 10 bidders?
+        What proportion of the contracts involved between five and 10 bidders, inclusive?
+        \begin{align*}
+          16 + 11 + 9 + 6 + 8 + 3 &= 53 \\
+          \frac{53}{108} \approx 0.491 \approx 49.1\%
+        \end{align*}
+        Strictly between five and 10 bidders?
+        \begin{align*}
+           11 + 9 + 6 + 8  &= 34 \\
+          \frac{34}{108} \approx 0.315 \approx 31.5\%
+        \end{align*}
       \item[c.]
         Construct a histogram and comment on interesting features.
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              histogram,
+              xlabel={Bidders},
+              ylabel={Relative Contract Frequency \%}
+            ]
+              \addplot+[ybar interval] table[
+                % Skip header, divide y value by sum of y col, and convert to percentage.
+                y expr={\coordindex<0 ? nan : \thisrowno{1}/108*100},
+              ] {\datacontracts};
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
+        A class size of 1 was used for this histogram, because it's convenient given the data and works out to a nice amount of bars. The relative frequency was calculated by diving each frequency by the total (108).
+
+        This histogram has a clear negative skew. It has two peaks. The ascent to the first peak has some fairly large jumps. The descent is relatively smoother, but it does have a second small peak towards the end.
     \end{enumerate}
   \item[19.]
     The number of contaminating particles on a silicon wafer prior to a certain rinsing process was determined for each wafer in a sample of size 100, resulting in the following frequencies:
