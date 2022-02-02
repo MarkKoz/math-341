@@ -103,7 +103,7 @@
             \end{axis}
           \end{tikzpicture}
         \end{center}
-        The histogram rises fairly smoothly to a major peak, and then declines. The decline has a small peak towards the end. The histogram extends a bit more on the right (towards large values) than it does on the left. Thus, there is a positive skew.
+        The histogram rises fairly smoothly to a major peak, and then declines. The decline has a small peak towards the end. The histogram extends a bit more on the right (towards large values) than it does on the left. Thus, there is a negative skew.
       \item[d.]
         Construct a histogram with density on the vertical axis and compare to the histogram in (c).
         \begin{center}
@@ -202,7 +202,7 @@
         \end{center}
         A class size of 1 was used for this histogram, because it's convenient given the data and works out to a nice amount of bars. The relative frequency was calculated by diving each frequency by the total (108).
 
-        This histogram has a clear negative skew. It has two peaks. The ascent to the first peak has some fairly large jumps. The descent is relatively smoother, but it does have a second small peak towards the end.
+        This histogram has a clear positive skew. It has two peaks. The ascent to the first peak has some fairly large jumps. The descent is relatively smoother, but it does have a second small peak towards the end.
     \end{enumerate}
   \item[19.]
     The number of contaminating particles on a silicon wafer prior to a certain rinsing process was determined for each wafer in a sample of size 100, resulting in the following frequencies:
@@ -220,21 +220,63 @@
       }
         Number of particles & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
         Frequency & 1 & 2 & 3 & 12 & 11 & 15 & 18 & 10 \\
-        Number of particles & 8 & 9 & 10 & 11 & 12 & 13 & 1 \\
+        Number of particles & 8 & 9 & 10 & 11 & 12 & 13 & 14 \\
         Frequency & 12 & 4 & 5 & 3 & 1 & 2 & 1
       \end{tabular}
     \end{center}
     \begin{enumerate}
       \item[a.]
-        What proportion of the sampled wafers had at least one particle? At least five particles?
+        What proportion of the sampled wafers had at least one particle?
+        \begin{align*}
+          2 + 3 + 12 + 11 + 15 + 18 + 10 + 12 + 4 + 5 + 3 + 1 + 2 + 1 = 99 \\
+          \frac{99}{100} \approx 0.99 \approx 99\%
+        \end{align*}
+        At least five particles?
+        \begin{align*}
+          15 + 18 + 10 + 12 + 4 + 5 + 3 + 1 + 2 + 1 = 71 \\
+          \frac{71}{100} \approx 0.71 \approx 71\%
+        \end{align*}
       \item[b.]
-        What proportion of the sampled wafers had between five and ten particles, inclusive? Strictly between five and ten particles?
+        What proportion of the sampled wafers had between five and ten particles, inclusive?
+        \begin{align*}
+          15 + 18 + 10 + 12 + 4 + 5 = 64 \\
+          \frac{64}{100} \approx 0.64 \approx 64\%
+        \end{align*}
+        Strictly between five and ten particles?
+        \begin{align*}
+          18 + 10 + 12 + 4 = 44 \\
+          \frac{44}{100} \approx 0.44 \approx 44\%
+        \end{align*}
       \item[c.]
         Draw a histogram using relative frequency on the vertical axis. How would you describe the shape of the histogram?
+        % \pgfplotstableread[row sep=\\]{
+        %   6\\38\\58\\12\\4\\0\\
+        % }{\dataparticles}
+        \pgfplotstableread[row sep=\\]{
+          3\\15\\26\\28\\16\\8\\2\\1\\0\\
+        }{\dataparticles}
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              histogram,
+              % height=\axisdefaultheight,
+              xlabel={Contaminating Particles},
+              ylabel={Relative Frequency \%},
+              ytick distance=5
+            ]
+              \addplot+[ybar interval] table[
+                x expr={\coordindex*2},
+                y index=0
+              ] {\dataparticles};
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
+        The histogram was created using classes of width 2. This was chosen due to the presence of similar adjacent frequencies, which was just making the plot more stretched out rather than showing a smooth ascent and decline. The relative frequencies were calculated by summing every 2 frequencies, and then dividing that sum by the sum of all frequencies.
+
+        The histogram is unimodal. It is not quite symmetric; there is a slight positive skew.
     \end{enumerate}
   \item[22.]
-    How does the speed of a runner vary over the course of a marathon (a distance of 42.195 km)? Consider determining both the time to run the first 5 km and the time to run between the 35-km and 40-km points, and then sub-
-    tracting the former time from the latter time. A positive value of this difference corresponds to a runner slowing down toward the end of the race. The accompanying histogram is based on times of runners who participated in several different Japanese marathons (``Factors Affecting Runners’ Marathon Performance,'' \textit{Chance, Fall}, 1993: 24–30).
+    How does the speed of a runner vary over the course of a marathon (a distance of 42.195 km)? Consider determining both the time to run the first 5 km and the time to run between the 35-km and 40-km points, and then subtracting the former time from the latter time. A positive value of this difference corresponds to a runner slowing down toward the end of the race. The accompanying histogram is based on times of runners who participated in several different Japanese marathons (``Factors Affecting Runners’ Marathon Performance,'' \textit{Chance, Fall}, 1993: 24–30).
 
     What are some interesting features of this histogram? What is a typical difference value? Roughly what proportion of the runners ran the late distance more quickly than the early distance?
 
