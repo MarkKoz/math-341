@@ -82,8 +82,21 @@
     \begin{enumerate}
       \item[a.]
         What is the median of the \textit{reported} blood pressure values?
+        \\ \\
+        Sorted and normalised values:
+        \begin{center}
+          \begin{tabular}{cccccccccc}
+            110 & 115 & 120 & 120 & 125 & 130 & 130 \\
+            135 & 140
+          \end{tabular}
+        \end{center}
+        \begin{align*}
+          \tilde{x} = x_{\frac{n}{2}} = x_{5} = 125
+        \end{align*}
       \item[b.]
         Suppose the blood pressure of the second individual is 127.6 rather than 127.4 (a small change in a single value). How does this affect the median of the reported values? What does this say about the sensitivity of the median to rounding or grouping in the data?
+        \\ \\
+        Because $x_{\frac{n}{2}} = 127.4$, changing this value would directly affect the median. This change would cause the value to be rounded up to 130, rather than down to 125. Thus, the median would increase. This shows that the median is sensitive to minor changes when it's at the threshold of being rounded in the other direction.
     \end{enumerate}
   \item[41.]
     A sample of $n = 10$ automobiles was selected, and each was subjected to a 5-mph crash test. Denoting a car with no visible damage by S (for success) and a car with such damage by F, results were as follows:
@@ -95,10 +108,22 @@
     \begin{enumerate}
       \item[a.]
         What is the value of the sample proportion of successes $x/n$?
+        \begin{align*}
+          \frac{x}{n} = \frac{\text{number of successes}}{\text{total}} = \frac{7}{10} = 0.7
+        \end{align*}
       \item[b.]
         Replace each S with a 1 and each F with a 0. Then calculate $\bar{x}$ for this numerically coded sample. How does $\bar{x}$ compare to $x/n$?
+        \begin{align*}
+          \bar{x} = \frac{1 + 1 + 0 + 1 + 1 + 1 + 0 + 0 + 1 + 1}{10} = \frac{7}{10} = 0.7
+        \end{align*}
+        Thus, $\bar{x}$ is equivalent to $x/n$.
       \item[c.]
         Suppose it is decided to include 15 more cars in the experiment. How many of these would have to be S's to give $x/n = .80$ for the entire sample of 25 cars?
+        \begin{align*}
+          \frac{x}{n} = \frac{x}{25} = 0.8 \\
+          x = 0.8 \cdot 25 = 20
+        \end{align*}
+        Thus, there would need to be 20 S's in total to give $x/n = .80$. Because the original sample of 10 already had 7 S's, only $20 - 7 = 13$ more S's would be needed. Thus, 13 out of the 15 new cars added would need to be S's.
     \end{enumerate}
 \end{enumerate}
 
