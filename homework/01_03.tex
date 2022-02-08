@@ -18,8 +18,22 @@
     \begin{enumerate}
       \item[a.]
         Calculate and interpret the sample mean and median.
+        \begin{align*}
+          \bar{x} = \frac{\sum_{i=1}^{n} x_{i}}{n} = \frac{6405}{10} = 640.5
+        \end{align*}
+        Sorted values:
+        \begin{center}
+          \begin{tabular}{cccccccccc}
+            350 & 408 & 540 & 555 & 575 & 590 & 608 & 679 & 815 & 1285
+          \end{tabular}
+        \end{center}
+        \begin{align*}
+          \tilde{x} = \frac{x_{\frac{n}{2}} + x_{\frac{n}{2} + 1}}{2} = \frac{x_{5} + x_{6}}{2} = \frac{575 + 590}{2} = \frac{1165}{2} = 582.5
+        \end{align*}
+        The sample mean is larger than the sample median. This is evidence of how the mean is more susceptible to outliers than the median. In this sample, there is an outlier at the end, 1285. Hence, the sample mean is positively skewed.
       \item[b.]
-        Suppose the $6\textsuperscript{th}$ observation had been 985 rather than 1285. How would the mean and median change?
+        Suppose the $6\textsuperscript{th}$ observation had been 985 rather than 1285. How would the mean and median change? \\ \\
+        The median would not change at all, because $x_{5}$ and $x_{6}$ (when sorted) would still be the same values. However, the mean would decrease. As mentioned in (a), the sample mean was positively skewed because of the outlier 1285. Thus, the outlier decreasing would result in the sample mean also decreasing.
     \end{enumerate}
   \item[36.]
     A sample of 26 offshore oil workers took part in a simulated escape exercise, resulting in the accompanying data on time (sec) to complete the escape (``Oxygen Consumption and Ventilation During Escape from an Offshore Platform,'' \textit{Ergonomics}, 1997: 281–292):
