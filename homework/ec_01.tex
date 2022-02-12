@@ -1,0 +1,149 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{fix-cm}
+\usepackage[section=]{mathhw}
+\usepackage{plotting}
+\usepackage{siunitx}
+
+\title{MATH 341 - Extra Point Assignment 1}
+
+\pgfkeys{
+    /pgf/number format/.cd,
+        set thousands separator={}
+}
+
+\pgfplotstableread[col sep=comma]{
+  Class Interval, Frequency
+  500, 2
+  600, 5
+  700, 12
+  800, 25
+  900, 58
+  1000, 41
+  1100, 42
+  1200, 7
+  1300, 6
+  1400, 1
+  1500, 0
+}{\datafreq}
+
+\pgfplotstablegetrowsof{\datafreq}
+  \pgfmathsetmacro{\N}{\pgfplotsretval}
+  \pgfmathsetmacro{\M}{\N-1}
+
+
+\begin{document}
+
+\maketitle
+
+Draw the frequency polygon and ogive for the following frequency distribution.
+\begin{center}
+  \pgfplotstabletypeset[
+    assign column name/.style={/pgfplots/table/column name={\textbf{#1}}},
+    every column/.append style={
+      column type={S[]},
+      string type,
+    },
+    % Add the end of the range to each class interval.
+    columns/Class Interval/.style={
+      column type={c},
+      postproc cell content/.style={
+        @cell content=##1--\pgfmathparse{##1 + 100}\pgfmathprintnumber{\pgfmathresult}
+      }
+    },
+    % No idea how to disable scientifix notation for siunitx, so print is with pgfmath instead.
+    columns/sum/.style={
+      column type={c},
+      postproc cell content/.style={
+        @cell content=\pgfmathprintnumber{##1}
+      }
+    },
+    % Skip last row.
+    row predicate/.code={
+      \pgfmathtruncatemacro\maxrowindex{\pgfplotstablerows-1}
+      \ifnum#1=\maxrowindex\relax
+        \pgfplotstableuserowfalse
+      \fi
+    }
+  ]{\datafreq}
+\end{center}
+
+\begin{figure}[!htb]
+  \begin{minipage}{.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \sumcol{1}{\datafreq}{\datafreqsum}
+      \begin{axis}[
+        histogram,
+        width=\linewidth,
+        xlabel={},
+        ylabel={Frequency},
+        ytick distance=10,
+        every x tick label/.append style={font=\fontsize{4}{4}},
+      ]
+        \addplot+[ybar interval] table[
+          y expr={\skipheaderexpr{1}}
+        ] {\datafreq};
+
+        \addplot[
+          color=red,
+          mark=*,
+          mark size=1pt,
+          skip coords between index={\M}{\N}
+        ] table[
+          x expr={\skipheaderexpr{0} + 100 / 2},
+          y expr={\skipheaderexpr{1}}
+        ] {\datafreq};
+      \end{axis}
+    \end{tikzpicture}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \sumcol{1}{\datafreq}{\datafreqsum}
+      \pgfplotstablegetelem{0}{Class Interval}\of{\datafreq}
+        \pgfmathsetmacro{\firstx}{\pgfplotsretval}
+      \pgfplotstablegetelem{1}{Class Interval}\of{\datafreq}
+        \pgfmathsetmacro{\secondx}{\pgfplotsretval}
+      \pgfplotstablegetelem{0}{sum}\of{\datafreq}
+        \pgfmathsetmacro{\secondy}{\pgfplotsretval}
+
+      \begin{axis}[
+        histogram,
+        width=\linewidth,
+        xlabel={},
+        ylabel={Frequency \%},
+        extra x ticks={\firstx},
+        ytick distance=10,
+        every x tick label/.append style={font=\fontsize{4.5}{4}},
+        enlargelimits=false,
+      ]
+        \addplot[
+          color=blue,
+          dashed,
+          mark=*,
+          mark size=1pt,
+          skip coords between index={\M}{\N}
+        ] table[
+          x expr={\skipheaderexpr{0} + 100},
+          y expr={\skipheaderexpr{2} / \datafreqsum * 100}
+        ] {\datafreq};
+
+        \addplot[
+          color=blue,
+          dashed,
+          mark=*,
+          mark size=1pt
+        ] coordinates {
+          (\firstx, 0)
+          (\secondx, (\secondy / \datafreqsum * 100)
+        };
+      \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
+\end{figure}
+
+The frequency polygon is plotted by using the midpoint of each interval class as the $x$ coordinate and the frequency as the $y$ coordinate. The midpoint is found by simply adding half of the class width to the start of the interval. Since each class has a width of 100, the midpoint is found by adding 50 to each starting value.
+
+For the ogive, the cumulative frequency has to be calculated first. This is done by creating a third column in the table which has is the sum of the current frequency and all previous frequencies. The ogive is plotted using the start of the class interval as the basis for the $x$ coordinate and the cumulative relative frequency for the $y$ coordinate. The $x$ coordinate has 100 (the class width) added to it so that the plot is shifted to the right. The cumulative relative frequency is calculated as a ratio of the current cumulative frequency and the final cumulative frequency.
+
+\end{document}
