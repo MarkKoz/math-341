@@ -71,6 +71,19 @@
   %   \pgfmathsetmacro{#2}{floor(log10(\pgfplotsretval) + 1)}
 }
 
+\newcommand{\subcol}[4]{
+  \pgfplotstablenew[
+    create on use/#2/.style={
+      create col/copy column from table={#1}{#2},
+    },
+    columns={#2},
+  ]{\pgfplotstablegetrowsof{#1}}{#4}
+  \pgfplotstablemodifyeachcolumnelement{0}\of{#4}\as\cell{%
+    \pgfmathparse{\cell - #3}%
+    \edef\cell{\pgfmathresult}%
+  }
+}
+
 \newcommand{\eval}[1]{
   \pgfmathparse{#1}\num{\pgfmathresult}
 }
@@ -79,17 +92,58 @@
   \pgfmathparse{#1}\num[round-precision=#2]{\pgfmathresult}
 }
 
-\newcommand{\prepsd}[1]{
+\newcommand{\calcvariance}[1]{
   \sumcol{5}{#1}{\devsq}
   \pgfmathsetmacro{\variance}{\devsq / (\rowcount - 1)}
+}
+
+\newcommand{\calcvariancealt}[1]{
+  % Do this first before the sum is overwritten.
+  \pgfmathsetmacro{\sumsq}{pow(\datasum, 2)}
+
+  \pgfplotstablecreatecol[
+    expr={
+      pow(\thisrowno{0}, 2)
+    }
+  ]{sq}{#1}
+  \sumcol{6}{#1}{\sumofsq}
+
+  \pgfmathsetmacro{\variance}{(\sumofsq - (\sumsq / \rowcount)) / (\rowcount - 1)}
+}
+
+% https://tex.stackexchange.com/a/530325
+\newcommand*{\calcmedian}[1]{%
+  \ifodd\rowcount\relax
+    \pgfplotstablegetelem{\the\numexpr(\rowcount-1)/2}{0}\of{#1}%
+    \let\median\pgfplotsretval
+  \else
+    \pgfplotstablegetelem{\the\numexpr \rowcount/2 - 1}{0}\of{#1}%
+    \let\medianl\pgfplotsretval
+    \pgfplotstablegetelem{\the\numexpr \rowcount/2}{0}\of{#1}%
+    \let\medianr\pgfplotsretval
+    \pgfmathsetmacro{\median}{0.5 * (\medianl + \medianr)}%
+  \fi
 }
 
 \newcommand{\eqmean}[1]{
   \bar{x} &= \frac{\sum{x_i}}{n} = \frac{\num[round-precision=#1]{\datasum}}{\rowcount} = \evalp{\datasum / \rowcount}{#1}
 }
 
+\newcommand{\eqmedianodd}{
+  \tilde{x} &= x_{\frac{n + 1}{2}} = \median
+}
+
+\newcommand{\eqmedianeven}[1]{
+  \tilde{x} &= \frac{x_{\frac{n}{2}} + x_{\frac{n}{2} + 1}}{2} = \frac{\medianl + \medianr}{2} \approx \num[round-precision=#1]{\median}
+}
+
 \newcommand{\eqvariance}[1]{
   s^2 &= \frac{\sum(x_i - \bar{x})^2}{n - 1} \approx \frac{\num[round-precision=#1]{\devsq}}{\eval{\rowcount - 1}} \approx \num[round-precision=#1]{\variance}
+}
+
+\newcommand{\eqvariancealt}[1]{
+  s^2 &= \frac{\sum {x_i}^2 - \frac{(\sum x_i)^2}{n}}{n - 1} \approx \frac{\num[round-precision=#1]{\sumofsq} - \frac{\num[round-precision=#1]{\sumsq}}{\num{\rowcount}}}{\eval{\rowcount - 1}} \approx \frac{\num[round-precision=#1]{\sumofsq} - \evalp{\sumsq / \rowcount}{#1}}{\eval{\rowcount - 1}} \approx \frac{\evalp{\sumofsq - (\sumsq / \rowcount)}{#1}}{\eval{\rowcount - 1}} \\
+  &\approx \num[round-precision=#1]{\variance}
 }
 
 \newcommand{\eqsd}[1]{
@@ -118,6 +172,19 @@
   115.2
   115.8
 }{\datatwo}
+
+\pgfplotstableread{
+  14.8
+  14.5
+  16.1
+  14.2
+  15.9
+  13.7
+  16.2
+  14.6
+  13.8
+  15.0
+}{\datathree}
 
 \begin{document}
 
@@ -151,7 +218,7 @@
             sd={Specimen}{2}{2}{3},
           ]{\dataone}
         \end{center}
-        \prepsd{\dataone}
+        \calcvariance{\dataone}
         \begin{align*}
           \eqvariance{3}
         \end{align*}
@@ -189,23 +256,14 @@
             sd={Plate}{2}{2}{3},
           ]{\datatwo}
         \end{center}
-        \prepsd{\datatwo}
+        \calcvariance{\datatwo}
         \begin{align*}
           \eqvariance{3} \\
           \eqsd{3}
         \end{align*}
       \item[d.]
         Subtract 100 from each observation to obtain a sample of transformed values. Now calculate the sample variance of these transformed values, and compare it to $s^2$ for the original data.
-        \pgfplotstablenew[
-          create on use/0/.style={
-            create col/copy column from table={\datatwo}{0},
-          },
-          columns={0},
-        ]{\pgfplotstablegetrowsof{\datatwo}}{\datatwod}
-        \pgfplotstablemodifyeachcolumnelement{0}\of{\datatwod}\as\cell{%
-          \pgfmathparse{\cell - 100}%
-          \edef\cell{\pgfmathresult}%
-        }
+        \subcol{\datatwo}{0}{100}{\datatwod}
         \sd{\datatwod}
         \begin{align*}
           \eqmean{2}
@@ -216,7 +274,7 @@
             sd={Plate}{2}{2}{3}
           ]{\datatwod}
         \end{center}
-        \prepsd{\datatwod}
+        \calcvariance{\datatwod}
         \begin{align*}
           \eqvariance{3}
         \end{align*}
@@ -230,13 +288,44 @@
         13.7 & 16.2 & 14.6 & 13.8 & 15.0
       \end{tabular}
     \end{center}
+    \sd{\datathree}
     \begin{enumerate}
       \item[a.]
         Calculate and interpret several measures of center.
+        \calcmedian{\datathree}
+        \begin{align*}
+          \eqmean{2} \\
+          \eqmedianeven{2}
+        \end{align*}
       \item[b.]
         Calculate the sample variance using the defining formula.
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns={rownum, 0, deviation, devsq},
+            sd={Zinfandel}{2}{2}{3},
+          ]{\datathree}
+        \end{center}
+        \calcvariance{\datathree}
+        \begin{align*}
+          \eqvariance{3}
+        \end{align*}
       \item[c.]
         Calculate the sample variance using the shortcut formula after subtracting 13 from each observation.
+        \subcol{\datathree}{0}{13}{\datathreec}
+        \sd{\datathreec}
+        \begin{align*}
+          \eqmean{2}
+        \end{align*}
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns={rownum, 0},
+            sd={Zinfandel}{2}{2}{3}
+          ]{\datathreec}
+        \end{center}
+        \calcvariancealt{\datathreec}
+        \begin{align*}
+          \eqvariancealt{3}
+        \end{align*}
     \end{enumerate}
   \item[51.]
     The article ``A Thin-Film Oxygen Uptake Test for the Evaluation of Automotive Crankcase Lubricants'' (\textit{Lubric. Engr.}, 1984: 75–83) reported the following data on oxidation-induction time (min) for various commercial oils:
