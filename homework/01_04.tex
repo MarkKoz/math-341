@@ -79,6 +79,38 @@
   \pgfmathparse{#1}\num[round-precision=#2]{\pgfmathresult}
 }
 
+\newcommand{\prepsd}[1]{
+  \sumcol{5}{#1}{\devsq}
+  \pgfmathsetmacro{\variance}{\devsq / (\rowcount - 1)}
+}
+
+\newcommand{\eqmean}[1]{
+  \bar{x} &= \frac{\sum{x_i}}{n} = \frac{\num[round-precision=#1]{\datasum}}{\rowcount} = \evalp{\datasum / \rowcount}{#1}
+}
+
+\newcommand{\eqvariance}[1]{
+  s^2 &= \frac{\sum(x_i - \bar{x})^2}{n - 1} \approx \frac{\num[round-precision=#1]{\devsq}}{\eval{\rowcount - 1}} \approx \num[round-precision=#1]{\variance}
+}
+
+\newcommand{\eqsd}[1]{
+  s &= \sqrt{s^2} \approx \sqrt{\num[round-precision=#1]{\variance}} \approx \evalp{sqrt(\variance)}{#1}
+}
+
+\pgfplotstableread{
+  180.5
+  181.7
+  180.9
+  181.6
+  182.6
+  181.6
+  181.3
+  182.1
+  182.1
+  180.3
+  181.7
+  180.5
+}{\dataone}
+
 \pgfplotstableread{
   116.4
   115.9
@@ -101,6 +133,7 @@
       \end{tabular}
     \end{center}
     Compute the following:
+    \sd{\dataone}
     \begin{enumerate}
       \item[a.]
         The sample range
@@ -110,13 +143,21 @@
       \item[b.]
         The sample variance $s^2$ from the definition [\textit{Hint:} First subtract 180 from each observation.]
         \begin{align*}
-          \sum{x_i} &= 2176.9 \\
-          \sum{x_i^2} &= 394913.57 \\
-          s^2 &= \frac{\sum{x_i^2} - \frac{(\sum{x_i})^2}{n}}{n - 1} = \frac{394913.57 - \frac{2176.9^2}{12}}{11} \approx 0.52
+          \eqmean{2}
+        \end{align*}
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns={rownum, 0, deviation, devsq},
+            sd={Specimen}{2}{2}{3},
+          ]{\dataone}
+        \end{center}
+        \prepsd{\dataone}
+        \begin{align*}
+          \eqvariance{3}
         \end{align*}
       \item[c.] The sample standard deviation
         \begin{align*}
-          s = \sqrt{s^2} \approx \sqrt{0.52} \approx 0.72
+          \eqsd{3}
         \end{align*}
     \end{enumerate}
 
@@ -132,12 +173,12 @@
         Calculate $\bar{x}$ and the deviations from the mean.
         \sd{\datatwo}
         \begin{align*}
-          \bar{x} = \frac{\sum{x_i}}{n} = \frac{\datasum}{\rowcount} = \eval{\datasum / \rowcount}
+          \eqmean{2}
         \end{align*}
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation},
-            sd={Plate}{2}{2}{3}
+            sd={Plate}{2}{2}{3},
           ]{\datatwo}
         \end{center}
       \item[b.]
@@ -145,39 +186,39 @@
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation, devsq},
-            sd={Plate}{2}{2}{3}
+            sd={Plate}{2}{2}{3},
           ]{\datatwo}
         \end{center}
-        \sumcol{5}{\datatwo}{\devsq}
-        \pgfmathsetmacro{\variance}{\devsq / (\rowcount - 1)}
+        \prepsd{\datatwo}
         \begin{align*}
-          s^2 &= \frac{\sum(x_i - \bar{x})^2}{n - 1} \approx \frac{\num[round-precision=3]{\devsq}}{\eval{\rowcount - 1}} \approx \num[round-precision=3]{\variance} \\
-          s &= \sqrt{s^2} \approx \sqrt{\num[round-precision=3]{\variance}} \approx \evalp{sqrt(\variance)}{3}
+          \eqvariance{3} \\
+          \eqsd{3}
         \end{align*}
       \item[d.]
         Subtract 100 from each observation to obtain a sample of transformed values. Now calculate the sample variance of these transformed values, and compare it to $s^2$ for the original data.
         \pgfplotstablenew[
           create on use/0/.style={
-            create col/copy column from table={\datatwo}{0}
+            create col/copy column from table={\datatwo}{0},
           },
           columns={0},
-        ]
-        {\pgfplotstablegetrowsof{\datatwo}}
-        {\datatwod}
+        ]{\pgfplotstablegetrowsof{\datatwo}}{\datatwod}
         \pgfplotstablemodifyeachcolumnelement{0}\of{\datatwod}\as\cell{%
           \pgfmathparse{\cell - 100}%
           \edef\cell{\pgfmathresult}%
         }
         \sd{\datatwod}
+        \begin{align*}
+          \eqmean{2}
+        \end{align*}
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation, devsq},
             sd={Plate}{2}{2}{3}
           ]{\datatwod}
         \end{center}
-        \sumcol{5}{\datatwo}{\devsqd}
+        \prepsd{\datatwod}
         \begin{align*}
-          s^2 &= \frac{\sum(x_i - \bar{x})^2}{n - 1} \approx \frac{\num[round-precision=3]{\devsqd}}{\eval{\rowcount - 1}} \approx \evalp{\devsqd / (\rowcount - 1)}{3} \\
+          \eqvariance{3}
         \end{align*}
         The sample variance is equivalent to the sample variance of the original data.
     \end{enumerate}
