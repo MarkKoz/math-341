@@ -13,7 +13,7 @@
 }
 
 \pgfplotstableset{
-  sd/.style n args={4}{
+  sd/.style n args={6}{
     every column/.append style={
       string type,
     },
@@ -27,11 +27,11 @@
     },
     columns/deviation/.append style={
       column name={\boldmath$x_i - \bar{x}$},
-      column type={S[round-precision=#3]},
+      column type={S[table-format=#3, round-precision=#4]},
     },
     columns/devsq/.append style={
       column name={\boldmath$(x_i - \bar{x})^2$},
-      column type={S[round-precision=#4]},
+      column type={S[table-format=#5, round-precision=#6]},
     },
   }
 }
@@ -215,7 +215,7 @@
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation, devsq},
-            sd={Specimen}{2}{2}{3},
+            sd={Specimen}{2}{1.2}{2}{1.3}{3},
           ]{\dataone}
         \end{center}
         \calcvariance{\dataone}
@@ -245,7 +245,7 @@
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation},
-            sd={Plate}{2}{2}{3},
+            sd={Plate}{1}{1.2}{2}{1.3}{3},
           ]{\datatwo}
         \end{center}
       \item[b.]
@@ -253,7 +253,7 @@
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation, devsq},
-            sd={Plate}{2}{2}{3},
+            sd={Plate}{1}{1.2}{2}{1.3}{3},
           ]{\datatwo}
         \end{center}
         \calcvariance{\datatwo}
@@ -271,7 +271,7 @@
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation, devsq},
-            sd={Plate}{2}{2}{3}
+            sd={Plate}{1}{1.2}{2}{1.3}{3},
           ]{\datatwod}
         \end{center}
         \calcvariance{\datatwod}
@@ -297,12 +297,13 @@
           \eqmean{2} \\
           \eqmedianeven{2}
         \end{align*}
+
       \item[b.]
         Calculate the sample variance using the defining formula.
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0, deviation, devsq},
-            sd={Zinfandel}{2}{2}{3},
+            sd={Zinfandel}{2}{1.2}{2}{1.3}{3},
           ]{\datathree}
         \end{center}
         \calcvariance{\datathree}
@@ -319,7 +320,7 @@
         \begin{center}
           \pgfplotstabletypeset[
             columns={rownum, 0},
-            sd={Zinfandel}{2}{2}{3}
+            sd={Zinfandel}{2}{1.2}{2}{1.3}{3},
           ]{\datathreec}
         \end{center}
         \calcvariancealt{\datathreec}
