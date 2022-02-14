@@ -1,6 +1,91 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=1.4]{mathhw}
+\usepackage{plotting}
 \usepackage{siunitx}
+
+% OBLITERATE scientific notation.
+\sisetup{
+  scientific-notation = fixed,
+  fixed-exponent = 0,
+  zero-decimal-to-integer,
+  round-mode = places,
+  round-half = up,
+}
+
+\pgfplotstableset{
+  sd/.style n args={4}{
+    every column/.append style={
+      string type,
+    },
+    columns/rownum/.append style={
+      column name={\textbf{#1}},
+      column type={S[table-format=#2]},
+    },
+    columns/0/.append style={
+      column name={\boldsymbol{x_i}},
+      column type={S[parse-numbers=false]},
+    },
+    columns/deviation/.append style={
+      column name={\boldmath$x_i - \bar{x}$},
+      column type={S[round-precision=#3]},
+    },
+    columns/devsq/.append style={
+      column name={\boldmath$(x_i - \bar{x})^2$},
+      column type={S[round-precision=#4]},
+    },
+  }
+}
+
+\newcommand{\sd}[1]{
+  \pgfplotstablesort{#1}{#1}
+
+  \sumcol{0}{#1}{\datasum}
+  \pgfplotstablecreatecol[
+    expr={
+      \datasum / \pgfplotstablerows
+    }
+  ]{mean}{#1}
+
+  \pgfplotstablecreatecol[
+    expr={
+      \pgfplotstablerow + 1
+    }
+  ]{rownum}{#1}
+
+  \pgfplotstablecreatecol[
+    expr={
+      \thisrowno{0} - \thisrow{mean}
+    }
+  ]{deviation}{#1}
+
+  \pgfplotstablecreatecol[
+    expr={
+      pow(\thisrow{deviation}, 2)
+    }
+  ]{devsq}{#1}
+
+  \pgfplotstablegetrowsof{#1}
+    \pgfmathsetmacro{\rowcount}{\pgfplotsretval}
+
+  % \pgfplotstablegetrowsof{#1}
+  %   \pgfmathsetmacro{#2}{floor(log10(\pgfplotsretval) + 1)}
+}
+
+\newcommand{\eval}[1]{
+  \pgfmathparse{#1}\num{\pgfmathresult}
+}
+
+\newcommand{\evalp}[2]{
+  \pgfmathparse{#1}\num[round-precision=#2]{\pgfmathresult}
+}
+
+\pgfplotstableread{
+  116.4
+  115.9
+  114.6
+  115.2
+  115.8
+}{\datatwo}
 
 \begin{document}
 
@@ -34,6 +119,7 @@
           s = \sqrt{s^2} \approx \sqrt{0.52} \approx 0.72
         \end{align*}
     \end{enumerate}
+
   \item[45.]
     The value of Young’s modulus (GPa) was determined for cast plates consisting of certain intermetallic substrates, resulting in the following sample observations (``Strength and Modulus of a Molybdenum-Coated Ti-25Al-10Nb-3U-1Mo Intermetallic,'' \textit{J. of Materials Engr. and Performance}, 1997: 46–50):
     \begin{center}
@@ -44,10 +130,56 @@
     \begin{enumerate}
       \item[a.]
         Calculate $\bar{x}$ and the deviations from the mean.
+        \sd{\datatwo}
+        \begin{align*}
+          \bar{x} = \frac{\sum{x_i}}{n} = \frac{\datasum}{\rowcount} = \eval{\datasum / \rowcount}
+        \end{align*}
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns={rownum, 0, deviation},
+            sd={Plate}{2}{2}{3}
+          ]{\datatwo}
+        \end{center}
       \item[b.]
         Use the deviations calculated in part (a) to obtain the sample variance and the sample standard deviation.
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns={rownum, 0, deviation, devsq},
+            sd={Plate}{2}{2}{3}
+          ]{\datatwo}
+        \end{center}
+        \sumcol{5}{\datatwo}{\devsq}
+        \pgfmathsetmacro{\variance}{\devsq / (\rowcount - 1)}
+        \begin{align*}
+          s^2 &= \frac{\sum(x_i - \bar{x})^2}{n - 1} \approx \frac{\num[round-precision=3]{\devsq}}{\eval{\rowcount - 1}} \approx \num[round-precision=3]{\variance} \\
+          s &= \sqrt{s^2} \approx \sqrt{\num[round-precision=3]{\variance}} \approx \evalp{sqrt(\variance)}{3}
+        \end{align*}
       \item[d.]
         Subtract 100 from each observation to obtain a sample of transformed values. Now calculate the sample variance of these transformed values, and compare it to $s^2$ for the original data.
+        \pgfplotstablenew[
+          create on use/0/.style={
+            create col/copy column from table={\datatwo}{0}
+          },
+          columns={0},
+        ]
+        {\pgfplotstablegetrowsof{\datatwo}}
+        {\datatwod}
+        \pgfplotstablemodifyeachcolumnelement{0}\of{\datatwod}\as\cell{%
+          \pgfmathparse{\cell - 100}%
+          \edef\cell{\pgfmathresult}%
+        }
+        \sd{\datatwod}
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns={rownum, 0, deviation, devsq},
+            sd={Plate}{2}{2}{3}
+          ]{\datatwod}
+        \end{center}
+        \sumcol{5}{\datatwo}{\devsqd}
+        \begin{align*}
+          s^2 &= \frac{\sum(x_i - \bar{x})^2}{n - 1} \approx \frac{\num[round-precision=3]{\devsqd}}{\eval{\rowcount - 1}} \approx \evalp{\devsqd / (\rowcount - 1)}{3} \\
+        \end{align*}
+        The sample variance is equivalent to the sample variance of the original data.
     \end{enumerate}
   \item[47.]
     Zinfandel is a popular red wine varietal produced almost exclusively in California. It is rather controversial among wine connoisseurs because its alcohol content varies quite substantially from one producer to another. In May 2013, the author went to the website klwines.com, randomly selected 10 zinfandels from among the 325 available, and obtained the following values of alcohol content (\%):
