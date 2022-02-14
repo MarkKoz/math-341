@@ -94,7 +94,12 @@
 
 \newcommand{\calcvariance}[1]{
   \sumcol{5}{#1}{\devsq}
+
+  \pgfkeys{/pgf/fpu}
   \pgfmathsetmacro{\variance}{\devsq / (\rowcount - 1)}
+  \pgfmathfloattofixed{\variance}
+  \pgfkeys{/pgf/fpu=false}
+  \pgfmathsetmacro{\variance}{\pgfmathresult}
 }
 
 \newcommand{\calcvariancealt}[1]{
@@ -186,6 +191,28 @@
   15.0
 }{\datathree}
 
+\pgfplotstableread{
+  87
+  103
+  130
+  160
+  180
+  195
+  132
+  145
+  211
+  105
+  145
+  153
+  152
+  138
+  87
+  99
+  93
+  119
+  129
+}{\datafour}
+
 \begin{document}
 
 \maketitle
@@ -201,6 +228,7 @@
     \end{center}
     Compute the following:
     \sd{\dataone}
+        hello \rowcount
     \begin{enumerate}
       \item[a.]
         The sample range
@@ -336,11 +364,33 @@
         153 & 152 & 138 & 87 & 99 & 93 & 119 & 129
       \end{tabular}
     \end{center}
+    \sd{\datafour}
     \begin{enumerate}
       \item[a.]
         Calculate the sample variance and standard deviation.
+        \begin{align*}
+          \eqmean{2}
+        \end{align*}
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns={rownum, 0, deviation, devsq},
+            sd={Oil}{1}{2.1}{1}{4.1}{2},
+          ]{\datafour}
+        \end{center}
+        \calcvariance{\datafour}
+        \begin{align*}
+          \eqvariance{2} \\
+          \eqsd{2}
+        \end{align*}
       \item[b.]
         If the observations were reexpressed in hours, what would be the resulting values of the sample variance and sample standard deviation? Answer without actually performing the reexpression.
+        \\ \\
+        Multiplying every term in the set by a constant $c$ results in the sample variance being multiplied by $c^2$ and the standard deviation being multiplied by $c$. Let $s$ be the original and $s_h$ the new.
+        \begin{align*}
+          s_h^2 &= \frac{\sum(cx_i - c\bar{x})^2}{n - 1} = \frac{\sum c^2(x_i - \bar{x})^2}{n - 1} = \frac{c^2 \sum(x_i - \bar{x})^2}{n - 1} = c^2 \frac{\sum(x_i - \bar{x})^2}{n - 1} = c^2s^2 \\
+          s_h &= \sqrt{s_h^2} = \sqrt{c^2s^2} = c \cdot s
+        \end{align*}
+        Therefore, the sample variance would be $(\frac{1}{60})^2 s^2 = \frac{s^2}{3600}$ and the standard deviation would be $\frac{s}{60}$.
     \end{enumerate}
 \end{enumerate}
 
