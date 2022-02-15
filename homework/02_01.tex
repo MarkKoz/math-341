@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=2.1]{mathhw}
+\usepackage{braket}
 
 \usepackage{tikz}
 \definecolor{bookblue}{RGB}{0, 173, 239}
@@ -15,12 +16,45 @@
     \begin{enumerate}
       \item[a.]
         List all outcomes in $\mathcal{S}$.
+        \begin{align*}
+          \mathcal{S} =
+          \left\{\begin{array}{l}
+            1234, 1243, 1324, 1342, 1423, 1432, 2134, 2143, \\
+            2314, 2341, 2413, 2431, 3124, 3142, 3214, 3241, \\
+            3412, 3421, 4123, 4132, 4213, 4231, 4312, 4321
+          \end{array}\right\}
+        \end{align*}
       \item[b.]
         Let $A$ denote the event that 1 wins the tournament. List outcomes in $A$.
+        \begin{align*}
+          A = \Set{1234, 1243, 1324, 1342, 1423, 1432}
+        \end{align*}
       \item[c.]
         Let $B$ denote the event that 2 gets into the championship game. List outcomes in $B$.
+        \begin{align*}
+          B =
+          \left\{\begin{array}{l}
+            2134, 2143, 2314, 2341, 2413, 2431, \\
+            1234, 1243, 3214, 3241, 4213, 4231
+          \end{array}\right\}
+        \end{align*}
       \item[d.]
         What are the outcomes in $A \cup B$ and in $A \cap B$? What are the outcomes in $A^\prime$?
+        \begin{align*}
+          A \cup B &=
+          \left\{\begin{array}{l}
+            2134, 2143, 2314, 2341, 2413, 2431, \\
+            1234, 1243, 3214, 3241, 4213, 4231, \\
+            1324, 1342, 1423, 1432
+          \end{array}\right\} \\
+          A \cap B &= \Set{1234, 1243} \\
+          A^\prime &=
+          \left\{\begin{array}{l}
+            2134, 2143, 2314, 2341, 2413, 2431, \\
+            3124, 3142, 3214, 3241, 3412, 3421, \\
+            4123, 4132, 4213, 4231, 4312, 4321
+          \end{array}\right\}
+        \end{align*}
     \end{enumerate}
   \item[2.]
     Suppose that vehicles taking a particular freeway exit can turn right ($R$), turn left ($L$), or go straight ($S$). Consider observing the direction for each of three successive vehicles.
