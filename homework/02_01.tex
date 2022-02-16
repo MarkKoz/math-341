@@ -3,8 +3,21 @@
 \usepackage{braket}
 
 \usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
 \definecolor{bookblue}{RGB}{0, 173, 239}
 \definecolor{bookgrey}{RGB}{219, 220, 222}
+
+\tikzstyle{venn} = [
+  framed,
+  background rectangle/.style={
+    thick,
+    draw=bookblue,
+    fill=white,
+  },
+  thick,
+  draw=bookblue,
+]
 
 \begin{document}
 
@@ -157,14 +170,192 @@
     \begin{enumerate}
       \item[a.]
         At least one plant is completed by the contract date.
+        \begin{align*}
+          A_1 \cup A_2 \cup A_3
+        \end{align*}
+        \begin{center}
+          \scalebox{0.5}{\begin{tikzpicture}[venn]
+            \def\radius{2cm}
+
+            \coordinate (A);
+            \coordinate[xshift=\radius] (B);
+            \coordinate[xshift=\radius / 2, yshift=\radius] (C);
+
+            % Circles
+            \draw[fill=bookgrey] (A) circle(\radius);
+            \draw[fill=bookgrey] (B) circle(\radius);
+            \draw[fill=bookgrey] (C) circle(\radius);
+
+            % Redraw outlines without the fill
+            % This fixes the fill overlapping outlines
+            \draw (A) circle (\radius);
+            \draw (B) circle (\radius);
+            \draw (C) circle (\radius);
+
+            % Labels
+            \node[xshift=-0.5\radius] at (A) {$A_1$};
+            \node[xshift=0.5\radius] at (B) {$A_2$};
+            \node[yshift=0.5\radius] at (C) {$A_3$};
+          \end{tikzpicture}}
+        \end{center}
       \item[b.]
         All plants are completed by the contract date.
+        \begin{align*}
+          A_1 \cap A_2 \cap A_3
+        \end{align*}
+        \begin{center}
+          \scalebox{0.5}{\begin{tikzpicture}[venn]
+            \def\radius{2cm}
+
+            \coordinate (A);
+            \coordinate[xshift=\radius] (B);
+            \coordinate[xshift=\radius / 2, yshift=\radius] (C);
+
+            % Circles
+            \draw[fill=white] (A) circle(\radius);
+            \draw[fill=white] (B) circle(\radius);
+            \draw[fill=white] (C) circle(\radius);
+
+            % Intersection
+            \begin{scope}[fill=bookgrey]
+                \clip (A) circle(\radius);
+                \clip (B) circle(\radius);
+                \clip (C) circle(\radius);
+                \fill (A) circle(\radius);
+            \end{scope}
+
+            % Redraw outlines without the fill
+            % This fixes the fill overlapping outlines
+            % It also fixes the clips not account for line thickness
+            \draw (A) circle (\radius);
+            \draw (B) circle (\radius);
+            \draw (C) circle (\radius);
+
+            % Labels
+            \node[xshift=-0.5\radius] at (A) {$A_1$};
+            \node[xshift=0.5\radius] at (B) {$A_2$};
+            \node[yshift=0.5\radius] at (C) {$A_3$};
+          \end{tikzpicture}}
+        \end{center}
       \item[c.]
         Only the plant at site 1 is completed by the contract date.
+        \begin{align*}
+        A_ 1 \cap A_2^\prime \cap A_3^\prime
+        \end{align*}
+        \begin{center}
+          \scalebox{0.5}{\begin{tikzpicture}[venn]
+            \def\radius{2cm}
+
+            \coordinate (A);
+            \coordinate[xshift=\radius] (B);
+            \coordinate[xshift=\radius / 2, yshift=\radius] (C);
+
+            % Circles
+            \draw[fill=bookgrey] (A) circle(\radius);
+            \draw[fill=white] (B) circle(\radius);
+            \draw[fill=white] (C) circle(\radius);
+
+
+            % Redraw outlines without the fill
+            % This fixes the fill overlapping outlines
+            \draw (A) circle (\radius);
+            \draw (B) circle (\radius);
+            \draw (C) circle (\radius);
+
+            % Labels
+            \node[xshift=-0.5\radius] at (A) {$A_1$};
+            \node[xshift=0.5\radius] at (B) {$A_2$};
+            \node[yshift=0.5\radius] at (C) {$A_3$};
+          \end{tikzpicture}}
+        \end{center}
       \item[d.]
         Exactly one plant is completed by the contract date.
+        \begin{align*}
+          (A_ 1 \cap A_2^\prime \cap A_3^\prime)
+          \cup (A_ 1^\prime \cap A_2 \cap A_3^\prime)
+          \cup (A_ 1^\prime \cap A_2^\prime \cap A_3)
+        \end{align*}
+        \begin{center}
+          \scalebox{0.5}{\begin{tikzpicture}[venn]
+            \def\radius{2cm}
+
+            \coordinate (A);
+            \coordinate[xshift=\radius] (B);
+            \coordinate[xshift=\radius / 2, yshift=\radius] (C);
+
+            % Circles
+            \draw[fill=bookgrey] (A) circle(\radius);
+            \draw[fill=bookgrey] (B) circle(\radius);
+            \draw[fill=bookgrey] (C) circle(\radius);
+
+            % Intersection
+            \begin{scope}[fill=white]
+                \clip (A) circle(\radius);
+                \clip (B) circle(\radius);
+                \fill (0,0) circle(\radius);
+            \end{scope}
+           \begin{scope}[fill=white]
+                \clip (C) circle(\radius);
+                \fill (A) circle(\radius);
+                \fill (B) circle(\radius);
+            \end{scope}
+
+            % Redraw outlines without the fill
+            % This fixes the fill overlapping outlines
+            % It also fixes the clips not account for line thickness
+            \draw (A) circle (\radius);
+            \draw (B) circle (\radius);
+            \draw (C) circle (\radius);
+
+            % Labels
+            \node[xshift=-0.5\radius] at (A) {$A_1$};
+            \node[xshift=0.5\radius] at (B) {$A_2$};
+            \node[yshift=0.5\radius] at (C) {$A_3$};
+          \end{tikzpicture}}
+        \end{center}
       \item[e.]
         Either the plant at site 1 or both of the other two plants are completed by the contract date.
+        \begin{align*}
+          (A_ 1 \cap A_2^\prime \cap A_3^\prime) \cup (A_ 1^\prime \cap A_2 \cap A_3)
+        \end{align*}
+        \begin{center}
+          \scalebox{0.5}{\begin{tikzpicture}[venn]
+            \def\radius{2cm}
+
+            \coordinate (A);
+            \coordinate[xshift=\radius] (B);
+            \coordinate[xshift=\radius / 2, yshift=\radius] (C);
+
+            % Circles
+            \draw[fill=bookgrey] (A) circle(\radius);
+            \draw[fill=white] (B) circle(\radius);
+            \draw[fill=white] (C) circle(\radius);
+
+            % Intersection
+            \begin{scope}[fill=bookgrey]
+                \clip (B) circle(\radius);
+                \fill (C) circle(\radius);
+            \end{scope}
+            \begin{scope}[fill=white]
+                \clip (A) circle(\radius);
+                \clip (B) circle(\radius);
+                \clip (C) circle(\radius);
+                \fill (A) circle(\radius);
+            \end{scope}
+
+            % Redraw outlines without the fill
+            % This fixes the fill overlapping outlines
+            % It also fixes the clips not account for line thickness
+            \draw (A) circle (\radius);
+            \draw (B) circle (\radius);
+            \draw (C) circle (\radius);
+
+            % Labels
+            \node[xshift=-0.5\radius] at (A) {$A_1$};
+            \node[xshift=0.5\radius] at (B) {$A_2$};
+            \node[yshift=0.5\radius] at (C) {$A_3$};
+          \end{tikzpicture}}
+        \end{center}
     \end{enumerate}
 \end{enumerate}
 
