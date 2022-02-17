@@ -32,42 +32,47 @@
         \begin{align*}
           \mathcal{S} =
           \left\{\begin{array}{l}
-            1234, 1243, 1324, 1342, 1423, 1432, 2134, 2143, \\
-            2314, 2341, 2413, 2431, 3124, 3142, 3214, 3241, \\
-            3412, 3421, 4123, 4132, 4213, 4231, 4312, 4321
+            1324, 1342, 1423, 1432, \\
+            2314, 2341, 2413, 2431, \\
+            3124, 3142, 3214, 3241, \\
+            4123, 4132, 4213, 4231
           \end{array}\right\}
         \end{align*}
+        Take the permutations and then omit outcomes that start or end with 12, 21, 34, or 43. These omissions are necessary because it's impossible for the universities that played in the first round to then face each other in the final round.
       \item[b.]
         Let $A$ denote the event that 1 wins the tournament. List outcomes in $A$.
         \begin{align*}
-          A = \Set{1234, 1243, 1324, 1342, 1423, 1432}
+          A = \Set{1324, 1342, 1423, 1432}
         \end{align*}
+        Find the outcomes in $\mathcal{S}$ which start with 1.
       \item[c.]
         Let $B$ denote the event that 2 gets into the championship game. List outcomes in $B$.
         \begin{align*}
           B =
           \left\{\begin{array}{l}
-            2134, 2143, 2314, 2341, 2413, 2431, \\
-            1234, 1243, 3214, 3241, 4213, 4231
+            2314, 2341, 2413, 2431, \\
+            3214, 3241, 4213, 4231
           \end{array}\right\}
         \end{align*}
+        Find the outcomes in $\mathcal{S}$ which have a 2 as the first or second digit.
       \item[d.]
         What are the outcomes in $A \cup B$ and in $A \cap B$? What are the outcomes in $A^\prime$?
         \begin{align*}
           A \cup B &=
           \left\{\begin{array}{l}
-            2134, 2143, 2314, 2341, 2413, 2431, \\
-            1234, 1243, 3214, 3241, 4213, 4231, \\
-            1324, 1342, 1423, 1432
+            1324, 1342, 1423, 1432, \\
+            2314, 2341, 2413, 2431, \\
+            3214, 3241, 4213, 4231
           \end{array}\right\} \\
-          A \cap B &= \Set{1234, 1243} \\
+          A \cap B &= \emptyset \\
           A^\prime &=
           \left\{\begin{array}{l}
-            2134, 2143, 2314, 2341, 2413, 2431, \\
-            3124, 3142, 3214, 3241, 3412, 3421, \\
-            4123, 4132, 4213, 4231, 4312, 4321
+            2314, 2341, 2413, 2431, \\
+            3124, 3142, 3214, 3241, \\
+            4123, 4132, 4213, 4231
           \end{array}\right\}
         \end{align*}
+        $A \cup B$ is both of the sets combined and duplicates omitted. $A \cap B$ is the set of outcomes that are common to both sets, which is none; 1 and 2 can't face each other in second round since they faced each other in the first round. $A^\prime$ is the set of outcomes not in $A$ (take $\mathcal{S}$ and exclude any value that is also in $A$).
     \end{enumerate}
   \item[2.]
     Suppose that vehicles taking a particular freeway exit can turn right ($R$), turn left ($L$), or go straight ($S$). Consider observing the direction for each of three successive vehicles.
@@ -83,12 +88,12 @@
           B = \Set{RLS, RSL, LRS, LSR, SRL, SLR}
         \end{align*}
       \item[c.]
-        List all outcomes in the event $C$ that exactly two of the three vehicles turn right.
+        List all outcomes in the event $B$ that exactly two of the three vehicles turn right.
         \begin{align*}
           C = \Set{RRL, RRS, RLR, RSR, LRR, SRR}
         \end{align*}
       \item[d.]
-        List all outcomes in the event $D$ that exactly two vehicles go in the same direction.
+        List all outcomes in the event $C$ that exactly two vehicles go in the same direction.
         \begin{align*}
           D =
           \left\{\begin{array}{l}
@@ -109,6 +114,9 @@
           C \cup D &= D \\
           C \cap D &= C
         \end{align*}
+        $D^\prime$ is the set of outcomes that exclude exactly two vehicles going in the same direction. In other words, it's when all vehicles go in the same direction, or none do. These are represented by events $A$ and $B$, respectively. Thus, $D^\prime$ is just the union of those two sets.
+        \\ \\
+        $C \cup D$ is $C$ because $B$ is a subset of $C$ (two vehicles going right is a subset of two vehicles going in the same direction). Thus, $B$ has no elements that $C$ doesn't already have. $C \cap D$ is $B$ because $B$ is a subset of $C$. Thus, $C$ contains all of $B$, so $B$ has every element in common wth $C$.
     \end{enumerate}
   \item[3.]
     Three components are connected to form a system as shown in the accompanying diagram. Because the components in the 2–3 subsystem are connected in parallel, that subsystem will function if at least one of the two individual components functions. For the entire system to function, component 1 must function and so must the 2–3 subsystem.
@@ -151,10 +159,11 @@
           B = \Set{SSF, SFS, FSS, SSS}
         \end{align*}
       \item[c.]
-        Which outcomes are contained in the event $C$ that the system functions?
+        Which outcomes are contained in the event $B$ that the system functions?
         \begin{align*}
           C = \Set{SSF, SFS, SSS}
         \end{align*}
+        The system functions if and only if the first component functions and either the second or third component functions. Thus, the outcome must always start with $S$ and must end with at least one $S$ ($SS$, $SF$, or $FS$).
       \item[d.]
         List outcomes in $C^\prime$, $A \cup C$, $A \cap C$, $B \cup C$, and $B \cap C$.
         \begin{align*}
@@ -164,6 +173,11 @@
           B \cup C &= B \\
           B \cap C &= C
         \end{align*}
+        $C^\prime$ are the outcomes in which the system does not function. This is when component 1 fails and/or both components 2 and 3 fail.
+        \\ \\
+        $A \cup C$ is both sets combined, excluding duplicates. $A \cap C$ is the outcomes the sets have in common. $FSS$ is not in $B$ because the first component must not fail. $SSS$ is not in $A$ because it has more than 2 components functioning. Thus, these two outcomes are not in the intersection.
+        \\ \\
+        $B \cup C$ is $B$ because $C$ is a subset of $B$ (the system functioning requires at least 2 components to function). Thus, $C$ has no elements that $B$ doesn't already have. $B \cap C$ is $C$ because $C$ is a subset of $B$. Thus, $B$ contains all of $C$, so $C$ has every element in common wth $B$.
     \end{enumerate}
   \item[8.]
     An engineering construction firm is currently working on power plants at three different sites. Let $A_i$ denote the event that the plant at site $i$ is completed by the contract date. Use the operations of union, intersection, and complementation to describe each of the following events in terms of $A_1$, $A_2$, and $A_3$, draw a Venn diagram, and shade the region corresponding to each one.
@@ -268,6 +282,7 @@
             \node[yshift=0.5\radius] at (C) {$A_3$};
           \end{tikzpicture}}
         \end{center}
+        Exclude the other sites by using their complements. Their intersection is used since it needs to be \textit{only} site 1.
       \item[d.]
         Exactly one plant is completed by the contract date.
         \begin{align*}
@@ -313,6 +328,7 @@
             \node[yshift=0.5\radius] at (C) {$A_3$};
           \end{tikzpicture}}
         \end{center}
+        There are 3 sites, so 3 possible ways for exactly one plant to be completed. These are defined similar to (c). Since any of these 3 outcomes suffices, their union is used.
       \item[e.]
         Either the plant at site 1 or both of the other two plants are completed by the contract date.
         \begin{align*}
@@ -356,6 +372,7 @@
             \node[yshift=0.5\radius] at (C) {$A_3$};
           \end{tikzpicture}}
         \end{center}
+        Only site 1 being complete was shown in (c). Only site 2 and 3 being completed is similar to (b), except $A$ has to be excluded by using its complement. As with (d), either of these two outcomes suffices, so their union is used.
     \end{enumerate}
 \end{enumerate}
 
