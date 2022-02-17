@@ -188,7 +188,7 @@
           A_1 \cup A_2 \cup A_3
         \end{align*}
         \begin{center}
-          \scalebox{0.5}{\begin{tikzpicture}[venn]
+          \begin{tikzpicture}[venn]
             \def\radius{2cm}
 
             \coordinate (A);
@@ -210,7 +210,7 @@
             \node[xshift=-0.5\radius] at (A) {$A_1$};
             \node[xshift=0.5\radius] at (B) {$A_2$};
             \node[yshift=0.5\radius] at (C) {$A_3$};
-          \end{tikzpicture}}
+          \end{tikzpicture}
         \end{center}
       \item[b.]
         All plants are completed by the contract date.
@@ -218,7 +218,7 @@
           A_1 \cap A_2 \cap A_3
         \end{align*}
         \begin{center}
-          \scalebox{0.5}{\begin{tikzpicture}[venn]
+          \begin{tikzpicture}[venn]
             \def\radius{2cm}
 
             \coordinate (A);
@@ -249,7 +249,7 @@
             \node[xshift=-0.5\radius] at (A) {$A_1$};
             \node[xshift=0.5\radius] at (B) {$A_2$};
             \node[yshift=0.5\radius] at (C) {$A_3$};
-          \end{tikzpicture}}
+          \end{tikzpicture}
         \end{center}
       \item[c.]
         Only the plant at site 1 is completed by the contract date.
@@ -257,7 +257,7 @@
         A_ 1 \cap A_2^\prime \cap A_3^\prime
         \end{align*}
         \begin{center}
-          \scalebox{0.5}{\begin{tikzpicture}[venn]
+          \begin{tikzpicture}[venn]
             \def\radius{2cm}
 
             \coordinate (A);
@@ -280,7 +280,7 @@
             \node[xshift=-0.5\radius] at (A) {$A_1$};
             \node[xshift=0.5\radius] at (B) {$A_2$};
             \node[yshift=0.5\radius] at (C) {$A_3$};
-          \end{tikzpicture}}
+          \end{tikzpicture}
         \end{center}
         Exclude the other sites by using their complements. Their intersection is used since it needs to be \textit{only} site 1.
       \item[d.]
@@ -291,7 +291,7 @@
           \cup (A_ 1^\prime \cap A_2^\prime \cap A_3)
         \end{align*}
         \begin{center}
-          \scalebox{0.5}{\begin{tikzpicture}[venn]
+          \begin{tikzpicture}[venn]
             \def\radius{2cm}
 
             \coordinate (A);
@@ -326,7 +326,7 @@
             \node[xshift=-0.5\radius] at (A) {$A_1$};
             \node[xshift=0.5\radius] at (B) {$A_2$};
             \node[yshift=0.5\radius] at (C) {$A_3$};
-          \end{tikzpicture}}
+          \end{tikzpicture}
         \end{center}
         There are 3 sites, so 3 possible ways for exactly one plant to be completed. These are defined similar to (c). Since any of these 3 outcomes suffices, their union is used.
       \item[e.]
@@ -335,7 +335,7 @@
           (A_ 1 \cap A_2^\prime \cap A_3^\prime) \cup (A_ 1^\prime \cap A_2 \cap A_3)
         \end{align*}
         \begin{center}
-          \scalebox{0.5}{\begin{tikzpicture}[venn]
+          \begin{tikzpicture}[venn]
             \def\radius{2cm}
 
             \coordinate (A);
@@ -370,7 +370,7 @@
             \node[xshift=-0.5\radius] at (A) {$A_1$};
             \node[xshift=0.5\radius] at (B) {$A_2$};
             \node[yshift=0.5\radius] at (C) {$A_3$};
-          \end{tikzpicture}}
+          \end{tikzpicture}
         \end{center}
         Only site 1 being complete was shown in (c). Only site 2 and 3 being completed is similar to (b), except $A$ has to be excluded by using its complement. As with (d), either of these two outcomes suffices, so their union is used.
     \end{enumerate}
