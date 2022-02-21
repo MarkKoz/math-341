@@ -107,10 +107,26 @@
   \begin{enumerate}
       \item[a.]
         At both signals?
+        \\ \\
+        Let $P(A) = .4$ for the first signal, $P(B) = .5$ for the second signal, and $P(A \cup B) = .7$ for at least one of the two signals.
+        \begin{align*}
+          P(A \cup B) &= P(A) + P(B) - P(A \cap B) \\
+          .7 &= .4 + .5 - P(A \cap B) \\
+          P(A \cap B) &= .4 + .5 - .7 = .2
+        \end{align*}
       \item[b.]
         At the first signal but not at the second one?
+        \begin{align*}
+          P(A \cap B^\prime) = P(A \cup B) - P(B) = .7 - .5 = .2
+        \end{align*}
       \item[c.]
         At exactly one signal?
+        \begin{align*}
+          P((A^\prime \cap B) \cup (A \cap B^\prime)) &= P(A^\prime \cap B) + P(A \cap B^\prime) \\
+          &= P(A \cup B) - P(A) + P(A \cup B) - P(B) \\
+          &= .7 - .4 + .7 - .5 \\
+          &= .5
+        \end{align*}
     \end{enumerate}
   \item[24.]
     Show that if one event $A$ is contained in another event $B$ (i.e., $A$ is a subset of $B$), then $P(A) <= P(B)$. [\textit{Hint:} For such $A$ and $B$, $A$ and $B \cap A^\prime$ are disjoint and $B = A \cup (B \cap A^\prime)$, as can be seen from a Venn diagram.] For general $A$ and $B$, what does this imply about the relationship among $P(A \cap B)$, $P(A)$ and $P(A \cup B)$?
