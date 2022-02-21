@@ -39,11 +39,21 @@
     \end{enumerate}
   \item[14.]
     Suppose that 55\% of all adults regularly consume coffee, 45\% regularly consume carbonated soda, and 70\% regularly consume at least one of these two products.
+    \\ \\
+    Let $P(A) = .55$ for coffee, $P(B) = .45$ for carbonated soda, and $P(A \cup B) = .7$ for at least one of the two.
     \begin{enumerate}
       \item[a.]
         What is the probability that a randomly selected adult regularly consumes both coffee and soda?
+        \begin{align*}
+          P(A \cup B) &= P(A) + P(B) - P(A \cap B) \\
+          .7 &= .55 + .45 - P(A \cap B) \\
+          P(A \cap B) &= .55 + .45 - .7 = .3
+        \end{align*}
       \item[b.]
         What is the probability that a randomly selected adult doesn’t regularly consume at least one of these two products?
+        \begin{align*}
+          P((A \cup B)^\prime) = 1 - P(A \cup B) = 1 - .7 = .3
+        \end{align*}
     \end{enumerate}
   \item[16.]
   An individual is presented with three different glasses of cola, labeled $C$, $D$, and $P$. He is asked to taste all three and then list them in order of preference. Suppose the same cola has actually been put into all three glasses.
