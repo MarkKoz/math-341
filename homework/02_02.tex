@@ -11,14 +11,31 @@
     \begin{enumerate}
       \item[a.]
         Could it be the case that $P(A \cap B) = .5$? Why or why not? [\textit{Hint:} See Exercise 24.]
+        \\ \\
+        No. $P(B) \geq P(A \cap B)$ since $(A \cap B) \subseteq B$. However, $P(B) = .4 \not\geq .5 = P(A \cap B)$. In other words, if the probability of having both is $.5$, then the probability of having a MasterCard must be at least $.5$.
       \item[b.]
         From now on, suppose that $P(A \cap B) = .3$. What is the probability that the selected student has at least one of these two types of cards?
+        \begin{align*}
+          P(A \cup B) = P(A) + P(B) - P(A \cap B) = .6 + .4 - .3 = .7
+        \end{align*}
       \item[c.]
         What is the probability that the selected student has neither type of card?
+        \begin{align*}
+          P((A \cup B)^\prime) = 1 - P(A \cup B) = 1 - .7 = .3
+        \end{align*}
       \item[d.]
         Describe, in terms of $A$ and $B$, the event that the selected student has a Visa card but not a MasterCard, and then calculate the probability of this event.
+        \begin{align*}
+          P(A \cap B^\prime) = P(A \cup B) - P(B) = .7 - .4 = .3
+        \end{align*}
       \item[e.]
         Calculate the probability that the selected student has exactly one of the two types of cards.
+        \begin{align*}
+          P((A^\prime \cap B) \cup (A \cap B^\prime)) &= P(A^\prime \cap B) + P(A \cap B^\prime) \\
+          &= P(A \cup B) - P(A) + P(A \cup B) - P(B) \\
+          &= .7 - .6 + .7 - .3 \\
+          &= .5
+        \end{align*}
     \end{enumerate}
   \item[14.]
     Suppose that 55\% of all adults regularly consume coffee, 45\% regularly consume carbonated soda, and 70\% regularly consume at least one of these two products.
