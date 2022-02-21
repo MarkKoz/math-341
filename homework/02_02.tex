@@ -129,7 +129,15 @@
         \end{align*}
     \end{enumerate}
   \item[24.]
-    Show that if one event $A$ is contained in another event $B$ (i.e., $A$ is a subset of $B$), then $P(A) <= P(B)$. [\textit{Hint:} For such $A$ and $B$, $A$ and $B \cap A^\prime$ are disjoint and $B = A \cup (B \cap A^\prime)$, as can be seen from a Venn diagram.] For general $A$ and $B$, what does this imply about the relationship among $P(A \cap B)$, $P(A)$ and $P(A \cup B)$?
+    Show that if one event $A$ is contained in another event $B$ (i.e., $A$ is a subset of $B$), then $P(A) \leq P(B)$. [\textit{Hint:} For such $A$ and $B$, $A$ and $B \cap A^\prime$ are disjoint and $B = A \cup (B \cap A^\prime)$, as can be seen from a Venn diagram.] For general $A$ and $B$, what does this imply about the relationship among $P(A \cap B)$, $P(A)$ and $P(A \cup B)$?
+    \\ \\
+    $A$ and $B \cap A^\prime$ are disjoint. $B$ can be expressed as $B = A \cup (B \cap A^\prime)$. Thus,
+    \begin{align*}
+      P(B) = P(A \cup (B \cap A^\prime)) = P(A) + P(B \cap A^\prime)
+    \end{align*}
+    The first axiom states that for any event $E$, $P(E) \geq 0$. By this axiom, $P(B \cap A^\prime) \geq 0$. Thus, $P(B)$ is the sum of $P(A)$ and some positive number. Therefore, $P(A) \leq P(B)$.
+    \\ \\
+    For general $A$ and $B$, this shows $P(A) \geq P(A \cap B)$ because $(A \cap B) \subseteq A$. It also shows $P(A) \leq P(A \cup B)$ because $A \subseteq (A \cup B)$. Lastly, it shows $P(A \cup B) \geq P(A \cap B)$ because $(A \cap B) \subseteq (A \cup B)$.
 \end{enumerate}
 
 \end{document}
