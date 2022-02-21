@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=2.2]{mathhw}
+\usepackage{braket}
 
 \begin{document}
 
@@ -60,10 +61,21 @@
   \begin{enumerate}
       \item[a.]
         What are the simple events in this ranking experiment, and what probability would you assign to each one?
+        \begin{align*}
+          \mathcal{S} = \Set{CDP, CPD, DCP, DPC, PCD, PDC}
+        \end{align*}
+        Because the same cola is in all glasses, all six outcomes are equally likely. Hence, they all have the same probability of $\frac{1}{6}$.
       \item[b.]
         What is the probability that $C$ is ranked first?
+        \begin{align*}
+          P(\Set{CDP, CPD}) = \frac{2}{6} = \frac{1}{3}
+        \end{align*}
+        Out of the six total outcomes in $\mathcal{S}$, two of them start with $C$.
       \item[c.]
         What is the probability that $C$ is ranked first and $D$ is ranked last?
+        \begin{align*}
+          P(\Set{CPD}) = \frac{1}{6}
+        \end{align*}
     \end{enumerate}
   \item[17.]
   Let $A$ denote the event that the next request for assistance from a statistical software consultant relates to the SPSS package, and let $B$ be the event that the next request is for help with SAS. Suppose that $P(A) = .30$ and $P(B) = .50$.
