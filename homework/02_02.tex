@@ -82,12 +82,25 @@
   \begin{enumerate}
       \item[a.]
         Why is it not the case that $P(A) + P(B) = 1$?
+        \\ \\
+        Because there is other software besides SPSS and SAS for which assistance may be requested.
       \item[b.]
         Calculate $P(A^\prime)$.
+        \begin{align*}
+          P(A^\prime) = 1 - P(A) = 1 - .30 = .70
+        \end{align*}
       \item[c.]
         Calculate $P(A\cup B)$.
+        \begin{align*}
+          P(A \cup B) = P(A) + P(B) - P(A \cap B) = .30 + .50 - 0 = .80
+        \end{align*}
+        Because $A$ and $B$ are disjoint, $A \cap B = \emptyset$ and $P(\emptyset) = 0$.
       \item[d.]
         Calculate $P(A^\prime \cap B^\prime)$.
+        \begin{align*}
+          P(A^\prime \cap B^\prime) = P((A \cup B)^\prime) = 1 - P(A \cup B) = 1 - .80 = .20
+        \end{align*}
+        By De Morgan's laws, $P(A^\prime \cap B^\prime) = P((A \cup B)^\prime)$.
     \end{enumerate}
   \item[22.]
     The route used by a certain motorist in commuting to work contains two intersections with traffic signals. The probability that he must stop at the first signal is $.4$, the analogous probability for the second signal is $.5$, and the probability that he must stop at at least one of the two signals is $.7$. What is the probability that he must stop
