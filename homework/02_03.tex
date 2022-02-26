@@ -10,13 +10,58 @@
     As of April 2006, roughly 50 million .com web domain names were registered (e.g., yahoo.com).
     \begin{enumerate}
       \item[a.]
-        How many domain names consisting of just two letters in sequence can be formed? How many domain names of length two are there if digits as well as letters are permitted as characters? [\textit{Note:} A character length of three or more is now mandated.]
+        How many domain names consisting of just two letters in sequence can be formed? How many domain names of length two are there if digits as well as letters are permitted as characters? [\textit{Note:} A character length of three or more is now mandated.] \\
+        \begin{minipage}{.5\linewidth}
+          \begin{align*}
+            n &= 26 * 26 \\
+            n &= 26^2 \\
+            &= 676
+          \end{align*}
+        \end{minipage}%
+        \begin{minipage}{.5\linewidth}
+          \begin{align*}
+            n &= (26 + 10)^2 \\
+            &= 36^2 \\
+            &= 1296
+          \end{align*}
+        \end{minipage}
       \item[b.]
-        How many domain names are there consisting of three letters in sequence? How many of this length are there if either letters or digits are permitted? [\textit{Note:} All are currently taken.]
+        How many domain names are there consisting of three letters in sequence? How many of this length are there if either letters or digits are permitted? [\textit{Note:} All are currently taken.] \\
+        \begin{minipage}{.5\linewidth}
+          \begin{align*}
+            n &= 26 * 26 * 26 \\
+            n &= 26^3 \\
+            &= 17576
+          \end{align*}
+        \end{minipage}%
+        \begin{minipage}{.5\linewidth}
+          \begin{align*}
+            n &= (26 + 10)^3 \\
+            &= 36^3 \\
+            &= 46656
+          \end{align*}
+        \end{minipage}
       \item[c.]
         Answer the questions posed in (b) for four-character sequences.
+        \begin{minipage}{.5\linewidth}
+          \begin{align*}
+            n &= 26 * 26 * 26 * 26 \\
+            n &= 26^4 \\
+            &= 456976
+          \end{align*}
+        \end{minipage}%
+        \begin{minipage}{.5\linewidth}
+          \begin{align*}
+            n &= (26 + 10)^4 \\
+            &= 36^4 \\
+            &= 1679616
+          \end{align*}
+        \end{minipage}
       \item[d.]
         As of April 2006, 97,786 of the four-character sequences using either letters or digits had not yet been claimed. If a four-character name is randomly selected, what is the probability that it is already owned?
+        \begin{align*}
+          P = \frac{36^4 - 97786}{36^4} = \frac{1581830}{1679616} \approx 0.94178
+        \end{align*}
     \end{enumerate}
   \item[30.]
     A friend of mine is giving a dinner party. His current wine supply includes 8 bottles of zinfandel, 10 of merlot, and 12 of cabernet (he only drinks red wine), all from different wineries.
