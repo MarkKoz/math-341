@@ -199,8 +199,16 @@
     \begin{enumerate}
         \item[a.]
           How many sonnets can be created from the 10 in the book?
+          \begin{align*}
+            N = 10^{14}
+          \end{align*}
+          This uses the product rule for $k$-tuples. There are 14 lines and 10 pages. That means there are 10 choices for each line.
         \item[b.]
           If one of the sonnets counted in part (a) is selected at random, what is the probability that none of its lines came from either the first or the last sonnet in the book?
+          \begin{align*}
+            P = \frac{8^{14}}{N} = \frac{8^{14}}{10^{14}} \approx .044
+          \end{align*}
+          If the first and last pages are excluded, then there are only 8 pages to choose from for each of the 14 lines. Applying the product rule for $k$-tuples, this yields $8^{14}$ possibilities. The probability is then a ratio of that and the total found in (a).
       \end{enumerate}
 \end{enumerate}
 
