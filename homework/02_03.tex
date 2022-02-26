@@ -120,10 +120,26 @@
     \begin{enumerate}
       \item[a.]
         How many ways are there to randomly select 5 of these key boards for a thorough inspection (without regard to order)?
+        \begin{align*}
+          \binom{25}{5} = \comba{25}{5} = \combb{25}{5} = \combc{25}{5} = 53130
+        \end{align*}
       \item[b.]
         In how many ways can a sample of 5 keyboards be selected so that exactly two have an electrical defect?
+        \begin{align*}
+          \binom{6}{2} \binom{19}{3} = \comba{6}{2} \times \comba{19}{3} = \combc{6}{2} \times \combc{19}{3} = 15 \cdot 969 = 14535
+        \end{align*}
       \item[c.]
         If a sample of 5 keyboards is randomly selected, what is the probability that at least 4 of these will have a mechanical defect?
+        \begin{align*}
+          P(M_4 \cup M_5) &= P(M_4) + P(M_5) \\
+          &= \frac{N_4 + N_5}{N} \\
+          &= \frac{\binom{6}{1} \binom{19}{4} + \binom{6}{0} \binom{19}{5}}{\binom{25}{5}} \\
+          &= \frac{(6)\comba{19}{4} + (1)\comba{19}{5}}{53130} \\
+          &= \frac{(6)\combc{19}{4} + \combc{19}{5}}{53130} \\
+          &= \frac{6 \cdot 3876 + 11628}{53130} \\
+          &= \frac{34884}{53130} \\
+          &\approx 0.657
+        \end{align*}
     \end{enumerate}
   \item[35.]
     A production facility employs 10 workers on the day shift, 8 workers on the swing shift, and 6 workers on the graveyard shift. A quality control consultant is to select 5 of these workers for in-depth interviews. Suppose the selection is made in such a way that any particular group of 5 workers has the same chance of being selected as does any other group (drawing 5 slips without replacement from among 24).
