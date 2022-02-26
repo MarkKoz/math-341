@@ -1,5 +1,17 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=2.3]{mathhw}
+\usepackage[makeroom]{cancel}
+\usepackage{pgf}
+
+% https://tex.stackexchange.com/a/107126
+\usepackage{mathtools}
+\newcommand\perm[2]{\prescript{^{#1}\mkern-2.5mu}{}P_{#2}}
+
+\newcommand\calc[1]{\pgfmathparse{#1}\pgfmathprintnumber{\pgfmathresult}}
+
+\newcommand\comba[2]{\frac{\perm{#1}{#2}}{#2!}}
+\newcommand\combb[2]{\frac{#1!}{#2!(#1 - #2)!}}
+\newcommand\combc[2]{\frac{#1!}{#2! \cdot \calc{#1 - #2}!}}
 
 \begin{document}
 
@@ -68,14 +80,40 @@
     \begin{enumerate}
       \item[a.]
         If he wants to serve 3 bottles of zinfandel and serving order is important, how many ways are there to do this?
+        \begin{align*}
+          \perm{8}{3} = \frac{8!}{(8 - 3)!} = \frac{8!}{5!} = \frac{8 \cdot 7 \cdot 6 \cdot \cancel{5!}}{\cancel{5!}} = 8 \cdot 7 \cdot 6 = 336
+        \end{align*}
       \item[b.]
         If 6 bottles of wine are to be randomly selected from the 30 for serving, how many ways are there to do this?
+        \begin{align*}
+          \binom{30}{6} = \comba{30}{6} = \combb{30}{6} = \combc{30}{6} = 593775
+        \end{align*}
       \item[c.]
         If 6 bottles are randomly selected, how many ways are there to obtain two bottles of each variety?
+        \begin{align*}
+          \binom{8}{2} \binom{10}{2} \binom{12}{2} &= \comba{8}{2} \times \comba{10}{2} \times \comba{12}{2} \\
+          &= \combb{8}{2} \times \combb{10}{2} \times \combb{12}{2} \\
+          &= \combc{8}{2} \times \combc{10}{2} \times \combc{12}{2} \\
+          &= 28 \cdot 45 \cdot 66 \\
+          &= 83160
+        \end{align*}
       \item[d.]
         If 6 bottles are randomly selected, what is the probability that this results in two bottles of each variety being chosen?
+        \begin{align*}
+          P = \frac{\binom{8}{2} \binom{10}{2} \binom{12}{2}}{\binom{30}{6}} = \frac{83160}{593775} \approx 0.14
+        \end{align*}
       \item[e.]
         If 6 bottles are randomly selected, what is the probability that all of them are the same variety?
+        \begin{align*}
+          P(Z_6 \cup M_6 \cup C_6) &= P(Z_6) + P(M_6) + P(C_6) \\
+          &= \frac{\binom{8}{6} + \binom{10}{6} + \binom{12}{6}}{\binom{30}{6}} \\
+          % &= \frac{\comba{8}{6} + \comba{10}{6} + \comba{12}{6}}{593775} \\
+          % &= \frac{\combb{8}{6} + \combb{10}{6} + \combb{12}{6}}{593775} \\
+          &= \frac{\combc{8}{6} + \combc{10}{6} + \combc{12}{6}}{593775} \\
+          &= \frac{28 + 210 + 924}{593775} \\
+          &= \frac{1162}{593775} \\
+          &\approx 0.002
+        \end{align*}
     \end{enumerate}
   \item[34.]
     Computer keyboard failures can be attributed to electrical defects or mechanical defects. A repair facility currently has 25 failed keyboards, 6 of which have electrical defects and 19 of which have mechanical defects.
