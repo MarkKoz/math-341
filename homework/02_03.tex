@@ -146,12 +146,53 @@
     \begin{enumerate}
       \item[a.]
         How many selections result in all 5 workers coming from the day shift? What is the probability that all 5 selected workers will be from the day shift?
+        \begin{align*}
+          N(D_5) &= \binom{10}{5} = \comba{10}{5} = \combc{10}{5} = 252 \\
+          N &= \binom{24}{5} = \comba{24}{5} = \combc{24}{5} = 42504 \\
+          P(D_5) &= \frac{N(D_5)}{N} = \frac{\binom{10}{5}}{\binom{24}{5}} = \frac{252}{42504} \approx 0.0059
+        \end{align*}
       \item[b.]
         What is the probability that all 5 selected workers will be from the same shift?
+        \begin{align*}
+          N(S_5) &= \binom{8}{5} = \comba{8}{5} = \combc{8}{5} = 56 \\
+          N(G_5) &= \binom{6}{5} = \comba{6}{5} = \combc{6}{5} = 6 \\
+          P(D_5 \cup S_5 \cup G_5) &= P(D_5) + P(S_5) + P(G_5) \\
+          &= \frac{N(D_5) + N(S_5) + N(G_5)}{N} \\
+          &= \frac{252 + 56 + 6}{42504} \\
+          &= \frac{314}{42504} \\
+          &\approx 0.0074
+        \end{align*}
       \item[c.]
         What is the probability that at least two different shifts will be represented among the selected workers?
+        \begin{align*}
+          P((D_5 \cup S_5 \cup G_5)^\prime) = 1 - P(D_5 \cup S_5 \cup G_5) \approx 1 - 0.0074 \approx 0.9926
+        \end{align*}
       \item[d.]
         What is the probability that at least one of the shifts will be unrepresented in the sample of workers?
+        \begin{align*}
+          N(D_0) &= \binom{8 + 6}{5} = \comba{14}{5} = \combc{14}{5} = 2002 \\
+          N(S_0) &= \binom{10 + 6}{5} = \comba{16}{5} = \combc{16}{5} = 4368 \\
+          N(G_0) &= \binom{10 + 8}{5} = \comba{18}{5} = \combc{18}{5} = 8568
+        \end{align*}
+        \begin{align*}
+          N(D_0 \cap S_0) &= N(G_5) = 6 \\
+          N(D_0 \cap G_0) &= N(S_5) = 56 \\
+          N(S_0 \cap G_0) &= N(D_5) = 252 \\
+          N(D_0 \cap S_0 \cap G_0) &= 0
+        \end{align*}
+        \begin{align*}
+          P(D_0 \cup S_0 \cup G_0) &= P(D_0) + P(S_0) + P(G_0) \\
+          &- P(D_0 \cap S_0) - P(D_0 \cap S_0) - P(D_0 \cap G_0) - P(S_0 \cap G_0) \\
+          &+ P(D_0 \cap S_0 \cap G_0) \\
+          &= \frac{\begin{aligned}
+            &N(D_0) + N(S_0) + N(G_0) \\
+            - &N(D_0 \cap S_0) - N(D_0 \cap G_0) - N(S_0 \cap G_0) \\
+            + &N(D_0 \cap S_0 \cap G_0)
+          \end{aligned}}{N} \\
+          &= \frac{2002 + 4368 + 8568 - 6 - 56 - 252 + 0}{42504} \\
+          &= \frac{14624}{42504} \\
+          &\approx 0.3441
+        \end{align*}
     \end{enumerate}
   \item[38.]
     A sonnet is a 14-line poem in which certain rhyming patterns are followed. The writer Raymond Queneau published a book containing just 10 sonnets, each on a different page. However, these were structured such that other sonnets could be created as follows: the first line of a sonnet could come from the first line on any of the 10 pages, the second line could come from the second line on any of the 10 pages, and so on (successive lines were perforated for this purpose).
