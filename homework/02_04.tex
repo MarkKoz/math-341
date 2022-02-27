@@ -1,0 +1,77 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[section=2.4]{mathhw}
+\usepackage{tabularray}
+
+\usepackage{xcolor}
+\definecolor{bookblue}{HTML}{00aeef}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+  \item[45.]
+    The population of a particular country consists of three ethnic groups. Each individual belongs to one of the four major blood groups. The accompanying \textit{joint probability table} gives the proportions of individuals in the various ethnic group–blood group combinations.
+    \begin{center}
+      \begin{tblr}{
+        colspec = *{2}{>{\bfseries}l}*{4}{c},
+        row{1,2} = {font=\bfseries},
+        hline{1,3,6} = {0.7pt, solid, bookblue, leftpos = -1, rightpos = -1, endpos, abovespace = 0.33em, belowspace = 0.33em},
+        hline{2} = {2-6}{0.7pt, solid, bookblue, leftpos = -1, rightpos = -1, endpos, abovespace = 0.3em, belowspace = 0.33em},
+      }
+        & \SetCell[c=5]{c} Blood Group \\
+        &   & O    & A    & B    & AB \\
+        \SetCell[r=3]{l} Ethnic Group
+        & 1 & .082 & .106 & .008 & .004 \\
+        & 2 & .135 & .141 & .018 & .006 \\
+        & 3 & .215 & .200 & .065 & .020 \\
+      \end{tblr}
+    \end{center}
+    Suppose that an individual is randomly selected from the population, and define events by $A = \{$type A selected$\}$, $B = \{$type B selected$\}$, and $C = \{$ethnic group 3 selected$\}$.
+    \begin{enumerate}
+      \item[a.]
+        Calculate $P(A)$, $P(C)$, and $P(A \cap C)$.
+      \item[b.]
+        Calculate both $P(A|C)$ and $P(C|A)$, and explain in context what each of these probabilities represents.
+      \item[c.]
+        If the selected individual does not have type B blood, what is the probability that he or she is from ethnic group 1?
+    \end{enumerate}
+  \item[49.]
+    The accompanying table gives information on the type of coffee selected by someone purchasing a single cup at a particular airport kiosk.
+    \begin{center}
+      \begin{tblr}{
+        colspec = l*{3}{c},
+        row{1} = {font=\bfseries},
+        hline{1,2,4} = {0.7pt, solid, bookblue, leftpos = -1, rightpos = -1, endpos, abovespace = 0.33em, belowspace = 0.33em},
+      }
+                & Small & Medium & Large \\
+        Regular & 14\% & 20\% & 26\% \\
+        Decaf   & 20\% & 10\% & 10\%
+      \end{tblr}
+    \end{center}
+    Consider randomly selecting such a coffee purchaser.
+    \begin{enumerate}
+      \item[a.]
+        What is the probability that the individual purchased a small cup? A cup of decaf coffee?
+      \item[b.]
+        If we learn that the selected individual purchased a small cup, what now is the probability that he/she chose decaf coffee, and how would you interpret this probability?
+      \item[c.]
+        If we learn that the selected individual purchased decaf, what now is the probability that a small size was selected, and how does this compare to the correspon ding unconditional probability of (a)?
+    \end{enumerate}
+  \item[53.]
+    A certain shop repairs both audio and video components. Let $A$ denote the event that the next component brought in for repair is an audio component, and let $B$ be the event that the next component is a compact disc player (so the event $B$ is contained in $A$). Suppose that $P(A) = .6$ and $P(B) = .05$. What is $P(B|A)$?
+  \item[59.]
+    At a certain gas station, 40\% of the customers use regular gas ($A_1$), 35\% use plus gas ($A_2$), and 25\% use premium ($A_3$). Of those customers using regular gas, only 30\% fill their tanks (event $B$). Of those customers using plus, 60\% fill their tanks, whereas of those using premium, 50\% fill their tanks.
+    \begin{enumerate}
+      \item[a.]
+        What is the probability that the next customer will request plus gas and fill the tank ($A_2 \cap B$)?
+      \item[b.]
+        What is the probability that the next customer fills the tank?
+      \item[c.]
+        If the next customer fills the tank, what is the probability that regular gas is requested? Plus? Premium?
+    \end{enumerate}
+  \item[62.]
+    Blue Cab operates 15\% of the taxis in a certain city, and Green Cab operates the other 85\%. After a nighttime hit-and-run accident involving a taxi, an eyewitness said the vehicle was blue. Suppose, though, that under night vision conditions, only 80\% of individuals can correctly distinguish between a blue and a green vehicle. What is the (posterior) probability that the taxi at fault was blue? In answering, be sure to indicate which probability rules you are using. [\textit{Hint:} A tree diagram might help. Note: This is based on an actual incident.]
+\end{enumerate}
+
+\end{document}
