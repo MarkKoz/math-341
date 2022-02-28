@@ -1,0 +1,98 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[section=2.5]{mathhw}
+
+\usepackage{tikz}
+\definecolor{bookblue}{RGB}{0, 173, 239}
+\definecolor{bookgrey}{RGB}{219, 220, 222}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+  \item[71.]
+    An oil exploration company currently has two active projects, one in Asia and the other in Europe. Let $A$ be the event that the Asian project is successful and $B$ be the event that the European project is successful. Suppose that $A$ and $B$ are independent events with $P(A) = .4$ and $P(B) = .7$.
+    \begin{enumerate}
+      \item[a.]
+        If the Asian project is not successful, what is the probability that the European project is also not successful? Explain your reasoning.
+      \item[b.]
+        What is the probability that at least one of the two projects will be successful?
+      \item[c.]
+        Given that at least one of the two projects is successful, what is the probability that only the Asian project is successful?
+    \end{enumerate}
+  \item[74.]
+    The proportions of blood phenotypes in the U.S. population are as follows:
+    \begin{center}
+      \begin{tabular}{cccc}
+        A & B & AB & O \\
+        .40 & .11 & .04 & .45
+      \end{tabular}
+    \end{center}
+    Assuming that the phenotypes of two randomly selected individuals are independent of one another, what is the probability that both phenotypes are O? What is the probability that the phenotypes of two randomly selected individuals match?
+  \item[77.]
+    An aircraft seam requires 25 rivets. The seam will have to be reworked if any of these rivets is defective. Suppose rivets are defective independently of one another, each with the same probability.
+    \begin{enumerate}
+      \item[a.]
+        If 15\% of all seams need reworking, what is the probability that a rivet is defective?
+      \item[b.]
+        How small should the probability of a defective rivet be to ensure that only 10\% of all seams need reworking?
+    \end{enumerate}
+  \item[80.]
+    Consider the system of components connected as in the accompanying picture. Components 1 and 2 are connected in parallel, so that subsystem works iff either 1 or 2 works; since 3 and 4 are connected in series, that subsystem works iff both 3 and 4 work. If components work independently of one another and $P$(component $i$ works) $= .9$ for $i = 1,2$ and $= .8$ for $i = 3,4$, calculate $P$(system works).
+    \begin{center}
+      \begin{tikzpicture}[line width=1pt, draw=bookblue]
+        \coordinate (A1) at (1,0);
+        \coordinate (A2) at (2,1);
+        \coordinate (A3) at (8,1);
+        \coordinate (A4) at (9,0);
+        \coordinate (A5) at (8,-1);
+        \coordinate (A6) at (2,-1);
+
+        \coordinate (B1) at (3,1);
+        \coordinate (B2) at (4,1.75);
+        \coordinate (B3) at (6,1.75);
+        \coordinate (B4) at (7,1);
+        \coordinate (B5) at (6,0.25);
+        \coordinate (B6) at (4,0.25);
+
+        \draw (0,0)--(A1)--(A2)--(B1);
+        \draw (B1)--(B2)--(B3)--(B4)--(B5)--(B6)--cycle;
+        \draw (B4)--(A3)--(A4)--(A5)--(A6)--(A1);
+        \draw (A4)--(10,0);
+
+        \filldraw[fill=bookgrey, draw=bookblue]
+          (4.75,1.5) rectangle (5.25,2)
+          node[pos=.5] {1};
+
+        \filldraw[fill=bookgrey, draw=bookblue]
+          (4.75,0) rectangle (5.25,0.5)
+          node[pos=.5] {2};
+
+        \filldraw[fill=bookgrey, draw=bookblue]
+          (2.75,-1.25) rectangle (3.25,-0.75)
+          node[pos=.5] {3};
+
+        \filldraw[fill=bookgrey, draw=bookblue]
+          (6.75,-1.25) rectangle (7.25,-0.75)
+          node[pos=.5] {4};
+      \end{tikzpicture}
+    \end{center}
+  \item[84.]
+    Consider purchasing a system of audio components consisting of a receiver, a pair of speakers, and a CD player. Let $A_1$ be the event that the receiver functions properly throughout the warranty period, $A_2$ be the event that the speakers function properly throughout the warranty period, and $A_3$ be the event that the CD player functions properly throughout the warranty period. Suppose that these events are (mutually) independent with $P(A_1) = .95$, $P(A_2) = .98$, and $P(A_3) = .80$.
+    \begin{enumerate}
+      \item[a.]
+        What is the probability that all three components function properly throughout the warranty period?
+      \item[b.]
+        What is the probability that at least one component needs service during the warranty period?
+      \item[c.]
+        What is the probability that all three components need service during the warranty period?
+      \item[d.]
+        What is the probability that only the receiver needs service during the warranty period?
+      \item[e.]
+        What is the probability that exactly one of the three components needs service during the warranty period?
+      \item[f.]
+        What is the probability that all three components function properly throughout the warranty period but that at least one fails within a month after the warranty expires?
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
