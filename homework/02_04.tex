@@ -89,14 +89,36 @@
         Decaf   & 20\% & 10\% & 10\%
       \end{tblr}
     \end{center}
-    Consider randomly selecting such a coffee purchaser.
+    Consider randomly selecting such a coffee purchaser. Let $S_s$, $S_m$, and $S_l$ denote the event in which a small, medium, or large cup, respectively, is purchased. Let $T_r$ and $T_d$ denote the event in which a regular or decafe cup, respectively, is purchased.
     \begin{enumerate}
       \item[a.]
         What is the probability that the individual purchased a small cup? A cup of decaf coffee?
+        \begin{align*}
+          P(S_s) &= P(S_s \cap (T_r \cup T_d)) \\
+          &= P((S_s \cap T_r) \cup (S_s \cap T_d)) \\
+          &= P(S_s \cap T_r) + P(S_s \cap T_d) \\
+          &= .14 + .20 \\
+          &= .34
+        \end{align*}
+        \begin{align*}
+          P(T_d) &= P((S_s \cup S_m \cup S_l) \cap T_d) \\
+          &= P((S_s \cap T_d) \cup (S_m \cap T_d) \cup (S_l \cap T_d)) \\
+          &= P(S_s \cap T_d) + P(S_m \cap T_d) + P(S_l \cap T_d) \\
+          &= .20 + .10 + .10 \\
+          &= .40
+        \end{align*}
       \item[b.]
         If we learn that the selected individual purchased a small cup, what now is the probability that he/she chose decaf coffee, and how would you interpret this probability?
+        \begin{align*}
+          P(T_d|S_s) &= \frac{P(T_d \cap S_s)}{P(S_s)} = \frac{.20}{.34} = .588
+        \end{align*}
+        This means 58.8\% of small coffee cups bought at the kiosk contain decaf coffee.
       \item[c.]
-        If we learn that the selected individual purchased decaf, what now is the probability that a small size was selected, and how does this compare to the correspon ding unconditional probability of (a)?
+        If we learn that the selected individual purchased decaf, what now is the probability that a small size was selected, and how does this compare to the corresponding unconditional probability of (a)?
+        \begin{align*}
+          P(S_s|T_d) &= \frac{P(S_s \cap T_d)}{P(T_d)} = \frac{.20}{.40} = .50
+        \end{align*}
+        This probability is larger than the one found in (a). 50\% of bought decaf cups are small while 34\% of cups containing either coffee type are small.
     \end{enumerate}
   \item[53.]
     A certain shop repairs both audio and video components. Let $A$ denote the event that the next component brought in for repair is an audio component, and let $B$ be the event that the next component is a compact disc player (so the event $B$ is contained in $A$). Suppose that $P(A) = .6$ and $P(B) = .05$. What is $P(B|A)$?
