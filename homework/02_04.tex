@@ -131,10 +131,29 @@
     \begin{enumerate}
       \item[a.]
         What is the probability that the next customer will request plus gas and fill the tank ($A_2 \cap B$)?
+        \begin{align*}
+          P(A_2 \cap B) &= P(B|A_2) \cdot P(A_2) \\
+          &= .60 \times .35 \\
+          &= .21
+        \end{align*}
       \item[b.]
         What is the probability that the next customer fills the tank?
+        \begin{align*}
+          P(B) &= P(B \cap (A_1 \cup A_2 \cup A_3)) \\
+          &= P((B \cap A_1) \cup (B \cap A_2) \cup (B \cap A_3)) \\
+          &= P(B \cap A_1) + P(B \cap A_2) + P(B \cap A_3) \\
+          &= [P(B|A_1) \cdot P(A_1)] + .21 + [P(B|A_3) \cdot P(A_3)] \\
+          &= (.30 \times .40) + .21 + (.50 \times .25) \\
+          &= .12 + .21 + .125 \\
+          & = .455
+        \end{align*}
       \item[c.]
         If the next customer fills the tank, what is the probability that regular gas is requested? Plus? Premium?
+        \begin{align*}
+          P(A_1|B) &= \frac{P(A_1 \cap B)}{P(B)} = \frac{.12}{.455} \approx .2637 \\
+          P(A_2|B) &= \frac{P(A_2 \cap B)}{P(B)} = \frac{.21}{.455} \approx .4615 \\
+          P(A_3|B) &= \frac{P(A_3 \cap B)}{P(B)} = \frac{.125}{.455} \approx .2747
+        \end{align*}
     \end{enumerate}
   \item[62.]
     Blue Cab operates 15\% of the taxis in a certain city, and Green Cab operates the other 85\%. After a nighttime hit-and-run accident involving a taxi, an eyewitness said the vehicle was blue. Suppose, though, that under night vision conditions, only 80\% of individuals can correctly distinguish between a blue and a green vehicle. What is the (posterior) probability that the taxi at fault was blue? In answering, be sure to indicate which probability rules you are using. [\textit{Hint:} A tree diagram might help. \textit{Note:} This is based on an actual incident.]
