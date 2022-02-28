@@ -157,6 +157,24 @@
     \end{enumerate}
   \item[62.]
     Blue Cab operates 15\% of the taxis in a certain city, and Green Cab operates the other 85\%. After a nighttime hit-and-run accident involving a taxi, an eyewitness said the vehicle was blue. Suppose, though, that under night vision conditions, only 80\% of individuals can correctly distinguish between a blue and a green vehicle. What is the (posterior) probability that the taxi at fault was blue? In answering, be sure to indicate which probability rules you are using. [\textit{Hint:} A tree diagram might help. \textit{Note:} This is based on an actual incident.]
+    \\ \\
+    Let $B$ denote the event in which the taxi at fault is blue. Let $W$ denote the event in which the witness says the vehicle was blue. Thus, $P(W|B) = .80$, which is the probability that the witness is correct.
+    \\ \\
+    Using the proposition that for any event $A$, $P(A) + P(A^\prime) = 1$, the probability that the witness is incorrect can also be found, by letting $P(A) = P(W|B)$ and $P(A^\prime) = P(W|B^\prime)$.
+    \begin{align*}
+      P(W|B^\prime) = 1 - P(W|B) = 1 - .80 = .20
+    \end{align*}
+    $P(W)$ can be found using the law of total probability.
+    \begin{align*}
+      P(W) &= [P(W|B) \cdot P(B)] + [P(W|B^\prime) \cdot P(B^\prime)] \\
+      &= (.80 \times .15) + (.20 \times .85) \\
+      &= .12 + .17 \\
+      &= .29
+    \end{align*}
+    Finally, $P(B|W)$ can be found using Bayes' theorem and the multiplication rule. From the previous step, it is known $P(W|B) \cdot P(B) = .12$, so the multiplication rule can be used to show $P(B \cap W) = .12$.
+    \begin{align*}
+      P(B|W) &= \frac{P(B \cap W)}{P(W)} = \frac{P(W|B) \cdot P(B)}{P(W)} = \frac{.12}{.29} \approx .414
+    \end{align*}
 \end{enumerate}
 
 \end{document}
