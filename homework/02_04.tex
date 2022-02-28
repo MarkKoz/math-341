@@ -31,10 +31,50 @@
     \begin{enumerate}
       \item[a.]
         Calculate $P(A)$, $P(C)$, and $P(A \cap C)$.
+        \begin{align*}
+          P(A) &= P((A \cap E_1) \cup (A \cap E_2) \cup (A \cap E_3)) \\
+          &= P(A \cap E_1) + P(A \cap E_2) + P(A \cap E_3) \\
+          &= .106 + .141 + .200 \\
+          &= .447
+        \end{align*}
+        \begin{align*}
+          P(C) &= P((T_O \cap E_3) \cup (T_A \cap E_3) \cup (T_B \cap E_3) \cup (T_{AB} \cap E_3)) \\
+          &= P(T_{O} \cap E_3) + P(T_{A} \cap E_3) + P(T_{B} \cap E_3) + P(T_{AB} \cap E_3) \\
+          &= .215 + .200 + .065 + .020 \\
+          &= .500
+        \end{align*}
+        \begin{align*}
+          P(A \cap C) &= .200
+        \end{align*}
       \item[b.]
         Calculate both $P(A|C)$ and $P(C|A)$, and explain in context what each of these probabilities represents.
+        \begin{align*}
+          P(A|C) &= \frac{P(A \cap C)}{P(C)} = \frac{.200}{.500} = .400
+        \end{align*}
+        $P(A|C)$ is the probability of blood group $A$ being selected given that ethnic group 3 was selected.
+        \begin{align*}
+          P(C|A) &= \frac{P(C \cap A)}{P(A)} = \frac{.200}{.447} \approx .447
+        \end{align*}
+        $P(C|A)$ is the probability of ethnic group 3 being selected given that blood group $A$ was selected.
       \item[c.]
         If the selected individual does not have type B blood, what is the probability that he or she is from ethnic group 1?
+        \begin{align*}
+          P(B^\prime) &= 1 - P(B) \\
+          &= 1 - P((B \cap E_1) \cup (B \cap E_2) \cup (B \cap E_3)) \\
+          &= 1 - P(B \cap E_1) + P(B \cap E_2) + P(B \cap E_3) \\
+          &= 1 - .008 + .018 + .065 \\
+          &= 1 - .091 \\
+          &= .909
+        \end{align*}
+        \begin{align*}
+          P(E_1|B^\prime) &= \frac{P(E_1 \cap B^\prime)}{P(B^\prime)} \\
+          &= \frac{P(E_1 \cap (T_O \cup T_A \cup T_{AB}))}{P(B^\prime)} \\
+          &= \frac{P((E_1 \cap T_O) \cup (E_1 \cap T_A) \cup (E_1 \cap T_{AB})}{P(B^\prime)} \\
+          &= \frac{P(E_1 \cap T_O) + P(E_1 \cap T_A) + P(E_1 \cap T_{AB})}{P(B^\prime)} \\
+          &= \frac{.082 + .106 + .004}{.909} \\
+          &= \frac{.192}{.909} \\
+          &\approx .211
+        \end{align*}
     \end{enumerate}
   \item[49.]
     The accompanying table gives information on the type of coffee selected by someone purchasing a single cup at a particular airport kiosk.
@@ -71,7 +111,7 @@
         If the next customer fills the tank, what is the probability that regular gas is requested? Plus? Premium?
     \end{enumerate}
   \item[62.]
-    Blue Cab operates 15\% of the taxis in a certain city, and Green Cab operates the other 85\%. After a nighttime hit-and-run accident involving a taxi, an eyewitness said the vehicle was blue. Suppose, though, that under night vision conditions, only 80\% of individuals can correctly distinguish between a blue and a green vehicle. What is the (posterior) probability that the taxi at fault was blue? In answering, be sure to indicate which probability rules you are using. [\textit{Hint:} A tree diagram might help. Note: This is based on an actual incident.]
+    Blue Cab operates 15\% of the taxis in a certain city, and Green Cab operates the other 85\%. After a nighttime hit-and-run accident involving a taxi, an eyewitness said the vehicle was blue. Suppose, though, that under night vision conditions, only 80\% of individuals can correctly distinguish between a blue and a green vehicle. What is the (posterior) probability that the taxi at fault was blue? In answering, be sure to indicate which probability rules you are using. [\textit{Hint:} A tree diagram might help. \textit{Note:} This is based on an actual incident.]
 \end{enumerate}
 
 \end{document}
