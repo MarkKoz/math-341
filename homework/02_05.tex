@@ -69,11 +69,30 @@
     \end{align*}
   \item[77.]
     An aircraft seam requires 25 rivets. The seam will have to be reworked if any of these rivets is defective. Suppose rivets are defective independently of one another, each with the same probability.
+    \\ \\
+    Let $A$ be the event that a seam is good. Let $B$ be the event that a rivet is good.
     \begin{enumerate}
       \item[a.]
         If 15\% of all seams need reworking, what is the probability that a rivet is defective?
+        \begin{align*}
+          P(A) &= P(B_1 \cap B_2 \ldots \cap B_{25}) = P(B)^{25}
+        \end{align*}
+        \begin{align*}
+          P(A^\prime) &= 1 - P(A) \\
+          .15 &= 1 - P(B)^{25} \\
+          P(B)^{25} &= 1 - .15 \\
+          P(B) &= \sqrt[25]{.85} \\
+          &\approx .9935203
+        \end{align*}
+        \begin{align*}
+          P(B^\prime) = 1 - P(B) \approx 1 - .9935203 \approx .0064797
+        \end{align*}
       \item[b.]
         How small should the probability of a defective rivet be to ensure that only 10\% of all seams need reworking?
+        \begin{align*}
+          P(B^\prime) &= 1 - \sqrt[25]{1 - .10} \\
+          &\approx .0042056
+        \end{align*}
     \end{enumerate}
   \item[80.]
     Consider the system of components connected as in the accompanying picture. Components 1 and 2 are connected in parallel, so that subsystem works iff either 1 or 2 works; since 3 and 4 are connected in series, that subsystem works iff both 3 and 4 work. If components work independently of one another and $P$(component $i$ works) $= .9$ for $i = 1,2$ and $= .8$ for $i = 3,4$, calculate $P$(system works).
