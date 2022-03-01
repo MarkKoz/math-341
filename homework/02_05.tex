@@ -18,7 +18,7 @@
         \begin{align*}
           P(B^\prime|A^\prime) = P(B^\prime) = 1 - P(B) = 1 - .7 = .3
         \end{align*}
-        $A$ and $B$ are independent, so their complements are also independent. Furthermore, this means the occurence of $A^\prime$ does not affect the probability of $B^\prime$. Thus, it can be simplified to $P(B^\prime)$.
+        $A$ and $B$ are independent, so their complements are also independent. Furthermore, this means the occurrence of $A^\prime$ does not affect the probability of $B^\prime$. Thus, it can be simplified to $P(B^\prime)$.
       \item[b.]
         What is the probability that at least one of the two projects will be successful?
         \begin{align*}
@@ -134,6 +134,31 @@
           node[pos=.5] {4};
       \end{tikzpicture}
     \end{center}
+    Let $S$ be the event that the system works and $S_i$ the event that the subsystem $i$ works. Let $C_i$ be the event that the component $i$ works.
+    \begin{minipage}[t]{.5\linewidth}
+      \begin{align*}
+        P(S_1) &= P(C_1 \cup C_2) \\
+        &= P(C_1) + P(C_2) - P(C_1 \cap C_2) \\
+        &= P(C_1) + P(C_2) - (P(C_1) \cdot P(C_2)) \\
+        &= .9 + .9 - (.9 \times .9) \\
+        & = .99
+      \end{align*}
+    \end{minipage}%
+    \begin{minipage}[t]{.5\linewidth}
+      \begin{align*}
+        P(S_2) &= P(C_3 \cap C_4) \\
+        &= P(C_3) \cdot P(C_4) \\
+        &= .8 \times .8 \\
+        &= .64
+      \end{align*}
+    \end{minipage}
+    \begin{align*}
+      P(S) &= P(S_1 \cup S_2) \\
+      &= P(S_1) + P(S_2) - P(S_1 \cap S_2) \\
+      &= P(S_1) + P(S_2) - (P(S_1) \cdot P(S_2)) \\
+      &= .99 + .64 - (.99 \times .64) \\
+      &= .9964
+    \end{align*}
   \item[84.]
     Consider purchasing a system of audio components consisting of a receiver, a pair of speakers, and a CD player. Let $A_1$ be the event that the receiver functions properly throughout the warranty period, $A_2$ be the event that the speakers function properly throughout the warranty period, and $A_3$ be the event that the CD player functions properly throughout the warranty period. Suppose that these events are (mutually) independent with $P(A_1) = .95$, $P(A_2) = .98$, and $P(A_3) = .80$.
     \begin{enumerate}
