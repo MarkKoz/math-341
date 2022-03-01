@@ -55,6 +55,18 @@
       \end{tabular}
     \end{center}
     Assuming that the phenotypes of two randomly selected individuals are independent of one another, what is the probability that both phenotypes are O? What is the probability that the phenotypes of two randomly selected individuals match?
+    \begin{align*}
+      P(O \cap O) = P(O) \cdot P(O) = {.45}^2 = .2025
+    \end{align*}
+    The events that both individuals have a specific phenotype are disjoint since each individual can only have one phenotype. Hence, the unions below can be decomposed into a simple sum, without having to account for any intersections.
+    \begin{align*}
+      &P((A \cap A) \cup (B \cap B) \cup (AB \cap AB) \cup (O \cap O)) \\
+      &= P(A \cap A) + P(B \cap B) + P(AB \cap AB) + P(O \cap O) \\
+      &= P(A)^2 + P(B)^2 + P(AB)^2 + P(O)^2 \\
+      &= {.40}^2 + {.11}^2 + {.04}^2 + {.45}^2 \\
+      &= .16 + .0121 + .0016 + .2025 \\
+      &= .3762
+    \end{align*}
   \item[77.]
     An aircraft seam requires 25 rivets. The seam will have to be reworked if any of these rivets is defective. Suppose rivets are defective independently of one another, each with the same probability.
     \begin{enumerate}
