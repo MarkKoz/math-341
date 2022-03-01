@@ -164,16 +164,55 @@
     \begin{enumerate}
       \item[a.]
         What is the probability that all three components function properly throughout the warranty period?
+        \begin{align*}
+          P(A_1 \cap A_2 \cap A_3) &= P(A_1) \cdot P(A_2) \cdot P(A_3) \\
+          &= .95 \times .98 \times .80 \\
+          &= .7448
+        \end{align*}
       \item[b.]
         What is the probability that at least one component needs service during the warranty period?
+        \begin{align*}
+          P((A_1 \cap A_2 \cap A_3)^\prime) &= 1 - P(A_1 \cap A_2 \cap A_3) \\
+          &= 1 - .7448 \\
+          &= .2552
+        \end{align*}
       \item[c.]
         What is the probability that all three components need service during the warranty period?
+        \begin{align*}
+          P(A_1^\prime \cap A_2^\prime \cap A_3^\prime) &= P(A_1^\prime) \cdot P(A_2^\prime) \cdot P(A_3^\prime) \\
+          &= (1 - P(A_1)) \cdot (1 - P(A_2)) \cdot (1 - P(A_3)) \\
+          &= .05 \times .02 \times .20 \\
+          &= .0002
+        \end{align*}
       \item[d.]
         What is the probability that only the receiver needs service during the warranty period?
+        \begin{align*}
+          P(A_1^\prime \cap A_2 \cap A_3) &= P(A_1^\prime) \cdot P(A_2) \cdot P(A_3) \\
+          &= .05 \times .98 \times .80 \\
+          &= .0392
+        \end{align*}
       \item[e.]
         What is the probability that exactly one of the three components needs service during the warranty period?
+        \begin{align*}
+          &P((A_1^\prime \cap A_2 \cap A_3) \cup (A_1 \cap A_2^\prime \cap A_3) \cup (A_1 \cap A_2 \cap A_3^\prime)) \\
+          &= \begin{aligned}[t]
+            P(A_1^\prime) \cdot P(A_2) \cdot P(A_3) \\
+            + P(A_1) \cdot P(A_2^\prime) \cdot P(A_3) \\
+            + P(A_1) \cdot P(A_2) \cdot P(A_3^\prime)
+          \end{aligned} \\
+          &= \begin{aligned}[t]
+            ((1 - .95) \times .98 \times .80) \\
+            + (.95 \times (1 - .98) \times .80) \\
+            + (.95 \times .98 \times (1 - .80))
+          \end{aligned} \\
+          &= .0392 + .0152 + .1862 \\
+          &= .2406
+        \end{align*}
+        Because each of the three events is disjoint, their union is simply their sum; there is no need to account for their intersections because their intersections are empty.
       \item[f.]
         What is the probability that all three components function properly throughout the warranty period but that at least one fails within a month after the warranty expires?
+        \\ \\
+        It is not possible to determine this with the limited information given. First, the probabilities for the components failing within a month after the warranty expires are not give, and strictly speaking, no assumption can be made on what these probabilities would be. Second, it is not known whether these events would even be independent. Strictly speaking, it cannot be assumed that just because they were independent during the warranty, they will still be independent after the warranty expires.
     \end{enumerate}
 \end{enumerate}
 
