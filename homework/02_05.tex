@@ -15,10 +15,36 @@
     \begin{enumerate}
       \item[a.]
         If the Asian project is not successful, what is the probability that the European project is also not successful? Explain your reasoning.
+        \begin{align*}
+          P(B^\prime|A^\prime) = P(B^\prime) = 1 - P(B) = 1 - .7 = .3
+        \end{align*}
+        $A$ and $B$ are independent, so their complements are also independent. Furthermore, this means the occurence of $A^\prime$ does not affect the probability of $B^\prime$. Thus, it can be simplified to $P(B^\prime)$.
       \item[b.]
         What is the probability that at least one of the two projects will be successful?
+        \begin{align*}
+          P(A \cup B) &= P(A) + P(B) - P(A \cap B) \\
+          &= P(A) + P(B) - (P(A) \cdot P(B)) \\
+          &= .4 + .7 - (.4 \times .7) \\
+          &= .82
+        \end{align*}
       \item[c.]
         Given that at least one of the two projects is successful, what is the probability that only the Asian project is successful?
+        \begin{align*}
+          P((A \cap B^\prime)|(A \cup B)) &= \frac{P((A \cap B^\prime) \cap (A \cup B))}{P(A \cup B)}
+        \end{align*}
+        The commutative, associative, and absorption laws can be used to simply the numerator.
+        \begin{align*}
+          (A \cap B^\prime) \cap (A \cup B) &= (B^\prime \cap A) \cap (A \cup B) \\
+          &= B^\prime \cap (A \cap (A \cup B)) \\
+          &= B^\prime \cap A
+        \end{align*}
+        Since the events are independent, this enables the numerator to be calculated using the multiplication rule.
+        \begin{align*}
+          P((A \cap B^\prime)|(A \cup B)) &= \frac{P(B^\prime \cap A)}{P(A \cup B)} \\
+          &= \frac{P(B^\prime) \cdot P(A)}{P(A \cup B)} \\
+          &= \frac{.3 \times .4}{.82} \\
+          &\approx .146
+        \end{align*}
     \end{enumerate}
   \item[74.]
     The proportions of blood phenotypes in the U.S. population are as follows:
