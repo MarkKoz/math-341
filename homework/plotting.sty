@@ -38,6 +38,16 @@
   }
 }
 
+% OBLITERATE scientific notation.
+\usepackage{siunitx}
+\sisetup{
+  exponent-mode = fixed, % scientific-notation in v2
+  fixed-exponent = 0,
+  drop-zero-decimal, % zero-decimal-to-integer in v2
+  round-mode = places,
+  round-half = up,
+}
+
 % Sum all values in a column and store the output in a pgfmath macro.
 %
 % arg1: index of column to sum
@@ -76,4 +86,12 @@
 \newcommand{\skipheaderexpr}[1]{
     % coordindex does not count comments/header, hence <0 rather than ==0.
     \coordindex<0 ? nan : \thisrowno{#1}
+}
+
+\newcommand{\eval}[1]{
+  \pgfmathparse{#1}\num{\pgfmathresult}
+}
+
+\newcommand{\evalp}[2]{
+  \pgfmathparse{#1}\num[round-precision=#2]{\pgfmathresult}
 }

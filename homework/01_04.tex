@@ -1,16 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=1.4]{mathhw}
 \usepackage{plotting}
-\usepackage{siunitx}
-
-% OBLITERATE scientific notation.
-\sisetup{
-  scientific-notation = fixed,
-  fixed-exponent = 0,
-  zero-decimal-to-integer,
-  round-mode = places,
-  round-half = up,
-}
 
 \pgfplotstableset{
   sd/.style n args={6}{
@@ -82,14 +72,6 @@
     \pgfmathparse{\cell - #3}%
     \edef\cell{\pgfmathresult}%
   }
-}
-
-\newcommand{\eval}[1]{
-  \pgfmathparse{#1}\num{\pgfmathresult}
-}
-
-\newcommand{\evalp}[2]{
-  \pgfmathparse{#1}\num[round-precision=#2]{\pgfmathresult}
 }
 
 \newcommand{\calcvariance}[1]{
