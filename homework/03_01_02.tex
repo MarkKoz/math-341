@@ -1,6 +1,8 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=3.1\ \&\ 3.2]{mathhw}
 \usepackage{tabularray}
+\usepackage{braket}
+\usepackage{mathtools}
 
 \begin{document}
 
@@ -9,6 +11,12 @@
 \begin{enumerate}
   \item[1.]
     A concrete beam may fail either by shear ($S$) or flexure ($F$). Suppose that three failed beams are randomly selected and the type of failure is determined for each one. Let $X =$ the number of beams among the three selected that failed by shear. List each outcome in the sample space along with the associated value of $X$.
+    \begin{align*}
+      \mathcal{S} &= \mathrlap{\Set{SSS, FFF, SSF, SFS, FSS, FFS, FSF, SFF}} & & & & \\
+      X(SSS) &= 3 & X(SSF) &= 2 & X(FFS) &= 1 \\
+      X(FFF) &= 0 & X(SFS) &= 2 & X(FSF) &= 1 \\
+                & & X(FSS) &= 2 & X(SFF) &= 1
+    \end{align*}
   \item[4.]
     Let $X =$ the number of nonzero digits in a randomly selected 4-digit PIN that has no restriction on the digits. What are the possible values of $X$? Give three possible outcomes and their associated $X$ values.
   \item[11.]
