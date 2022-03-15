@@ -81,16 +81,38 @@
     \begin{enumerate}
       \item[a.]
         \{at most three lines are in use\}
+        \begin{align*}
+          p(x \le 3) = p(0) + p(1) + p(2) + p(3) = .10 + .15 + .20 + .25 = .70
+        \end{align*}
       \item[b.]
         \{fewer than three lines are in use\}
+        \begin{align*}
+          p(x < 3) = p(x \le 3) - p(3) = .70 - .25 = .45
+        \end{align*}
       \item[c.]
         \{at least three lines are in use\}
+        \begin{align*}
+          p(x \ge 3) = 1 - p(x < 3) = 1 - .45 = .55
+        \end{align*}
       \item[d.]
         \{between two and five lines, inclusive, are in use\}
+        \begin{align*}
+          p(2 \le x \le 5) &= p(2) + p(3) + p(4) + p(5) \\
+          &= .20 + .25 + .20 + .06 \\
+          &= .71
+        \end{align*}
       \item[e.]
         \{between two and four lines, inclusive, are not in use\}
+        \begin{align*}
+          1 - p(2 \le x \le 4) &= 1 - [p(2 \le x \le 5) - p(5)] \\
+          &= 1 - (.71 - .06) \\
+          &= .35
+        \end{align*}
       \item[f.]
         \{at least four lines are not in use\}
+        \begin{align*}
+          1 - p(x \ge 4) = p(x < 4) = p(x \le 3) = .70
+        \end{align*}
     \end{enumerate}
   \item[16.]
     Some parts of California are particularly earthquake-prone. Suppose that in one metropolitan area, 25\% of all homeowners are insured against earthquake damage. Four homeowners are to be selected at random; let $X$ denote the number among the four who have earthquake insurance.
