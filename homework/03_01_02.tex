@@ -4,6 +4,13 @@
 \usepackage{braket}
 \usepackage{mathtools}
 
+% https://tex.stackexchange.com/a/394772
+\newcommand{\equationinalign}[2]{%
+  \multispan{#2}%
+  \hfill$\displaystyle{#1}$\hfill
+  \ignorespaces
+}
+
 \begin{document}
 
 \maketitle
@@ -19,6 +26,10 @@
     \end{align*}
   \item[4.]
     Let $X =$ the number of nonzero digits in a randomly selected 4-digit PIN that has no restriction on the digits. What are the possible values of $X$? Give three possible outcomes and their associated $X$ values.
+    \begin{align*}
+      \equationinalign{x = \Set{0, 1, 2, 3, 4}}{6} \\
+      X(1234) &= 4 & X(7014) &= 3 & X(9009) &= 2
+    \end{align*}
   \item[11.]
     Let $X$ be the number of students who show up for a professor’s office hour on a particular day. Suppose that the pmf of $X$ is $p(0) = .20$, $p(1) = .25$, $p(2) = .30$, $p(3) = .15$, and $p(4) = .10$.
     \begin{enumerate}
