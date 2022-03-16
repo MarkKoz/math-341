@@ -10,6 +10,13 @@
 
 \pgfplotsset{
   compat=newest,
+  base/.style = {
+    axis x line = bottom,
+    axis y line = left,
+    tick align = outside,
+    xticklabel style = {/pgf/number format/fixed},
+    yticklabel style = {/pgf/number format/fixed},
+  },
   histogram/.style={
     axis lines=middle,
     axis line style={-latex},
@@ -24,13 +31,9 @@
   },
   histogram2/.style = {
     ybar,
+    base,
     xmajorgrids = false,
     ymajorgrids = true,
-    axis x line = bottom,
-    axis y line = left,
-    tick align = outside,
-    xticklabel style = {/pgf/number format/fixed},
-    yticklabel style = {/pgf/number format/fixed},
     xtick=data,
     enlargelimits = upper,
     enlarge x limits=0.1,
