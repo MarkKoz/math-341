@@ -44,9 +44,7 @@
               ylabel = Probability,
               width = .5\linewidth,
             ]
-              \addplot+[
-                ybar interval,
-              ] plot coordinates {
+              \addplot plot coordinates {
                 (0, .20) (1, .25) (2, .30) (3, .15) (4, .10)
               };
             \end{axis}
@@ -119,12 +117,51 @@
     \begin{enumerate}
       \item[a.]
         Find the probability distribution of X. [\textit{Hint:} Let $S$ denote a homeowner who has insurance and $F$ one who does not. Then one possible outcome is $SFSS$, with probability (.25)(.75)(.25)(.25) and associated $X$ value 3. There are 15 other outcomes.]
+        \begin{align*}
+          P(F) &= 1 - P(S) = 1 - .25 = .75 \\
+          p(0) &= P(FFFF) = P(F)^4 \cdot P(S)^0 = .75^4 \approx .316 \\
+          p(1) &= P(SFFF) + P(FSFF) + P(FFSF) + P(FFFS) \\
+               &= 4 \times P(F)^3 \cdot P(S)^1 \\
+               &= 4 \times .75^3 \times .25 \\
+               &\approx .422 \\
+          p(2) &= \begin{aligned}[t]
+                 &P(SSFF) + P(FFSS) + P(SFSF) \\
+                 + &P(FSFS) + (SFFS) + (FSSF)
+               \end{aligned} \\
+               &= 6 \times P(F)^2 \cdot P(S)^2 \\
+               &= 6 \times .75^2 \times .25^2 \\
+               &\approx .211 \\
+          p(3) &= P(FSSS) + P(SFSS) + P(SSFS) + (SSSF) \\
+               &= 4 \times P(F)^1 \cdot P(S)^3 \\
+               &= 4 \times .75 \times .25^3 \\
+               &\approx .047 \\
+          p(4) &= P(SSSS) = P(F)^0 \cdot P(S)^4 = .25^4 \approx .004 \\
+        \end{align*}
       \item[b.]
         Draw the corresponding probability histogram.
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              histogram2,
+              xlabel = Insured Homeowners,
+              ylabel = Probability,
+              width = .5\linewidth,
+            ]
+              \addplot plot coordinates {
+                (0, .316) (1, .422) (2, .211) (3, .047) (4, .004)
+              };
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
       \item[c.]
         What is the most likely value for $X$?
+        \\ \\
+        1
       \item[d.]
         What is the probability that at least two of the four selected have earthquake insurance?
+        \begin{align*}
+          p(x \ge 2) = p(2) + p(3) + p(4) \approx .211 + .047 + .004 \approx .262
+        \end{align*}
       \end{enumerate}
   \item[18.]
     Two fair six-sided dice are tossed independently. Let $M =$ the maximum of the two tosses (so $M(1,5) = 5$, $M(3,3) = 3$, etc.).
