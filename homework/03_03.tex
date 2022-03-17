@@ -71,8 +71,19 @@
     \begin{enumerate}
       \item[a.]
         Compute $E(Y)$.
+        \begin{align*}
+          E(Y) &= \sum_{y \inn D} y \cdot p(y) \\
+          &= (0 \times .60) + (1 \times .25) + (2 \times .10) + (3 \times .05) \\
+          &= .6
+        \end{align*}
       \item[b.]
         Suppose an individual with $Y$ violations incurs a surcharge of \$$100Y^2$. Calculate the expected amount of the surcharge.
+        \begin{align*}
+          E(100Y^2) &= 100 \cdot E(Y^2) \\
+          &= 100 \sum_{y \inn D} y^2 \cdot p(y) \\
+          &= 100 [(0^2 \times .60) + (1^2 \times .25) + (2^2 \times .10) + (3^2 \times .05)] \\
+          &= \$110
+        \end{align*}
     \end{enumerate}
   \item[32.]
     A certain brand of upright freezer is available in three different rated capacities: 16 ft\textsuperscript{3}, 18 ft\textsuperscript{3}, and 20 ft\textsuperscript{3}. Let $X =$ the rated capacity of a freezer of this brand sold at a certain store. Suppose that $X$ has pmf
