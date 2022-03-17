@@ -154,6 +154,25 @@
       \end{tblr}
     \end{center}
     Compute $E(X)$ and $V(X)$. Then compute the expected number of pounds left after the next customer’s order is shipped and the variance of the number of pounds left. [\textit{Hint:} The number of pounds left is a linear function of $X$.]
+    \begin{align*}
+      E(X) &= \sum_{x = 1}^4 x \cdot p(x) \\
+      &= (1 \times .2) + (2 \times .4) + (3 \times .3) + (4 \times .1) \\
+      &= 2.3
+    \end{align*}
+    \begin{align*}
+      E(X^2) &= \sum_{x = 1}^4 x^2 \cdot p(x) \\
+      &= (1^2 \times .2) + (2^2 \times .4) + (3^2 \times .3) + (4^2 \times .1) \\
+      &= 6.1
+    \end{align*}
+    \begin{align*}
+      V(X) = E(X^2) - [E(X)]^2 = 6.1 - 2.3^2 = 0.81
+    \end{align*}
+    \begin{align*}
+      E(100 - 5X) = 100 - 5E(X) = 100 - 5 \times 2.3 = 88.5
+    \end{align*}
+    \begin{align*}
+      V(100 - 5X) = (-5)^2 \cdot V(X) = 25 \times 0.81 = 20.25
+    \end{align*}
 \end{enumerate}
 
 \end{document}
