@@ -2,6 +2,13 @@
 \usepackage[section=3.3]{mathhw}
 \usepackage{tabularray}
 
+% Better alignment of \in with uppercase letters.
+% https://tex.stackexchange.com/a/326323
+\makeatletter
+\newcommand*{\inn}{\mathrel{\mathpalette\@inn\relax}}
+\def\@inn#1#2{{\setbox0=\hbox{\m@th$#1\in$}\raise\dp0\box0}}
+\makeatother
+
 \begin{document}
 
 \maketitle
@@ -20,12 +27,37 @@
     \begin{enumerate}
       \item[a.]
         $E(X)$
+        \begin{align*}
+          E(X) &= \sum_{x \inn D} x \cdot p(x) \\
+          &= (1 \times .05) + (2 \times .10) + (4 \times .35) + (8 \times .40) + (16 \times .10) \\
+          &= 6.45
+        \end{align*}
       \item[b.]
         $V(X)$ directly from the definition
+        \begin{align*}
+          V(X) &= \sum_{x \inn D} (x - 6.45)^2 \cdot p(x) \\
+          &= \begin{aligned}
+            &.05(1 - 6.45)^2 + .10(2 - 6.45)^2 + .35(4 - 6.45)^2\\
+            + &.40(8 - 6.45)^2 + .10(16 - 6.45)^2
+          \end{aligned} \\
+          &= 15.6475
+        \end{align*}
       \item[c.]
         The standard deviation of $X$
+        \begin{align*}
+          \sigma = \sqrt{V(X)} = \sqrt{15.6475} \approx 3.95569
+        \end{align*}
       \item[a.]
         $V(X)$ using the shortcut formula
+        \begin{align*}
+          V(X) &= E(X^2) - [E(X)]^2 \\
+          &= \left[\sum_{x \inn D} x^2 \cdot p(x)\right] - 6.45^2 \\
+          &= \begin{aligned}
+            &(1^2 \times .05) + (2^2 \times .10) + (4^2 \times .35) \\
+            + &(8^2 \times .40) + (16^2 \times .10) - 41.6025
+          \end{aligned} \\
+          &= 15.6475
+        \end{align*}
     \end{enumerate}
   \item[30.]
     An individual who has automobile insurance from a certain company is randomly selected. Let $Y$ be the number of moving violations for which the individual was cited during the last 3 years. The pmf of $Y$ is
