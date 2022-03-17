@@ -139,6 +139,11 @@
       \end{cases}
     \end{align*}
     Is $E(X)$ finite? Justify your answer (this is another distribution that statisticians would call heavy-tailed).
+    \begin{align*}
+      E(X) &= \sum_{x = 1}^\infty x \times \frac{c}{x^3} \\
+      &= c \sum_{x = 1}^\infty \frac{1}{x^2}
+    \end{align*}
+    This sum is a p-series where $p = 2$. According to the p-series convergence test, a p-series converges for $p > 1$. Because $p = 2 > 1$, the series converges and thus is finite. Multiplying by the constant $c$ will not change this fact.
   \item[39.]
     A chemical supply company currently has in stock 100 lb of a certain chemical, which it sells to customers in 5-lb batches. Let $X =$ the number of batches ordered by a randomly chosen customer, and suppose that $X$ has pmf
     \begin{center}
