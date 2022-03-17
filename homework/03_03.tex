@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[section=3.3]{mathhw}
+\usepackage{tabularray}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+  \item[29.]
+    The pmf of the amount of memory $X$ (GB) in a purchased flash drive was given in Example 3.13 as
+    \begin{center}
+      \begin{tblr}{colspec = >{$}l<{$}|*{5}c}
+        x & 1 & 2 & 4 & 8 & 16 \\
+        \hline
+        p(x) & .05 & .10 & .35 & .40 & .10
+      \end{tblr}
+    \end{center}
+    Compute the following:
+    \begin{enumerate}
+      \item[a.]
+        $E(X)$
+      \item[b.]
+        $V(X)$ directly from the definition
+      \item[c.]
+        The standard deviation of $X$
+      \item[a.]
+        $V(X)$ using the shortcut formula
+    \end{enumerate}
+  \item[30.]
+    An individual who has automobile insurance from a certain company is randomly selected. Let $Y$ be the number of moving violations for which the individual was cited during the last 3 years. The pmf of $Y$ is
+    \begin{center}
+      \begin{tblr}{colspec = >{$}l<{$}|*{4}c}
+        y & 0 & 1 & 2 & 3 \\
+        \hline
+        p(y) & .60 & .25 & .10 & .05
+      \end{tblr}
+    \end{center}
+    \begin{enumerate}
+      \item[a.]
+        Compute $E(Y)$.
+      \item[b.]
+        Suppose an individual with $Y$ violations incurs a surcharge of \$$100Y^2$. Calculate the expected amount of the surcharge.
+    \end{enumerate}
+  \item[32.]
+    A certain brand of upright freezer is available in three different rated capacities: 16 ft\textsuperscript{3}, 18 ft\textsuperscript{3}, and 20 ft\textsuperscript{3}. Let $X =$ the rated capacity of a freezer of this brand sold at a certain store. Suppose that $X$ has pmf
+    \begin{center}
+      \begin{tblr}{colspec = >{$}l<{$}|*{3}c}
+        x & 6 & 18 & 20 \\
+        \hline
+        p(x) & .2 & .5 & .3
+      \end{tblr}
+    \end{center}
+    \begin{enumerate}
+      \item[a.]
+        Compute $E(X)$, $E(X^2)$, and $V(X)$.
+      \item[b.]
+        If the price of a freezer having capacity $X$ is $70X - 650$, what is the expected price paid by the next customer to buy a freezer?
+      \item[c.]
+        What is the variance of the price paid by the next customer?
+      \item[d.]
+        Suppose that although the rated capacity of a freezer is $X$, the actual capacity is $h(X) = X - .008X^2$. What is the expected actual capacity of the freezer purchased by the next customer?
+    \end{enumerate}
+  \item[34.]
+    Suppose that the number of plants of a particular type found in a rectangular sampling region (called a quadrat by ecologists) in a certain geographic area is an rv $X$ with pmf
+    \begin{align*}
+      p(x) = \begin{cases}
+        c/x^3 & x = 1, 2, 3, \ldots \\
+        0     & \text{otherwise}
+      \end{cases}
+    \end{align*}
+    Is $E(X)$ finite? Justify your answer (this is another distribution that statisticians would call heavy-tailed).
+  \item[39.]
+    A chemical supply company currently has in stock 100 lb of a certain chemical, which it sells to customers in 5-lb batches. Let $X =$ the number of batches ordered by a randomly chosen customer, and suppose that $X$ has pmf
+    \begin{center}
+      \begin{tblr}{colspec = >{$}l<{$}|*{4}c}
+        x & 1 & 2 & 3 & 4 \\
+        \hline
+        p(x) & .2 & .4 & .3 & .1
+      \end{tblr}
+    \end{center}
+    Compute $E(X)$ and $V(X)$. Then compute the expected number of pounds left after the next customer’s order is shipped and the variance of the number of pounds left. [\textit{Hint:} The number of pounds left is a linear function of $X$.]
+\end{enumerate}
+
+\end{document}
