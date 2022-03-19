@@ -1,8 +1,9 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=]{mathhw}
-\usepackage{plotting}
+\usepackage{varloc}
 \usepackage{proj_01}
 
+\usepackage{longtable}
 % \usetikzlibrary{plotmarks}
 
 \title{MATH 341 - Project 1}
@@ -297,8 +298,24 @@
         The frequency is the count of the observations which fall within the interval. The relative frequency is the ratio of the frequency to the sample size (42). For example, the class interval 6--<12 has 2 observations $\{9.12, 10.22\}$, so the frequency is 2 and the relative frequency is $\frac{2}{42} \approx .048$.
       \item[c.]
         Determine the sample mean, median, and mode.
+        \sd{\datatwo}
       \item[d.]
         Determine the variance, SD, and range.
+        \begin{center}
+          \pgfplotstabletypeset[
+            columns = {rownum, 0, deviation, devsq},
+            sd = {Wine}{2.2}{2.2}{2}{3.3}{3},
+            begin table = \begin{longtable},
+            end table = \end{longtable},
+          ]{\datatwo}
+        \end{center}
+        \calcvariance{\datatwo}
+        \calcrange{\datatwo}
+        \begin{align*}
+          \eqvariance{3} \\
+          \eqsd{3} \\
+          \eqrange
+        \end{align*}
       \item[e.]
         Determine quartile 1 (Q1), quartile 2 (Q2), and quartile 3 (Q3).
       \item[f.]

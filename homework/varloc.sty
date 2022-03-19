@@ -74,72 +74,80 @@
       create col/copy column from table={#1}{#2},
     },
     columns={#2},
-  ]{\pgfplotstablegetrowsof{#1}}{#4}
+  ]{\pgfplotstablegetrowsof{#1}}{#4}%
   \pgfplotstablemodifyeachcolumnelement{0}\of{#4}\as\cell{%
     \pgfmathparse{\cell - #3}%
     \edef\cell{\pgfmathresult}%
   }
 }
 
-\newcommand{\calcvariance}[1]{
-  \sumcol{5}{#1}{\devsq}
-
-  \pgfkeys{/pgf/fpu}
-  \pgfmathsetmacro{\variance}{\devsq / (\rowcount - 1)}
-  \pgfmathfloattofixed{\variance}
-  \pgfkeys{/pgf/fpu=false}
-  \pgfmathsetmacro{\variance}{\pgfmathresult}
+\newcommand{\calcvariance}[1]{%
+  \sumcol{5}{#1}{\devsq}%
+  \pgfkeys{/pgf/fpu}%
+  \pgfmathsetmacro{\variance}{\devsq / (\rowcount - 1)}%
+  \pgfmathfloattofixed{\variance}%
+  \pgfkeys{/pgf/fpu=false}%
+  \pgfmathsetmacro{\variance}{\pgfmathresult}%
 }
 
-\newcommand{\calcvariancealt}[1]{
+\newcommand{\calcvariancealt}[1]{%
   % Do this first before the sum is overwritten.
-  \pgfmathsetmacro{\sumsq}{pow(\datasum, 2)}
-
+  \pgfmathsetmacro{\sumsq}{pow(\datasum, 2)}%
   \pgfplotstablecreatecol[
     expr={
       pow(\thisrowno{0}, 2)
     }
-  ]{sq}{#1}
-  \sumcol{6}{#1}{\sumofsq}
-
-  \pgfmathsetmacro{\variance}{(\sumofsq - (\sumsq / \rowcount)) / (\rowcount - 1)}
+  ]{sq}{#1}%
+  \sumcol{6}{#1}{\sumofsq}%
+  \pgfmathsetmacro{\variance}{(\sumofsq - (\sumsq / \rowcount)) / (\rowcount - 1)}%
 }
 
 % https://tex.stackexchange.com/a/530325
 \newcommand*{\calcmedian}[1]{%
   \ifodd\rowcount\relax
     \pgfplotstablegetelem{\the\numexpr(\rowcount-1)/2}{0}\of{#1}%
-    \let\median\pgfplotsretval
+    \let\median\pgfplotsretval%
   \else
     \pgfplotstablegetelem{\the\numexpr \rowcount/2 - 1}{0}\of{#1}%
-    \let\medianl\pgfplotsretval
+    \let\medianl\pgfplotsretval%
     \pgfplotstablegetelem{\the\numexpr \rowcount/2}{0}\of{#1}%
-    \let\medianr\pgfplotsretval
+    \let\medianr\pgfplotsretval%
     \pgfmathsetmacro{\median}{0.5 * (\medianl + \medianr)}%
   \fi
 }
 
-\newcommand{\eqmean}[1]{
+\newcommand{\eqmean}[1]{%
   \bar{x} &= \frac{\sum{x_i}}{n} = \frac{\num[round-precision=#1]{\datasum}}{\rowcount} = \evalp{\datasum / \rowcount}{#1}
 }
 
-\newcommand{\eqmedianodd}{
+\newcommand{\eqmedianodd}{%
   \tilde{x} &= x_{\frac{n + 1}{2}} = \median
 }
 
-\newcommand{\eqmedianeven}[1]{
+\newcommand{\eqmedianeven}[1]{%
   \tilde{x} &= \frac{x_{\frac{n}{2}} + x_{\frac{n}{2} + 1}}{2} = \frac{\medianl + \medianr}{2} \approx \num[round-precision=#1]{\median}
 }
 
-\newcommand{\eqvariance}[1]{
+\newcommand{\eqvariance}[1]{%
   s^2 &= \frac{\sum(x_i - \bar{x})^2}{n - 1} \approx \frac{\num[round-precision=#1]{\devsq}}{\eval{\rowcount - 1}} \approx \num[round-precision=#1]{\variance}
 }
 
-\newcommand{\eqvariancealt}[1]{
+\newcommand{\eqvariancealt}[1]{%
   s^2 &= \frac{\sum {x_i}^2 - \frac{(\sum x_i)^2}{n}}{n - 1} \approx \frac{\num[round-precision=#1]{\sumofsq} - \frac{\num[round-precision=#1]{\sumsq}}{\num{\rowcount}}}{\eval{\rowcount - 1}} \approx \frac{\num[round-precision=#1]{\sumofsq} - \evalp{\sumsq / \rowcount}{#1}}{\eval{\rowcount - 1}} \approx \frac{\evalp{\sumofsq - (\sumsq / \rowcount)}{#1}}{\eval{\rowcount - 1}} \\
   &\approx \num[round-precision=#1]{\variance}
 }
 
-\newcommand{\eqsd}[1]{
+\newcommand{\eqsd}[1]{%
   s &= \sqrt{s^2} \approx \sqrt{\num[round-precision=#1]{\variance}} \approx \evalp{sqrt(\variance)}{#1}
+}
+
+\newcommand{\calcrange}[1]{%
+  \pgfplotstablegetelem{\the\numexpr(\rowcount-1)}{0}\of{#1}%
+    \let\maxval\pgfplotsretval%
+  \pgfplotstablegetelem{0}{0}\of{#1}%
+    \let\minval\pgfplotsretval%
+}
+
+\newcommand{\eqrange}{%
+  \text{range}(x) &= \text{max}(x) - \text{min}(x) = \maxval - \minval = \eval{\maxval - \minval}
 }
