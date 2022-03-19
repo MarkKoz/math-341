@@ -4,6 +4,9 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \usetikzlibrary{arrows}
+\usepgfplotslibrary{statistics}
+
+\usepackage{tabularray}
 
 \usepgflibrary{fpu}
 \pgfkeys{/pgf/fpu=false, /pgf/fpu/output format=float}
@@ -160,3 +163,28 @@
     \end{axis}
   \end{tikzpicture}
 }
+
+% Create a stem and leaf plot.
+%
+% arg1: table number to put in caption
+% arg2: maximum count of leaves in a row
+% arg3: key
+\NewDocumentEnvironment{stemleaf}{mmm+b}{
+  \begin{center}
+    \DefTblrTemplate{caption-tag}{default}{Stem and Leaf Plot #1}
+    \begin{longtblr}
+    [remark{Key} = {#3}]
+    {
+      colspec = r|*{#2}l,
+      rowhead = 1,
+      row{1} = {font=\bfseries},
+      hline{2} = {solid, leftpos = -1, rightpos = -1, endpos},
+      columns = {colsep = 3pt},
+      column{1} = {rightsep = 6pt},
+      column{2} = {leftsep = 6pt}
+    }
+      Stem & \multicolumn{#2}{l}{Leaf} \\
+      #4
+    \end{longtblr}
+  \end{center}
+}{}
