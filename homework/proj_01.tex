@@ -128,13 +128,14 @@
           \end{tikzpicture}
         \end{center}
         The central value is around 7. There is a severe positive skew. The modality is unimodal. It doesn't show high variability since the tall bars are clumped near the central value. Though it is not as evident in the histogram, the last two intervals are outliers (there is only 1 value in each of those intervals). This fact is more obvious when observing the stem and leaf plot.
+      \pagebreak
       \item[4.]
         Draw the cumulative relative frequencies histogram and ogive.
         \begin{center}
           \begin{tikzpicture}
             \begin{axis}[
               histogram2,
-              width = \linewidth,
+              width = .9\linewidth,
               xlabel = {Shower Flow Rate (L/min)},
               ylabel = {Cumulative Frequency},
             ]
@@ -177,7 +178,7 @@
       \item[5.]
         Find 5-number-summary and draw the box plot.
         \begin{center}
-          \boxplot{\dataone}{dataone}{width = \linewidth, xtick distance = 3}{}
+          \boxplot{\dataone}{dataone}{width = .9\linewidth, xtick distance = 3}{}
         \end{center}
         \begin{align*}
            \tilde{x} &= x_{\frac{n + 1}{2}} = \dataonemedian \\
