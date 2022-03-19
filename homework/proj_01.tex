@@ -194,62 +194,7 @@
       \item[5.]
         Find 5-number-summary and draw the box plot.
         \begin{center}
-          \begin{tikzpicture}
-            \begin{axis}[
-              width = \linewidth,
-              xtick distance = 3,
-            ]
-              \addplot+[
-                boxplot,
-                fill = blue!30,
-                mark options = {fill = blue!30}
-              ]
-              table[y index = 0] {\dataone}
-              [above, black]
-              node at
-              (boxplot box cs: \boxplotvalue{lower whisker},1)
-              {
-                % Hack to make these auto-calaculated boxplot values available
-                % globally. Can't use \pgfplotsetmacro since it's local. Can't
-                % use \global with \pgfplotsetmacro. Can't use \boxplotvalue
-                % with \let. Thus, \pgfmathparse first puts the result in
-                % \pgfmathresult, which CAN be used with \let. Very cool.
-                \pgfmathparse{\boxplotvalue{lower whisker}}%
-                \global\let\dataonelw\pgfmathresult%
-                \pgfmathprintnumber{\dataonelw}
-              }
-              node at
-              (boxplot box cs: \boxplotvalue{lower quartile},1)
-              {
-                \pgfmathparse{\boxplotvalue{lower quartile}}%
-                \global\let\dataonelq\pgfmathresult%
-                \pgfmathprintnumber{\dataonelq}
-              }
-              node[left] at
-              (boxplot box cs: \boxplotvalue{median},0.5)
-              {
-                \pgfmathparse{\boxplotvalue{median}}%
-                \global\let\dataonemedian\pgfmathresult%
-                \pgfmathprintnumber{\dataonemedian}
-              }
-              node at
-              (boxplot box cs: \boxplotvalue{upper quartile},1)
-              {
-                \pgfmathparse{\boxplotvalue{upper quartile}}%
-                \global\let\dataoneuq\pgfmathresult%
-                \pgfmathprintnumber{\dataoneuq}
-              }
-              node at
-              (boxplot box cs: \boxplotvalue{upper whisker},1)
-              {
-                \pgfmathparse{\boxplotvalue{whisker range}}%
-                \global\let\dataonewr\pgfmathresult%
-                \pgfmathparse{\boxplotvalue{upper whisker}}%
-                \global\let\dataoneuw\pgfmathresult%
-                \pgfmathprintnumber{\dataoneuw}
-              };
-            \end{axis}
-          \end{tikzpicture}
+          \boxplot{\dataone}{dataone}{width = \linewidth, xtick distance = 3}{}
         \end{center}
         \begin{align*}
            \tilde{x} &= x_{\frac{n + 1}{2}} = \dataonemedian \\

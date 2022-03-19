@@ -98,3 +98,65 @@
 \newcommand{\evalp}[2]{
   \pgfmathparse{#1}\num[round-precision=#2]{\pgfmathresult}
 }
+
+% Parse a math expression and make its value available globally.
+%
+% arg1: name of the new macro
+% arg2: math expression
+\usepackage{etoolbox}
+\newcommand{\pgfsetmathmacroglobal}[2]{%
+  \pgfmathparse{#2}%
+  \global\cslet{#1}{\pgfmathresult}%
+}
+
+% Create a boxplot and create new commands for each boxplot value.
+%
+% arg1: table
+% arg2: prefix for generated box plot value commands
+% arg3: axis options
+% arg4: plot options
+\newcommand{\boxplot}[4]{
+  \begin{tikzpicture}
+    \begin{axis}[#3]
+      \addplot+[
+        boxplot,
+        fill = blue!30,
+        mark options = {fill = blue!30},
+        #4
+      ]
+      table[y index = 0] {#1}
+      [above, black]
+      node at
+      (boxplot box cs: \boxplotvalue{lower whisker},1)
+      {
+        \pgfsetmathmacroglobal{#2lw}{\boxplotvalue{lower whisker}}
+        \pgfmathprintnumber{\csname#2lw\endcsname}
+      }
+      node at
+      (boxplot box cs: \boxplotvalue{lower quartile},1)
+      {
+        \pgfsetmathmacroglobal{#2lq}{\boxplotvalue{lower quartile}}
+        \pgfmathprintnumber{\csname#2lq\endcsname}
+      }
+      node[left] at
+      (boxplot box cs: \boxplotvalue{median},0.5)
+      {
+        \pgfsetmathmacroglobal{#2median}{\boxplotvalue{median}}
+        \pgfmathprintnumber{\csname#2median\endcsname}
+      }
+      node at
+      (boxplot box cs: \boxplotvalue{upper quartile},1)
+      {
+        \pgfsetmathmacroglobal{#2uq}{\boxplotvalue{upper quartile}}
+        \pgfmathprintnumber{\csname#2uq\endcsname}
+      }
+      node at
+      (boxplot box cs: \boxplotvalue{upper whisker},1)
+      {
+        \pgfsetmathmacroglobal{#2wr}{\boxplotvalue{whisker range}}
+        \pgfsetmathmacroglobal{#2uw}{\boxplotvalue{upper whisker}}
+        \pgfmathprintnumber{\csname#2uw\endcsname}
+      };
+    \end{axis}
+  \end{tikzpicture}
+}
