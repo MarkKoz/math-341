@@ -463,6 +463,82 @@
         The frequency is the count of the observations which fall within the interval. The relative frequency is the ratio of the frequency to the sample size ($\rowcount$). For example, the class interval 24--<28 has 5 observations $\{24, 25, 25, 26, 27\}$, so the frequency is 5 and the relative frequency is $\frac{5}{\rowcount} \approx \evalp{5 / \rowcount}{3}$.
       \item[2.]
         Draw a relative frequency histogram, polygon, a cumulative relative frequency histogram, and ogive.
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              histogram2,
+              width = \linewidth,
+              xlabel = {Temperature ($^\circ F$)},
+              ylabel = {Relative Frequency},
+              every x tick label/.append style={font=\fontsize{6}{6}},
+            ]
+              \addplot+[
+                hist = {
+                  bins = 21,
+                  data min = 24,
+                  data max = 108,
+                },
+                y filter/.expression = {y / \rowcount},
+              ] table[y index = 0] {\datathree};
+
+              % Polygon
+              \addplot[
+                color = red,
+                mark = *,
+                mark size = 1pt,
+                hist = {
+                  bins = 21,
+                  data min = 24,
+                  data max = 108,
+                  handler/.style = {sharp plot},
+                  intervals = false,
+                },
+                y filter/.expression = {y / \rowcount},
+                shift = {(axis direction cs:1.5,0)},
+              ] table[y index = 0] {\datathree};
+            \end{axis}
+          \end{tikzpicture}
+          \begin{tikzpicture}
+            \begin{axis}[
+              histogram2,
+              width = \linewidth,
+              xlabel = {Temperature ($^\circ F$)},
+              ylabel = {Cumulative Frequency},
+              every x tick label/.append style={font=\fontsize{6}{6}},
+            ]
+              \addplot+[
+                hist = {
+                  cumulative,
+                  bins = 21,
+                  data min = 24,
+                  data max = 108,
+                },
+                y filter/.expression = {y / \rowcount},
+              ] table[y index = 0] {\datathree};
+
+              % Ogive
+              \addplot[
+                color = red,
+                mark = *,
+                mark size = 1pt,
+                hist = {
+                  cumulative,
+                  bins = 21,
+                  data min = 24,
+                  data max = 108,
+                  handler/.style = {sharp plot},
+                  intervals = false,
+                },
+                y filter/.expression = {y / \rowcount},
+                shift = {(axis direction cs:4,0)},
+              ] table[y index = 0] {\datathree}
+              % pos 0 is the start of the prev drawn line; 1 is the end.
+              coordinate [pos=0] (a);
+
+              \draw[red] (24, 0) -- (a);
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
       \item[3.]
         Determine the sample mean, median, and mode.
       \item[4.]
