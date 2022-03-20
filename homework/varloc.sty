@@ -151,3 +151,14 @@
 \newcommand{\eqrange}{%
   \text{range}(x) &= \text{max}(x) - \text{min}(x) = \maxval - \minval = \eval{\maxval - \minval}
 }
+
+\newcommand{\bininterval}{%
+Given that the sample size is $\rowcount$, the number of bins according to the square-root choice should be
+\begin{align*}
+  \text{bins} &= \lceil \sqrt{\rowcount} \rceil = \eval{ceil(sqrt(\rowcount))} \\
+  \text{interval} &= \left\lceil \frac{\text{max}(x) - \text{min}(x)}{\eval{ceil(sqrt(\rowcount))}} \right\rceil
+  = \left\lceil \frac{\maxval - \minval}{\eval{ceil(sqrt(\rowcount))}} \right\rceil
+  = \left\lceil \frac{\eval{\maxval - \minval}}{\eval{ceil(sqrt(\rowcount))}} \right\rceil
+  = \eval{ceil((\maxval - \minval) / ceil(sqrt(\rowcount)))}
+\end{align*}
+}

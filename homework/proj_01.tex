@@ -297,12 +297,9 @@
           \end{tblr}
         \end{center}
         \sd{\datatwo}
-        Given that the sample size is $\rowcount$, the number of bins according to the square-root choice should be
-        \begin{align*}
-          \text{bins} &= \lceil \sqrt{\rowcount} \rceil = \eval{ceil(sqrt(\rowcount))} \\
-          \text{class interval} &= \frac{\rowcount}{\eval{ceil(sqrt(\rowcount))}} = \eval{\rowcount / ceil(sqrt(\rowcount))}
-        \end{align*}
-        The frequency is the count of the observations which fall within the interval. The relative frequency is the ratio of the frequency to the sample size (42). For example, the class interval 7--<13 has 2 observations $\{9.12, 10.22\}$, so the frequency is 2 and the relative frequency is $\frac{2}{\rowcount} \approx \evalp{2 / \rowcount}{3}$.
+        \calcrange{\datatwo}
+        \bininterval
+        The frequency is the count of the observations which fall within the interval. The relative frequency is the ratio of the frequency to the sample size ($\rowcount$). For example, the class interval 7--<13 has 2 observations $\{9.12, 10.22\}$, so the frequency is 2 and the relative frequency is $\frac{2}{\rowcount} \approx \evalp{2 / \rowcount}{3}$.
         \begin{center}
           \begin{tikzpicture}
             \begin{axis}[
@@ -341,7 +338,6 @@
           ]{\datatwo}
         \end{center}
         \calcvariance{\datatwo}
-        \calcrange{\datatwo}
         \begin{align*}
           \eqvariance{3} \\
           \eqsd{3} \\
@@ -430,6 +426,41 @@
     \begin{enumerate}
       \item[1.]
         For given data set determine the number of classes, the class intervals, and the class frequency table.
+        \begin{center}
+          \begin{tblr}{colspec = >{\itshape}l *{3}c}
+            Class              &  24--<28 &   28--<32 &   32--<36 \\
+            Frequency          &        5 &         5 &        16 \\
+            Relative frequency &     .014 &      .014 &      .044 \\
+            \hline
+            Class              &  36--<40 &   40--<44 &   44--<48 \\
+            Frequency          &       16 &        13 &        24 \\
+            Relative frequency &     .044 &      .036 &      .066 \\
+            \hline
+            Class              &  48--<52 &   52--<56 &   56--<60 \\
+            Frequency          &       25 &        25 &        23 \\
+            Relative frequency &     .068 &      .068 &      .063 \\
+            \hline
+            Class              &  60--<64 &   64--<68 &   68--<72 \\
+            Frequency          &       20 &        21 &        13 \\
+            Relative frequency &     .055 &      .058 &      .036 \\
+            \hline
+            Class              &  72--<76 &   76--<80 &   80--<84 \\
+            Frequency          &       25 &        15 &        12 \\
+            Relative frequency &     .068 &      .041 &      .033 \\
+            \hline
+            Class              &  84--<88 &   88--<92 &   92--<96 \\
+            Frequency          &       18 &        33 &        34 \\
+            Relative frequency &     .049 &      .090 &      .093 \\
+            \hline
+            Class              & 96--<100 & 100--<104 & 104--<108 \\
+            Frequency          &       12 &         9 &         1 \\
+            Relative frequency &     .033 &      .025 &      .003
+          \end{tblr}
+        \end{center}
+        \sd{\datathree}
+        \calcrange{\datathree}
+        \bininterval
+        The frequency is the count of the observations which fall within the interval. The relative frequency is the ratio of the frequency to the sample size ($\rowcount$). For example, the class interval 24--<28 has 5 observations $\{24, 25, 25, 26, 27\}$, so the frequency is 5 and the relative frequency is $\frac{5}{\rowcount} \approx \evalp{5 / \rowcount}{3}$.
       \item[2.]
         Draw a relative frequency histogram, polygon, a cumulative relative frequency histogram, and ogive.
       \item[3.]
