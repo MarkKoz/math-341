@@ -170,14 +170,54 @@
     \begin{enumerate}
       \item[a.]
         What is the probability that exactly 1 received a special accommodation?
+        \begin{align*}
+          P(X = 1) &= b(1; 25; .02) \\
+          &= \bp{1}{25}{.02} \\
+          &\approx .30789
+        \end{align*}
       \item[b.]
         What is the probability that at least 1 received a special accommodation?
+        \begin{align*}
+          P(X \ge 1) &= 1 - P(X = 0) \\
+          &= 1 - \bp{0}{25}{.02} \\
+          &\approx 1 - .603465 \\
+          &\approx .396535
+        \end{align*}
       \item[c.]
         What is the probability that at least 2 received a special accommodation?
+        \begin{align*}
+          P(X \ge 2) &= 1 - P(X \le 1) \\
+          &= 1 - P(X = 0) - P(X = 1) \\
+          &\approx 1 - .30789 - .603465 \\
+          &= .088645
+        \end{align*}
       \item[d.]
         What is the probability that the number among the 25 who received a special accommodation is within 2 standard deviations of the number you would expect to be accommodated?
+        \begin{align*}
+          E(X) &= \bar{x} = np = 25 \times .02 = .5 \\
+          \sigma &= \sqrt{np(1 - p)} = \sqrt{.5(1 - .02)} = \sqrt{.5 \times .98} = \sqrt{.49}  = .7
+        \end{align*}
+        \begin{align*}
+          \bar{x} \pm 2\sigma &= [\lceil \bar{x} - 2\sigma \rceil, \lfloor \bar{x} + 2\sigma \rfloor] \\
+          &= [\lceil .5 - 2 \times .7 \rceil, \lfloor .5 + 2 \times .7 \rfloor] \\
+          &= [\lceil .5 - 1.4 \rceil, \lfloor .5 + 1.4 \rfloor] \\
+          &= [\lceil -0.9 \rceil, \lfloor 1.9 \rfloor] \\
+          &= [0, 1]
+        \end{align*}
+        \begin{align*}
+          P(0 \le X \le 1) &= P(X = 0) + P(X = 1) \\
+          &\approx .30789 + .603465 \\
+          &\approx .911355
+        \end{align*}
       \item[e.]
         Suppose that a student who does not receive a special accommodation is allowed 3 hours for the exam, whereas an accommodated student is allowed 4.5 hours. What would you expect the average time allowed the 25 selected students to be?
+        \begin{align*}
+          \text{average time} &= \frac{(4.5 \times \bar{x}) + (3 \times (1 - \bar{x}))}{25} \\
+          &= \frac{(4.5 \times 0.5) + (3 \times (1 - 0.5))}{25} \\
+          &= \frac{2.25 + 73.5}{25} \\
+          &= \frac{75.75}{25} \\
+          &= 3.03\ \text{hours}
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
