@@ -3,6 +3,7 @@
 
 % Requirements
 \RequirePackage{plotting}
+\RequirePackage{braket}
 
 \pgfplotstableset{
   sd/.style n args={6}{
@@ -161,4 +162,12 @@ Given that the sample size is $\rowcount$, the number of bins according to the s
   = \left\lceil \frac{\eval{\maxval - \minval}}{\eval{ceil(sqrt(\rowcount))}} \right\rceil
   = \eval{ceil((\maxval - \minval) / ceil(sqrt(\rowcount)))}
 \end{align*}
+}
+
+\newcommand{\eqobservations}[4]{%
+  #1 &= \Set{y \in x | \bar{x} - #3s \le y \le \bar{x} + #3s} \\
+  &= \Set{y \in x | \num[round-precision=2]{\mean} - \evalp{#3 * sqrt(\variance)}{2} \le y \le \num[round-precision=2]{\mean} + \evalp{#3 * sqrt(\variance)}{2}} \\
+  &= \Set{y \in x | \evalp{\mean - #3 * sqrt(\variance)}{2} \le y \le \evalp{\mean + #3 * sqrt(\variance)}{2}} \\
+  &= #4 \\
+  \frac{|#1|}{\rowcount} &= \frac{#2}{\rowcount} \approx \evalp{#2 / \rowcount}{2}
 }
