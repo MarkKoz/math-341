@@ -54,14 +54,49 @@
     \begin{enumerate}
       \item[a.]
         Determine both $P(X \le 3)$ and $P(X < 3)$.
+        \begin{align*}
+          P(X < 3) &= \sum_{y = 0}^3 b(y; 25; .05) \\
+          &= \sum_{y = 0}^2 \bp{y}{25}{.05} \\
+          &= \begin{aligned}[t]
+            &\bp{0}{25}{.05} + \bp{1}{25}{.05} \\
+            + &\bp{2}{25}{.05}
+          \end{aligned} \\
+          &= .27739 + .364986 + .230518 \\
+          &= .872894 \\
+          \\
+          P(X \le 3) &= P(X < 3) + b(3; 25; .05) \\
+          &= .872894 + \bp{3}{25}{.05} \\
+          &= .872894 + .0930159 \\
+          &= .9659099
+        \end{align*}
       \item[b.]
         Determine $P(X \ge 4)$.
+        \begin{align*}
+          P(X \ge 4) &= 1 - P(X \le 3) \\
+          &= 1 - .9659099 \\
+          &= .0340901
+        \end{align*}
       \item[c.]
         Determine $P(1 \le X \le 3)$.
+        \begin{align*}
+          P(1 \le X \le 3) &= P(X \le 3) - P(X = 0) \\
+          &= .9659099 - .27739 \\
+          &= .6885199
+        \end{align*}
       \item[d.]
         What are $E(X)$ and $\sigma_x$?
+        \begin{align*}
+          E(X) &= np = 25 \times .05 = 1.25 \\
+          \sigma_x &= \sqrt{np(1 - p)} = \sqrt{1.25(1 - .05)} = \sqrt{1.1875} \approx 1.08972
+        \end{align*}
       \item[e.]
         In a sample of 50 children, what is the probability that none has a food allergy?
+        \begin{align*}
+          P(X = 0) &= b(0; 50; .05) \\\
+          &= \bp{0}{50}{.05} \\
+          &= 1 \times 1 \times .076945 \\
+          &= .076945
+        \end{align*}
     \end{enumerate}
   \item[50.]
     A particular telephone number is used to receive both voice calls and fax messages. Suppose that 25% of the incoming calls involve fax messages, and consider a sample of 25 incoming calls. What is the probability that
