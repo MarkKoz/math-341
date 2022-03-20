@@ -2,7 +2,7 @@
 \usepackage[section=3.4]{mathhw}
 
 \newcommand{\bp}[3]{%
-  \binom{#2}{#1}#3^#1(1 - #3)^{#2 - #1}%
+  \binom{#2}{#1}#3^{#1}(1 - #3)^{#2 - #1}%
 }
 
 \begin{document}
@@ -146,10 +146,38 @@
     \begin{enumerate}
       \item[a.]
         Among ten randomly selected customers who want this type of racket, what is the probability that at least six want the oversize version?
+        \begin{align*}
+          P(X \ge 6) &= \sum_{y = 6}^{10} b(y; 10; .6) \\
+          &= \sum_{y = 6}^{10} \bp{y}{10}{.6} \\
+          &\approx .250823 + .214991 + .120932 + .040311 + .006047 \\
+          &\approx .633103
+        \end{align*}
       \item[b.]
         Among ten randomly selected customers, what is the probability that the number who want the oversize version is within 1 standard deviation of the mean value?
+        \begin{align*}
+          \bar{x} &= np = 10 \times .6 = 6 \\
+          \sigma &= \sqrt{np(1 - p)} = \sqrt{6(1 - .6)} \approx 1.549193
+        \end{align*}
+        \begin{align*}
+          \bar{x} \pm \sigma &= [\lceil \bar{x} - \sigma \rceil, \lfloor \bar{x} + \sigma \rfloor] \\
+          &\approx [\lceil 6 - 1.549193 \rceil, \lfloor 6 + 1.549193 \rfloor] \\
+          &\approx [\lceil 4.450807 \rceil, \lfloor 7.549193 \rfloor] \\
+          &= [5, 7]
+        \end{align*}
+        \begin{align*}
+          P(5 \le X \le 7) &= \sum_{y = 5}^7 b(y; 10; .6) \\
+          &= \sum_{y = 5}^7 \bp{y}{10}{.6} \\
+          &\approx .200658 + .250823 + .214991 \\
+          &\approx .666472
+        \end{align*}
       \item[c.]
-        The store currently has seven rackets of each version. What is the probability that all of the next ten cus- tomers who want this racket can get the version they want from current stock?
+        The store currently has seven rackets of each version. What is the probability that all of the next ten customers who want this racket can get the version they want from current stock?
+        \begin{align*}
+          P(3 \le X \le 7) &= \sum_{y = 3}^7 b(y; 10; .6) \\
+          &= \sum_{y = 3}^7 \bp{y}{10}{.6} \\
+          &\approx .042467 + .111477 + .200658 + .250823 + .214991 \\
+          &\approx .820416
+        \end{align*}
     \end{enumerate}
   \item[56.]
     The College Board reports that 2\% of the 2 million high school students who take the SAT each year receive special accommodations because of documented disabilities (\textit{Los Angeles Times}, July 16, 2002). Consider a random sample of 25 students who have recently taken the test.
