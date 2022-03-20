@@ -33,7 +33,7 @@
           P(3 \le X \le 5) &= \sum_{y = 3}^5 b(y; 7; .6) \\
           &= \sum_{y = 3}^5 \bp{y}{7}{.6}  \\
           &= \begin{aligned}[t]
-            &\bp{3}{7}{.6} + \bp{4}{7}{.6}  \\
+              &\bp{3}{7}{.6} + \bp{4}{7}{.6}  \\
             + &\bp{5}{7}{.6}
           \end{aligned} \\
           &= .193536 + .290304 + .2612736 \\
@@ -58,7 +58,7 @@
           P(X < 3) &= \sum_{y = 0}^3 b(y; 25; .05) \\
           &= \sum_{y = 0}^2 \bp{y}{25}{.05} \\
           &= \begin{aligned}[t]
-            &\bp{0}{25}{.05} + \bp{1}{25}{.05} \\
+              &\bp{0}{25}{.05} + \bp{1}{25}{.05} \\
             + &\bp{2}{25}{.05}
           \end{aligned} \\
           &= .27739 + .364986 + .230518 \\
@@ -99,16 +99,47 @@
         \end{align*}
     \end{enumerate}
   \item[50.]
-    A particular telephone number is used to receive both voice calls and fax messages. Suppose that 25% of the incoming calls involve fax messages, and consider a sample of 25 incoming calls. What is the probability that
+    A particular telephone number is used to receive both voice calls and fax messages. Suppose that 25\% of the incoming calls involve fax messages, and consider a sample of 25 incoming calls. What is the probability that
     \begin{enumerate}
       \item[a.]
         At most 6 of the calls involve a fax message?
+        \begin{align*}
+          P(X \le 6) &= \sum_{y = 0}^6 b(y; 25; .25) \\
+          &= \sum_{y = 0}^6 \bp{y}{25}{.25} \\
+          &= \begin{aligned}[t]
+              &\bp{0}{25}{.25} + \bp{1}{25}{.25} \\
+            + &\bp{2}{25}{.25} + \bp{3}{25}{.25} \\
+            + &\bp{4}{25}{.25} + \bp{5}{25}{.25} \\
+            + &\bp{6}{25}{.25}
+          \end{aligned} \\
+          &\approx \begin{aligned}[t]
+              &.000753 + .006271 + .025085 + .064106 \\
+            + &.117527 + .164538 + .182820
+          \end{aligned} \\
+          &\approx .561098
+        \end{align*}
       \item[b.]
         Exactly 6 of the calls involve a fax message?
+        \begin{align*}
+          P(X = 6) &= b(6; 25; .25) \\
+          &= \bp{6}{25}{.25} \\
+          &\approx .182820
+        \end{align*}
       \item[c.]
         At least 6 of the calls involve a fax message?
+        \begin{align*}
+          P(X \ge 6) &= 1 - P(x < 6) \\
+          &= 1 - P(x \le 6) + P(X = 6) \\
+          &\approx 1 - .561098 + .182820 \\
+          &\approx .621722
+        \end{align*}
       \item[d.]
         More than 6 of the calls involve a fax message?
+        \begin{align*}
+          P(X > 6) &= 1 - P(x \le 6) \\
+          &\approx 1 - .561098 \\
+          &\approx  .438902
+        \end{align*}
     \end{enumerate}
   \item[54.]
     A particular type of tennis racket comes in a midsize version and an oversize version. Sixty percent of all customers at a certain store want the oversize version.
