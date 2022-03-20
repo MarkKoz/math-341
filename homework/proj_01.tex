@@ -590,12 +590,43 @@
           \eqobservations{B}{362}{2}{x - \Set{24, 25, 25}} \\
           \eqobservations{C}{365}{3}{x}
         \end{align*}
-      \item[6.]
-        Determine quartile 1 (Q1), quartile 2 (Q2), and quartile 3 (Q3).
-      \item[7.]
-        Determine the IQR and outliers.
-      \item[8.]
+      \item[6--8.]
+        Determine quartile 1 (Q1), quartile 2 (Q2), and quartile 3 (Q3). \\
+        Determine the IQR and outliers. \\
         Determine the 5-number-summary, draw the corresponding box plot, and comment on interesting characteristics (symmetry, outliers, variability and so on).
+        \begin{center}
+          \boxplot{\datathree}{datathree}{width = \linewidth, xtick distance = 8}{}
+        \end{center}
+        The quartiles are calculated using the formula from the \texttt{R7} estimator of \texttt{pgfplots}.
+        \begin{align*}
+          h_1 &= \frac{n - 1}{4} + 1 \\
+          Q_1 &= x_{\lfloor h_1 \rfloor} + (h_1 - \lfloor h_1 \rfloor) \times (x_{\lfloor h_1 \rfloor + 1} - x_{\lfloor h_1 \rfloor}) \\
+          &\approx \datathreelq \\
+          Q_2 &= \tilde{x} = \median \\
+          h_3 &= \frac{3(n - 1)}{4} + 1 \\
+          Q_3 &= x_{\lfloor h_3 \rfloor} + (h_3 - \lfloor h_3 \rfloor) \times (x_{\lfloor h_3 \rfloor + 1} - x_{\lfloor h_3 \rfloor}) \\
+          &\approx \datathreeuq
+        \end{align*}
+        The interquartile range is determined as follows:
+        \begin{align*}
+          \text{IQR} &= Q_3 - Q_1 \\
+          &= \datathreeuq - \datathreelq \\
+          &= \eval{\datathreeuq - \datathreelq}
+        \end{align*}
+        Along with the whisker range of $\datathreewr$, the IQR is used to determine the lower and upper whiskers.
+        \begin{align*}
+          \text{lower whisker} &= Q_1 - \datathreewr \cdot IQR \\
+          &= \datathreelq - \datathreewr \cdot \eval{\datathreeuq - \datathreelq} \\
+          &= \eval{\datathreelq - \datathreewr * (\datathreeuq - \datathreelq)} \\
+          &= \minval \\
+          \text{upper whisker} &= Q_3 + \datathreewr \cdot IQR \\
+          &= \datathreeuq + \datathreewr \cdot \eval{\datathreeuq - \datathreelq} \\
+          &= \eval{\datathreeuq + \datathreewr * (\datathreeuq - \datathreelq)} \\
+          &= \maxval
+        \end{align*}
+        Any observation less than the lower whisker or greater than the upper whisker is an outlier. The whisker values are normalised to the nearest non-outlier value. However, there are no outliers, so the whiskers are simply normalised to the min and max values.
+        \\ \\
+        The plot is close to being symmetric, but the median is closer to the first quartile and the right whisker is shorter than the left whisker. There are no outliers. The IQR is moderately sized, so there is some variability.
     \end{enumerate}
 \end{enumerate}
 
