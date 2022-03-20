@@ -133,32 +133,32 @@
       (boxplot box cs: \boxplotvalue{lower whisker},1)
       {
         \pgfsetmathmacroglobal{#2lw}{\boxplotvalue{lower whisker}}
-        \pgfmathprintnumber{\csname#2lw\endcsname}
+        % \pgfmathprintnumber{\csname#2lw\endcsname}
       }
       node at
       (boxplot box cs: \boxplotvalue{lower quartile},1)
       {
         \pgfsetmathmacroglobal{#2lq}{\boxplotvalue{lower quartile}}
-        \pgfmathprintnumber{\csname#2lq\endcsname}
+        % \pgfmathprintnumber{\csname#2lq\endcsname}
       }
       node[left] at
       (boxplot box cs: \boxplotvalue{median},0.5)
       {
         \pgfsetmathmacroglobal{#2median}{\boxplotvalue{median}}
-        \pgfmathprintnumber{\csname#2median\endcsname}
+        % \pgfmathprintnumber{\csname#2median\endcsname}
       }
       node at
       (boxplot box cs: \boxplotvalue{upper quartile},1)
       {
         \pgfsetmathmacroglobal{#2uq}{\boxplotvalue{upper quartile}}
-        \pgfmathprintnumber{\csname#2uq\endcsname}
+        % \pgfmathprintnumber{\csname#2uq\endcsname}
       }
       node at
       (boxplot box cs: \boxplotvalue{upper whisker},1)
       {
         \pgfsetmathmacroglobal{#2wr}{\boxplotvalue{whisker range}}
         \pgfsetmathmacroglobal{#2uw}{\boxplotvalue{upper whisker}}
-        \pgfmathprintnumber{\csname#2uw\endcsname}
+        % \pgfmathprintnumber{\csname#2uw\endcsname}
       };
     \end{axis}
   \end{tikzpicture}
