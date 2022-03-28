@@ -1,5 +1,16 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=3.5]{mathhw}
+\usepackage{plotting}
+
+\newcommand{\hg}[4]{%
+  \frac%
+    {\binom{#3}{#1} \binom{#4 - #3}{#2 - #1}}%
+    {\binom{#4}{#2}}%
+}
+
+\newcommand{\hgeq}[4]{%
+  h(#1; #2, #3, #4) = \hg{#1}{#2}{#3}{#4}%
+}
 
 \begin{document}
 
@@ -11,10 +22,30 @@
     \begin{enumerate}
       \item[a.]
         What kind of a distribution does $X$ have (name and values of all parameters)?
+        \\ \\
+        Hypergeometric distribution where $n = 6$, $M = 8$, and $N = 18$.
       \item[b.]
         Compute $P(X = 2)$, $P(X \le 2)$, and $P(X \ge 2)$.
+        \begin{align*}
+          P(X = 2) &= \hgeq{2}{6}{8}{18} = \frac{28 \times 210}{18564} \approx .317 \\
+          P(X \le 2) &= \sum_{x = 0}^{2} h(x; 6, 8, 18) \\
+          &= \sum_{x = 0}^{2} \hg{x}{6}{8}{18} \\
+          &= \frac{5}{442} + \frac{24}{221} + \frac{70}{221} \\
+          &\approx .437 \\
+          P(X \ge 2) &= 1 - P(X \le 2) + P(X = 2) \\
+          &\approx 1 - .437 + .317 \\
+          &\approx .880
+        \end{align*}
       \item[c.]
         Calculate the mean value and standard deviation of $X$.
+        \begin{align*}
+          p &= \frac{M}{N} = \frac{8}{18} \\
+          E(X) &= np = 6 \cdot \frac{8}{18} = \frac{8}{3} = 2.\bar{6} \\
+          \sigma &= \sqrt{\frac{N - n}{N - 1} \cdot E(X) \cdot (1 - p)} \\
+          &= \sqrt{\frac{18 - 6}{18 - 1} \cdot \frac{8}{3} \cdot \left(1 - \frac{8}{18}\right)} \\
+          &= \sqrt{\frac{160}{153}} \\
+          &\approx 1.023
+        \end{align*}
     \end{enumerate}
   \item[72.]
     A personnel director interviewing 11 senior engineers for four job openings has scheduled six interviews for the first day and five for the second day of interviewing. Assume that the candidates are interviewed in random order.
