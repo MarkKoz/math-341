@@ -102,6 +102,18 @@
     \end{enumerate}
   \item[76.]
     A family decides to have children until it has three children of the same gender. Assuming $P(B) = P(G) = .5$, what is the pmf of $X =$ the number of children in the family?
+    \\ \\
+    First, notice the only possible number of children is 3, 4, or 5. $X < 3$ is impossible because the condition to stop requires that there are \textit{three} children of the same gender. $X > 5$ is impossible because at $X = 5$ it is guaranteed that there are 3 children of the same gender, so there'd be no reason to continue.
+    \begin{align*}
+      P(X = 3) &= P(BBB) + P(GGG) = 2 \times .5^3 = .25 \\
+      P(X = 4) &= \begin{aligned}[t]
+        &P(\text{2 of first 3 are B and 4th is B}) \\
+        + &P(\text{2 of first 3 are G and 4th is G})
+      \end{aligned} \\
+      &= 2 \times \binom{3}{2} \times .5^4 \\
+      &= .375 \\
+      P(X = 5) &= 1 - P(X = 4) - P(X = 3) = 1 - .375 - .25 = .375
+    \end{align*}
 \end{enumerate}
 
 \end{document}
