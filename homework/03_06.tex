@@ -109,10 +109,23 @@
     \begin{enumerate}
       \item[a.]
         What is the probability that a disk has exactly one missing pulse?
+        \begin{align*}
+          P(X = 1) &= \poisson{1}{.2} \approx .164
+        \end{align*}
       \item[b.]
         What is the probability that a disk has at least two missing pulses?
+        \begin{align*}
+          P(X \ge 2) &= 1 - P(X < 2) \\
+          &= 1 - P(X = 0) - P(X = 1) \\
+          &\approx 1 - \poisson{0}{.2} - .164 \\
+          &\approx 1 - .819 - .164 \\
+          &\approx .017
+        \end{align*}
       \item[c.]
         If two disks are independently selected, what is the probability that neither contains a missing pulse?
+        \begin{align*}
+          P(X = 0)^2 &\approx .819^2 \approx .671
+        \end{align*}
     \end{enumerate}
   \item[84.]
     The Centers for Disease Control and Prevention reported in 2012 that 1 in 88 American children had been diagnosed with an autism spectrum disorder (ASD).
