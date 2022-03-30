@@ -10,6 +10,10 @@
   \sum_{x = #1}^{#2} \poisson{x}{#3}%
 }
 
+\newcommand{\bp}[3]{%
+  \binom{#2}{#1}#3^{#1}(1 - #3)^{#2 - #1}%
+}
+
 \begin{document}
 
 \maketitle
@@ -133,10 +137,11 @@
       \item[a.]
         If a random sample of 200 American children is selected, what are the expected value and standard deviation of the number who have been diagnosed with ASD?
         \begin{align*}
-          \mu &= np = 200 \times \frac{1}{88} \approx 2.273
+          np &= 200 \times \frac{1}{88} \approx 2.273
         \end{align*}
         Since $n = 200 > 50$ and $np \approx 2.273 < 5$, the binomial distribution can be approximated using the Poisson distribution. Thus,
         \begin{align*}
+          \mu &= np \approx 2.273 \\
           \sigma &= \sqrt{\sigma^2} = \sqrt{\mu} \approx \sqrt{2.272} \approx 1.508
         \end{align*}
       \item[b.]
@@ -166,10 +171,35 @@
     \begin{enumerate}
       \item[a.]
         How many diodes would you expect to fail, and what is the standard deviation of the number that are expected to fail?
+        \begin{align*}
+          np &= 200 \times .01 = 2
+        \end{align*}
+        Since $n = 200 > 50$ and $np = 2 < 5$, the binomial distribution can be approximated using the Poisson distribution. Thus,
+        \begin{align*}
+          \mu &= np = 2 \\
+          \sigma &= \sqrt{\sigma^2} = \sqrt{\mu} = \sqrt{2}
+        \end{align*}
       \item[b.]
         What is the (approximate) probability that at least four diodes will fail on a randomly selected board?
+        \begin{align*}
+          P(X \ge 4) &= 1 - P(X < 4) \\
+          &= 1 - \poissonsum{0}{3}{\sqrt{2}} \\
+          &= 1 - \frac{1}{e^{\sqrt{2}}} - \frac{\sqrt{2}}{e^{\sqrt{2}}} - \frac{1}{e^{\sqrt{2}}} - \frac{2\sqrt{2}}{3!e^{\sqrt{2}}} \\
+          &\approx 1 - .243 - .344 - .243 - .115 \\
+          &\approx .055
+        \end{align*}
       \item[c.]
         If five boards are shipped to a particular customer, how likely is it that at least four of them will work properly? (A board works properly only if all its diodes work.)
+        \begin{align*}
+          n &= 5 \\
+          p &= P(X = 0) \approx .243 \\
+          \\
+          P(Y \ge 4) &= P(Y = 4) + P(Y = 5) \\
+          &\approx b(4; 5, .243) + b(5; 5, .243) \\
+          &\approx \bp{4}{5}{.243} + \bp{5}{5}{.243} \\
+          &\approx .0131975 + .000847289 \\
+          &\approx .014
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
