@@ -64,12 +64,45 @@
     \begin{enumerate}
       \item[a.]
         Compute both $P(X \le 4)$ and $P(X < 4)$.
+        \begin{align*}
+          P(X = 4) &= \poisson{4}{4} \approx .195 \\
+          \\
+          P(X < 4) &= \poissonsum{0}{3}{4} \\
+          &= \frac{1}{e^4} + \frac{4}{e^4} + \frac{4^2}{2!e^4} + \frac{4^3}{3!e^4} \\
+          &\approx .018 + .073 + .147 + .195 \\
+          &\approx .433 \\
+          \\
+          P(X \le 4) &= P(X < 4) + P(X = 4) \approx .433 + .195 \approx .628
+        \end{align*}
       \item[b.]
         Compute $P(4 \le X \le 8)$.
+        \begin{align*}
+          P(4 \le X \le 8) &= \poissonsum{4}{8}{4} \\
+          &= \frac{4^4}{4!e^4} + \frac{4^5}{5!e^4} + \frac{4^6}{6!e^4} + \frac{4^7}{7!e^4} + \frac{4^8}{8!e^4} \\
+          &\approx .195 + .156 + .104 + .060 + .030 \\
+          &\approx .545
+        \end{align*}
       \item[c.]
         Compute $P(8 \le X)$.
+        \begin{align*}
+          P(8 \le X) &= 1 - P(X < 8) \\
+          &= 1 - [P(X < 4) + P(4 \le X \le 8) - P(X = 8)] \\
+          &\approx 1 - .433  - .545 + .030 \\
+          &\approx .052
+        \end{align*}
       \item[d.]
         What is the probability that the number of anomalies exceeds its mean value by no more than one standard deviation?
+        \begin{align*}
+          \mu &= 4 \\
+          \sigma &= \sqrt{\sigma^2} = \sqrt{\mu} = \sqrt{4} = 2 \\
+          \\
+          P(X > \mu + \sigma) &= P(X > 4 + 2) \\
+          &= P(X \le 6) \\
+          &= P(X \le 4) + P(X = 5) + P(X = 6) \\
+          &\approx .628 + \frac{4^5}{5!e^4} + \frac{4^6}{6!e^4} \\
+          &\approx .628 + .156 + .104 \\
+          &\approx .888
+        \end{align*}
     \end{enumerate}
   \item[82.]
     Consider writing onto a computer disk and then sending it through a certifier that counts the number of missing pulses. Suppose this number $X$ has a Poisson distribution with parameter $\mu = .2$. (Suggested in ``Average Sample Number for Semi-Curtailed Sampling Using the Poisson Distribution,'' \textit{J. Quality Technology}, 1983: 126–129.)
