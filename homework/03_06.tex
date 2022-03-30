@@ -2,6 +2,14 @@
 \usepackage[section=3.6]{mathhw}
 \usepackage{plotting}
 
+\newcommand{\poisson}[2]{%
+  \frac{e^{-#2} \cdot #2^{#1}}{#1!}%
+}
+
+\newcommand{\poissonsum}[3]{%
+  \sum_{x = #1}^{#2} \poisson{x}{#3}%
+}
+
 \begin{document}
 
 \maketitle
@@ -12,12 +20,44 @@
     \begin{enumerate}
       \item[a.]
         Obtain $P(X \le 5)$ by using Appendix Table A.2.
+        \begin{align*}
+          P(X \le 5) &= F(5; 1) = \poissonsum{0}{5}{1} \approx .999
+          % &\approx \begin{aligned}[t]
+          %   &.368 + (.736 - .368) + (.920 - .736) \\
+          %   + &(.981 - .920) + (.996 - .981) + (.999 - .996)
+          % \end{aligned} \\
+          % &\approx .368 + .368 + .184 + .061 + .015 + .003 \\
+        \end{align*}
       \item[b.]
         Determine $P(X = 2)$ first from the pmf formula and then from Appendix Table A.2.
+        \begin{align*}
+          P(X = 2) &= p(2; 1) = \poisson{2}{1} = \frac{1}{2e} \approx .184
+        \end{align*}
+        According to Appendix Table A.2,
+        \begin{align*}
+          p(2; 1) &\approx (.920 - .736) \approx .184
+        \end{align*}
       \item[c.]
         Determine $P(2 \le X \le 4)$.
+        \begin{align*}
+          P(2 \le X \le 4) &= \poissonsum{2}{4}{1} \\
+          &= \frac{1}{2!e} + \frac{1}{3!e} + \frac{1}{4!e} \\
+          &\approx .184 + .061 + .015 \\
+          &\approx .260
+        \end{align*}
       \item[d.]
         What is the probability that $X$ exceeds its mean value by more than one standard deviation?
+        \begin{align*}
+          \mu &= \sigma^2 = \sigma = 1 \\
+          P(X > \mu + \sigma) &= P(X > 1 + 1) \\
+          &= P(X > 2) \\
+          &= 1 - P(X \le 2) \\
+          &= 1 - \poissonsum{0}{2}{1} \\
+          &= 1 - \frac{1}{e} - \frac{1}{e} - \frac{1}{2!e} \\
+          &\approx 1 - .368 - .368 - .184 \\
+          &\approx 1 - .920 \\
+          &\approx .080
+        \end{align*}
     \end{enumerate}
   \item[80.]
     Let $X$ be the number of material anomalies occurring in a particular region of an aircraft gas-turbine disk. The article ``Methodology for Probabilistic Life Prediction of Multiple-Anomaly Materials'' (\textit{Amer. Inst. of Aeronautics and Astronautics J.}, 2006: 787–793) proposes a Poisson distribution for $X$. Suppose that $\mu = 4$.
