@@ -132,10 +132,34 @@
     \begin{enumerate}
       \item[a.]
         If a random sample of 200 American children is selected, what are the expected value and standard deviation of the number who have been diagnosed with ASD?
+        \begin{align*}
+          \mu &= np = 200 \times \frac{1}{88} \approx 2.273
+        \end{align*}
+        Since $n = 200 > 50$ and $np \approx 2.273 < 5$, the binomial distribution can be approximated using the Poisson distribution. Thus,
+        \begin{align*}
+          \sigma &= \sqrt{\sigma^2} = \sqrt{\mu} \approx \sqrt{2.272} \approx 1.508
+        \end{align*}
       \item[b.]
         Referring back to (a), calculate the approximate probability that at least 2 children in the sample have been diagnosed with ASD?
+        \begin{align*}
+          P(X \ge 2) &= 1 - P(x < 2) \\
+          &\approx 1 - \poissonsum{0}{1}{2.273} \\
+          &\approx 1 - \frac{1}{e^{2.273}} - \frac{2.273}{e^{2.273}} \\
+          &\approx 1 - .103 - .234 \\
+          &\approx .663
+        \end{align*}
       \item[c.]
         If the sample size is 352, what is the approximate probability that fewer than 5 of the selected children have been diagnosed with ASD?
+        \begin{align*}
+          \mu &= np = 352 \times \frac{1}{88} \approx 4
+        \end{align*}
+        Since $np = 4 < 5$, the Poisson distribution can still be used as an approximation.
+        \begin{align*}
+          P(X < 5) &= \poissonsum{0}{4}{4} \\
+          &= \frac{1}{e^4} + \frac{4}{e^4} + \frac{4^2}{2!e^4} + \frac{4^3}{3!e^4} + \frac{4^4}{4!e^4} \\
+          &\approx .018 + .073 + .147 + .195 + .195 \\
+          &\approx .628
+        \end{align*}
     \end{enumerate}
   \item[88.]
     In proof testing of circuit boards, the probability that any particular diode will fail is .01. Suppose a circuit board contains 200 diodes.
