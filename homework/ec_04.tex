@@ -1,0 +1,45 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[section=]{mathhw}
+\usepackage{parskip}
+\usepackage{amsthm}
+
+\title{MATH 341 - Extra Point Assignment 4}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+\begin{document}
+
+\maketitle
+
+\begin{claim}
+  If $A$ and $B$ are independent, then so are $A^c$ and $B^c$.
+\end{claim}
+
+\begin{proof}
+  By De Morgan's laws,
+  \begin{align*}
+    P(A^c \cap B^c) = P((A \cup B)^c)
+  \end{align*}
+  Using the proposition $P(X) + P(X^c) = 1$,
+  \begin{align*}
+    P((A \cup B)^c) = 1 - P(A \cup B)
+  \end{align*}
+  Using the proposition $P(X \cup Y) = P(X) + P(Y) - P(X \cap Y)$,
+  \begin{align*}
+    1 - P(A \cup B) &= 1 - [P(A) + P(B) - P(A \cap B)] \\
+    &= 1 - P(A) - P(B) + P(A \cap B)
+  \end{align*}
+  Using the proposition 2.8 that $X$ and $Y$ are independent iff $P(X \cap Y) = P(X) \cdot P(Y)$,
+  \begin{align*}
+    1 - P(A) - P(B) + P(A \cap B) &= 1 - P(A) - P(B) + P(A) \cdot P(B) \\
+    &= (1 - P(A))(1 - P(B))
+  \end{align*}
+  Using the proposition $P(X) + P(X^c) = 1$,
+  \begin{align*}
+    (1 - P(A))(1 - P(B)) = P(A^c) \cdot P(B^c)
+  \end{align*}
+  It has been shown $P(A^c \cap B^c) = P(A^c) \cdot P(B^c)$. Thus, by proposition 2.8, $A^c$ and $B^c$ are also independent.
+\end{proof}
+
+\end{document}
