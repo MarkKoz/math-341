@@ -1,0 +1,95 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[section=4.1]{mathhw}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+  \item[1.]
+    The current in a certain circuit as measured by an ammeter is a continuous random variable $X$ with the following density function:
+    \begin{align*}
+      f(x) = \begin{cases}
+        .075x + .2 & 3 \le x \le 5 \\
+        0          & \text{otherwise}
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Graph the pdf and verify that the total area under the density curve is indeed 1.
+      \item[b.]
+        Calculate $P(X \le 4)$. How does this probability compare to $P(X < 4)$?
+      \item[c.]
+        Calculate $P(3.5 \le X \le 4.5)$ and also $P(4.5 < X)$.
+    \end{enumerate}
+  \item[2.]
+    Suppose the reaction temperature $X$ (in $^\circ$C) in a certain chemical process has a uniform distribution with $A = -5$ and $B = 5$.
+    \begin{enumerate}
+      \item[a.]
+        Compute $P(X < 0)$.
+      \item[b.]
+        Compute $P(22.5 < X < 2.5)$.
+      \item[c.]
+        Compute $P(22 \le X \le 3)$.
+      \item[d.]
+        For $k$ satisfying $-5 < k < k + 4 < 5$, compute $P(k < X < k + 4)$.
+    \end{enumerate}
+  \item[3.]
+    The error involved in making a certain measurement is a continuous rv $X$ with pdf
+    \begin{align*}
+      f(x) = \begin{cases}
+        .09375(4 - x^2) & -2 \le x \le 2 \\
+        0               & \text{otherwise}
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Sketch the graph of $f(x)$.
+      \item[b.]
+        Compute $P(X > 0)$.
+      \item[c.]
+        Compute $P(-1 < X < 1)$.
+      \item[d.]
+        Compute $P(X < -.5\ \text{or}\ X > .5)$.
+    \end{enumerate}
+  \item[5.]
+    A college professor never finishes his lecture before the end of the hour and always finishes his lectures within 2 min after the hour. Let $X =$ the time that elapses between the end of the hour and the end of the lecture and suppose the pdf of $X$ is
+    \begin{align*}
+      f(x) = \begin{cases}
+        kx^2 & 0 \le x \le 2 \\
+        0    & \text{otherwise}
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Find the value of $k$ and draw the corresponding density curve. [\textit{Hint:} Total area under the graph of $f(x)$ is 1.]
+      \item[b.]
+        What is the probability that the lecture ends within 1 min of the end of the hour?
+      \item[c.]
+        What is the probability that the lecture continues beyond the hour for between 60 and 90 sec?
+      \item[d.]
+        What is the probability that the lecture continues for at least 90 sec beyond the end of the hour?
+    \end{enumerate}
+  \item[6.]
+    The actual tracking weight of a stereo cartridge that is set to track at 3 g on a particular changer can be regarded as a continuous rv $X$ with pdf
+    \begin{align*}
+      f(x) = \begin{cases}
+        k[1 - (x - 3)^2] & 2 \le x \le 4 \\
+        0                & \text{otherwise}
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Sketch the graph of $f(x)$.
+      \item[b.]
+        Find the value of $k$.
+      \item[c.]
+        What is the probability that the actual tracking weight is greater than the prescribed weight?
+      \item[d.]
+        What is the probability that the actual weight is within .25 g of the prescribed weight?
+      \item[e.]
+        What is the probability that the actual weight differs from the prescribed weight by more than .5 g?
+    \end{enumerate}
+  \end{enumerate}
+
+\end{document}
