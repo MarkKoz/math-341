@@ -236,14 +236,67 @@
     \begin{enumerate}
       \item[a.]
         Sketch the graph of $f(x)$.
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              base,
+              width = .5\linewidth,
+              enlargelimits = upper,
+              xmin = 2,
+              xmax = 4,
+              ymin = 0,
+              samples = 100,
+              smooth,
+            ]
+              \addplot[blue] {(3/4) * (1 - (x - 3)^2)};
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
       \item[b.]
         Find the value of $k$.
+        \begin{align*}
+          1 &= \int_{2}^{4} k[1 - (x - 3)^2]\,df \\
+          &= k\int_{2}^{4} 1 - (x^2 -6x + 9)\,df \\
+          &= -k\left[\int_{2}^{4} x^2\,df - 6\int_{2}^{4} x\,df + 8\int_{2}^{4} df\right] \\
+          &= -k\left[\frac{x^3}{3}\bigg\rvert_{2}^{4} - \frac{6x^2}{2}\bigg\rvert_{2}^{4} + 8x\big\rvert_{2}^{4}\right] \\
+          &= -k\left[\frac{1}{3}(64 - 8) - 3(16 - 4) + 8(4 - 2)\right] \\
+          &= -k\left[\frac{56}{3} - 3(12) + 8(2)\right] \\
+          &= \frac{4k}{3} \\
+          \frac{3}{4} &= k
+        \end{align*}
       \item[c.]
         What is the probability that the actual tracking weight is greater than the prescribed weight?
+        \begin{align*}
+          P(X > 3) &= \int_{3}^{\infty} f(x)\,dx \\
+          &= \int_{3}^{4} \frac{3}{4}[1 - (x - 3)^2]\,dx \\
+          &= -\frac{3}{4}\left[\frac{x^3}{3}\bigg\rvert_{3}^{4} - \frac{6x^2}{2}\bigg\rvert_{3}^{4} + 8x\big\rvert_{3}^{4}\right] \\
+          &= -\frac{3}{4}\left[\frac{1}{3}(64 - 27) - 3(16 - 9) + 8(4 - 3)\right] \\
+          &= -\frac{3}{4}\left[\frac{37}{3} - 3(7) + 8\right] \\
+          &= .5
+        \end{align*}
       \item[d.]
         What is the probability that the actual weight is within .25 g of the prescribed weight?
+        \begin{align*}
+          &P(2.75 \le X \le 3.25) \\
+          &= \int_{2.75}^{3.25} f(x)\,dx \\
+          &= \int_{2.75}^{3.25} \frac{3}{4}[1 - (x - 3)^2]\,dx \\
+          &= -\frac{3}{4}\left[\frac{x^3}{3}\bigg\rvert_{2.75}^{3.25} - \frac{6x^2}{2}\bigg\rvert_{2.75}^{3.25} + 8x\big\rvert_{2.75}^{3.25}\right] \\
+          &= -\frac{3}{4}\left[\frac{1}{3}(3.25^3 - 2.75^3) - 3(3.25^2 - 2.75^2) + 8(3.25 - 2.75)\right] \\
+          &= -\frac{3}{4}\left[\frac{13.53125}{3} - 3(3) + 8(.5)\right] \\
+          &= .3671875
+        \end{align*}
       \item[e.]
         What is the probability that the actual weight differs from the prescribed weight by more than .5 g?
+        \begin{align*}
+          &P(X < 2.5\ \text{or}\ X > 3.5) \\
+          &= 1 - P(2.5 \le X \le 3.5) \\
+          &= 1 - \int_{2.5}^{3.5} f(x)\,dx \\
+          &= 1 - \int_{2.5}^{3.5} \frac{3}{4}[1 - (x - 3)^2]\,dx \\
+          &= 1 +\frac{3}{4}\left[\frac{x^3}{3}\bigg\rvert_{2.5}^{3.5} - \frac{6x^2}{2}\bigg\rvert_{2.5}^{3.5} + 8x\big\rvert_{2.5}^{3.5}\right] \\
+          &= 1 + \frac{3}{4}\left[\frac{1}{3}(3.5^3 - 2.5^3) - 3(3.5^2 - 2.5^2) + 8(3.5 - 2.5)\right] \\
+          &= 1 + \frac{3}{4}\left[\frac{27.25}{3} - 3(6) + 8\right] \\
+          &= .3125
+        \end{align*}
     \end{enumerate}
   \end{enumerate}
 
