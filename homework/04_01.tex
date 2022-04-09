@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=4.1]{mathhw}
+\usepackage{plotting}
 
 \begin{document}
 
@@ -17,10 +18,45 @@
     \begin{enumerate}
       \item[a.]
         Graph the pdf and verify that the total area under the density curve is indeed 1.
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              base,
+              width = .5\linewidth,
+              enlargelimits = upper,
+              xmin = 3,
+              xmax = 5,
+              ymin = 0.4,
+            ]
+              \addplot[color=blue] {(.075 * x) + .2};
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
+        \begin{align*}
+           \int_3^5 (.075x + .2)\,dx &= .075\int_3^5 x\,dx + .2\int_3^5 1\,dx \\
+           &= .075\frac{x^2}{2}\bigg\rvert_3^5 + .2x\big\rvert_3^5 \\
+           &= .075\left(\frac{25}{2} - \frac{9}{2}\right) + .2(5 - 3) \\
+           &= 1
+        \end{align*}
       \item[b.]
         Calculate $P(X \le 4)$. How does this probability compare to $P(X < 4)$?
+        \begin{align*}
+          P(X \le 4) &= \int_3^4 (.075x + .2)\,dx \\
+          &= .075\int_3^4 x\,dx + .2\int_3^4 1\,dx \\
+          &= .075\frac{x^2}{2}\bigg\rvert_3^4 + .2x\big\rvert_3^4 \\
+          &= .075\left(\frac{16}{2} - \frac{9}{2}\right) + .2(4 - 3) \\
+          &= .4625
+        \end{align*}
+        $P(X \le 4) = P(X < 4)$ since $P(X = c) = 0$ when $X$ is continuous.
       \item[c.]
         Calculate $P(3.5 \le X \le 4.5)$ and also $P(4.5 < X)$.
+        \begin{align*}
+          P(3.5 \le X \le 4.5) &= \int_{3.5}^{4.5} (.075x + .2)\,dx \\
+          &= .075\int_{3.5}^{4.5} x\,dx + .2\int_{3.5}^{4.5} 1\,dx \\
+          &= .075\frac{x^2}{2}\bigg\rvert_{3.5}^{4.5} + .2x\big\rvert_{3.5}^{4.5} \\
+          &= .075\left(\frac{20.25}{2} - \frac{12.25}{2}\right) + .2(4.5 - 3.5) \\
+          &= .5
+        \end{align*}
     \end{enumerate}
   \item[2.]
     Suppose the reaction temperature $X$ (in $^\circ$C) in a certain chemical process has a uniform distribution with $A = -5$ and $B = 5$.
