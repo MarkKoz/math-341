@@ -63,12 +63,40 @@
     \begin{enumerate}
       \item[a.]
         Compute $P(X < 0)$.
+        \begin{align*}
+          P(X < 0) &= \int_{A}^{0} \frac{1}{B - A}\,dx \\
+          &= \int_{-5}^{0} \frac{1}{10}\,dx \\
+          &= \frac{x}{10}\bigg\rvert_{-5}^{0} \\
+          &= \frac{0}{10} - \frac{-5}{10} \\
+          &= .5
+        \end{align*}
       \item[b.]
-        Compute $P(22.5 < X < 2.5)$.
+        Compute $P(-2.5 < X < 2.5)$.
+        \begin{align*}
+          P(-2.5 < X < 2.5) &= \int_{-2.5}^{2.5} \frac{1}{B - A}\,dx \\
+          &= \int_{-2.5}^{2.5} \frac{1}{10}\,dx \\
+          &= \frac{x}{10}\bigg\rvert_{-2.5}^{2.5} \\
+          &= \frac{2.5}{10} - \frac{-2.5}{10} \\
+          &= .5
+        \end{align*}
       \item[c.]
-        Compute $P(22 \le X \le 3)$.
+        Compute $P(-2 \le X \le 3)$.
+        \begin{align*}
+          P(-2 < X < 3) &= \int_{-2}^{3} \frac{1}{B - A}\,dx \\
+          &= \int_{-2}^{3} \frac{1}{10}\,dx \\
+          &= \frac{x}{10}\bigg\rvert_{-2}^{3} \\
+          &= \frac{3}{10} - \frac{-2}{10} \\
+          &= .5
+        \end{align*}
       \item[d.]
         For $k$ satisfying $-5 < k < k + 4 < 5$, compute $P(k < X < k + 4)$.
+        \begin{align*}
+          P(k < X < k + 4) &= \int_{k}^{k + 4} \frac{1}{B - A}\,dx \\
+          &= \int_{k}^{k + 4} \frac{1}{10}\,dx \\
+          &= \frac{x}{10}\bigg\rvert_{k}^{k + 4} \\
+          &= \frac{k + 4}{10} - \frac{k}{10} \\
+          &= .4
+        \end{align*}
     \end{enumerate}
   \item[3.]
     The error involved in making a certain measurement is a continuous rv $X$ with pdf
