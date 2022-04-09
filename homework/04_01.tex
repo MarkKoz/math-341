@@ -118,8 +118,10 @@
               xmin = -2,
               xmax = 2,
               ymin = 0,
+              samples = 100,
+              smooth,
             ]
-              \addplot[blue, smooth] {.09375 * (4 - x^2)};
+              \addplot[blue] {.09375 * (4 - x^2)};
             \end{axis}
           \end{tikzpicture}
         \end{center}
@@ -170,12 +172,58 @@
     \begin{enumerate}
       \item[a.]
         Find the value of $k$ and draw the corresponding density curve. [\textit{Hint:} Total area under the graph of $f(x)$ is 1.]
+        \begin{align*}
+          1 &= \int_{0}^{2} kx^2\,df = k\frac{x^3}{3}\bigg\rvert_{0}^{2} = \frac{k}{3}(8 - 0) = \frac{8k}{3} \\
+          \frac{3}{8} &= k
+        \end{align*}
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              base,
+              width = .5\linewidth,
+              enlargelimits = upper,
+              xmin = 0,
+              xmax = 2,
+              ymin = 0,
+              samples = 100,
+              smooth,
+            ]
+              \addplot[blue] {(3/8) * x^2};
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
       \item[b.]
         What is the probability that the lecture ends within 1 min of the end of the hour?
+        \begin{align*}
+          P(X \le 1) &= \int_{-\infty}^{1} f(x)\,dx \\
+          &= \int_{0}^{1} \frac{3}{8}x^2\,dx \\
+          &= \frac{3}{8} \int_{0}^{1} x^2\,dx \\
+          &= \frac{3}{8} \cdot \frac{x^3}{3}\bigg\rvert_{0}^{1} \\
+          &= \frac{1}{8}(1 - 0) \\
+          &= \frac{1}{8}
+        \end{align*}
       \item[c.]
         What is the probability that the lecture continues beyond the hour for between 60 and 90 sec?
+        \begin{align*}
+          P(1 \le X \le 1.5) &= \int_{1}^{1.5} f(x)\,dx \\
+          &= \int_{1}^{1.5} \frac{3}{8}x^2\,dx \\
+          &= \frac{3}{8} \int_{1}^{1.5} x^2\,dx \\
+          &= \frac{3}{8} \cdot \frac{x^3}{3}\bigg\rvert_{1}^{1.5} \\
+          &= \frac{1}{8}(3.375 - 1) \\
+          &= \frac{1}{8}(2.375) \\
+          &= .296875
+        \end{align*}
       \item[d.]
         What is the probability that the lecture continues for at least 90 sec beyond the end of the hour?
+        \begin{align*}
+          P(X \ge 1.5) &= \int_{1.5}^{\infty} f(x)\,dx \\
+          &= \int_{1.5}^{2} \frac{3}{8}x^2\,dx \\
+          &= \frac{3}{8} \int_{1.5}^{2} x^2\,dx \\
+          &= \frac{3}{8} \cdot \frac{x^3}{3}\bigg\rvert_{1.5}^{2} \\
+          &= \frac{1}{8}(8 - 3.375) \\
+          &= \frac{1}{8}(4.625) \\
+          &= .578125
+        \end{align*}
     \end{enumerate}
   \item[6.]
     The actual tracking weight of a stereo cartridge that is set to track at 3 g on a particular changer can be regarded as a continuous rv $X$ with pdf
