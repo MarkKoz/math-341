@@ -1,0 +1,110 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[section=4.2]{mathhw}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+  \item[11.]
+    Let $X$ denote the amount of time a book on two-hour reserve is actually checked out, and suppose the cdf is
+    \begin{align*}
+      F(x) = \begin{cases}
+        0             & x < 0 \\
+        \frac{x^2}{4} & 0 \le x < 2 \\
+        1             & 2 \le x
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Calculate $P(X \le 1)$.
+      \item[b.]
+        Calculate $P(.5 \le X \le 1)$.
+      \item[c.]
+        Calculate $P(X > 1.5)$.
+      \item[d.]
+        What is the median checkout duration $\tilde{\mu}$? [solve $.5 = F(\tilde{\mu})$].
+      \item[e.]
+        Obtain the density function $f(x)$.
+      \item[f.]
+        Calculate $E(X)$.
+      \item[g.]
+        Calculate $V(X)$ and $\sigma_X$.
+      \item[h.]
+        If the borrower is charged an amount $h(X) = X^2$ when checkout duration is $X$, compute the expected charge $E[h(X)]$.
+    \end{enumerate}
+  \item[12.]
+    The cdf for $X$ (= measurement error) of Exercise 3 is
+    \begin{align*}
+      F(x) = \begin{cases}
+        0                                                         & x < -2 \\
+        \frac{1}{2} + \frac{3}{32}\left(4x - \frac{x^3}{3}\right) & -2 \le x < 2 \\
+        1                                                         & 2 \le x
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Calculate $P(X < 0)$.
+      \item[b.]
+        Calculate $P(-1 < X < 1)$.
+      \item[c.]
+        Calculate $P(.5 < X)$.
+      \item[d.]
+        Verify that $f(x)$ is as given in Exercise 3 by obtaining $F^\prime(x)$.
+      \item[e.]
+        Verify that $\tilde{\mu} = 0$.
+    \end{enumerate}
+  \item[13.]
+    Example 4.5 introduced the concept of time headway in traffic flow and proposed a particular distribution for $X =$ the headway between two randomly selected consecutive cars (sec). Suppose that in a different traffic environment, the distribution of time headway has the form
+    \begin{align*}
+      f(x) = \begin{cases}
+        \frac{k}{x^4} & x > 1 \\
+        0             & x \le 1
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Determine the value of $k$ for which $f(x)$ is a legitimate pdf.
+      \item[b.]
+        Obtain the cumulative distribution function.
+      \item[c.]
+        Use the cdf from (b) to determine the probability that headway exceeds 2 sec and also the probability that headway is between 2 and 3 sec.
+      \item[d.]
+        Obtain the mean value of headway and the standard deviation of headway.
+      \item[e.]
+        What is the probability that headway is within 1 standard deviation of the mean value?
+    \end{enumerate}
+  \item[15.]
+    Let $X$ denote the amount of space occupied by an article placed in a 1-ft$^3$ packing container. The pdf of $X$ is
+    \begin{align*}
+      f(x) = \begin{cases}
+        90x^8(1 - x) & 0 < x < 1 \\
+        0            & \text{otherwise}
+      \end{cases}
+    \end{align*}
+    \begin{enumerate}
+      \item[a.]
+        Graph the pdf. Then obtain the cdf of $X$ and graph it.
+      \item[b.]
+        What is $P(X \le .5)$ [i.e., $F(.5)$]?
+      \item[c.]
+        Using the cdf from (a), what is $P(.25 < X \le .5)$? What is $P(.25 \le X \le .5)$?
+      \item[d.]
+        What is the 75th percentile of the distribution?
+      \item[e.]
+        Compute $E(X)$ and $\sigma_X$.
+      \item[f.]
+        What is the probability that $X$ is more than 1 standard deviation from its mean value?
+    \end{enumerate}
+  \item[21.]
+    An ecologist wishes to mark off a circular sampling region having radius 10 m. However, the radius of the resulting region is actually a random variable $R$ with pdf
+    \begin{align*}
+      f(r) = \begin{cases}
+        \frac{3}{4}[1 - (10 - r)^2] & 9 \le r \le 11 \\
+        0                           & \text{otherwise}
+      \end{cases}
+    \end{align*}
+    What is the expected area of the resulting circular region?
+\end{enumerate}
+
+\end{document}
