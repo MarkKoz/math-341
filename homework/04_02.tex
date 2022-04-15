@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=4.2]{mathhw}
+\usepackage{plotting}
 \usepackage{physics}
 \usepackage[makeroom]{cancel}
 
@@ -257,6 +258,28 @@
     \begin{enumerate}
       \item[a.]
         Graph the pdf. Then obtain the cdf of $X$ and graph it.
+        \begin{center}
+          \begin{tikzpicture}
+            \begin{axis}[
+              base,
+              width = .5\linewidth,
+              enlargelimits = upper,
+              ymin = 0,
+              ymax = 4,
+              xtick distance = .2,
+              samples = 100,
+              smooth,
+              legend style = {
+                at = {(0.1,1)},
+                anchor = north west
+              }
+            ]
+              \addplot[blue, domain=0:1] {90 * x^8 * (1 - x)};
+              \addplot[red, domain=0:1] {10 * x^9 - 9 * pow(x, 10)};
+              \legend{$f(x)$, $F(X)$}
+            \end{axis}
+          \end{tikzpicture}
+        \end{center}
         \begin{align*}
           F(X) &= \int_{-\infty}^{x} f(x) \dd{x} \\
           &= \int_{0}^{x} 90x^8(1 - x) \dd{x} \\
