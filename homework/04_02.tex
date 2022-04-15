@@ -257,16 +257,75 @@
     \begin{enumerate}
       \item[a.]
         Graph the pdf. Then obtain the cdf of $X$ and graph it.
+        \begin{align*}
+          F(X) &= \int_{-\infty}^{x} f(x) \dd{x} \\
+          &= \int_{0}^{x} 90x^8(1 - x) \dd{x} \\
+          &= 90 \left(\int_{0}^{x} x^8 \dd{x} - \int_{0}^{x} x^9 \dd{x}\right) \\
+          &= 90 \left(\frac{x^9}{9} \bigg\rvert_{0}^{x} - \frac{x^{10}}{10} \bigg\rvert_{0}^{x}\right) \\
+          &= 90 \left(\frac{1}{9}(x^9 - 0^9) - \frac{1}{10}(x^{10} - 0^{10})\right) \\
+          &= 90 \left(\frac{x^9}{9} - \frac{x^{10}}{10}\right) \\
+          &= 10x^9 - 9x^{10}
+        \end{align*}
       \item[b.]
         What is $P(X \le .5)$ [i.e., $F(.5)$]?
+        \begin{align*}
+          F(.5) &= 10\left(\frac{1}{2}\right)^9 - 9\left(\frac{1}{2}\right)^{10} \\
+          &= \frac{10}{512} - \frac{9}{1024} \\
+          &= \frac{11}{1024}
+        \end{align*}
       \item[c.]
         Using the cdf from (a), what is $P(.25 < X \le .5)$? What is $P(.25 \le X \le .5)$?
+        \begin{align*}
+          P(.25 < X \le .5) &= F(.5) - F(.25) \\
+          &= \frac{11}{1024} - \left[10\left(\frac{1}{4}\right)^9 - 9\left(\frac{1}{4}\right)^{10}\right] \\
+          &= \frac{11}{1024} - \left[\frac{10}{262144} - \frac{9}{1048576}\right] \\
+          &= \frac{11233}{1048576}
+        \end{align*}
       \item[d.]
         What is the 75th percentile of the distribution?
+        \begin{align*}
+          .75 &= F(\eta(.75)) = 10(\eta(.75))^9 - 9(\eta(.75))^{10} \\
+          \eta(.75) &\approx .903596
+        \end{align*}
       \item[e.]
         Compute $E(X)$ and $\sigma_X$.
+        \begin{align*}
+          E(X) &= \int_{-\infty}^{\infty} x \cdot f(x) \dd{x} \\
+          &= \int_{0}^{1} x \cdot 90x^8(1 - x) \dd{x} \\
+          &= 90 \left(\int_{0}^{1} x^9 \dd{x} - \int_{0}^{1} x^{10} \dd{x}\right) \\
+          &= 90 \left(\frac{x^{10}}{10} \bigg\rvert_{0}^{1} - \frac{x^{11}}{11} \bigg\rvert_{0}^{1}\right) \\
+          &= 90 \left(\frac{1}{10}(1^{10} - 0^{10}) - \frac{1}{11}(1^{11} - 0^{11})\right) \\
+          &= 90 \left(\frac{1}{10} - \frac{1}{11}\right) \\
+          &= \frac{9}{11}
+        \end{align*}
+        \begin{align*}
+          E(X^2) &= \int_{-\infty}^{\infty} x^2 \cdot f(x) \dd{x} \\
+          &= \int_{0}^{1} x^2 \cdot 90x^8(1 - x) \dd{x} \\
+          &= 90 \left(\int_{0}^{1} x^{10} \dd{x} - \int_{0}^{1} x^{11} \dd{x}\right) \\
+          &= 90 \left(\frac{x^{11}}{11} \bigg\rvert_{0}^{1} - \frac{x^{12}}{12} \bigg\rvert_{0}^{1}\right) \\
+          &= 90 \left(\frac{1}{11}(1^{11} - 0^{11}) - \frac{1}{12}(1^{12} - 0^{12})\right) \\
+          &= 90 \left(\frac{1}{11} - \frac{1}{12}\right) \\
+          &= \frac{15}{22}
+        \end{align*}
+        \begin{align*}
+          \sigma_X &= \sqrt{E(X^2) - [E(X)]^2} \\
+          &= \sqrt{\frac{15}{22} - \left(\frac{9}{11}\right)^2} \\
+          &= \sqrt{\frac{15}{22} - \frac{81}{121}} \\
+          &= \sqrt{\frac{3}{242}} \\
+          &= \frac{\sqrt{6}}{22}
+        \end{align*}
       \item[f.]
         What is the probability that $X$ is more than 1 standard deviation from its mean value?
+        \begin{align*}
+          1 - P(\mu - \sigma \le X \le \mu + \sigma) &= 1 - P\left(\frac{9}{11} - \frac{\sqrt{6}}{22} \le X \le \frac{9}{11} + \frac{\sqrt{6}}{22}\right) \\
+          &= 1 - F\left(\frac{9}{11} + \frac{\sqrt{6}}{22}\right) + F\left(\frac{9}{11} - \frac{\sqrt{6}}{22}\right) \\
+          &= \begin{aligned}[t]
+            1 &- \left[10\left(\frac{9}{11} + \frac{\sqrt{6}}{22}\right)^9 - 9\left(\frac{9}{11} + \frac{\sqrt{6}}{22}\right)^{10}\right] \\
+            &+ \left[10\left(\frac{9}{11} - \frac{\sqrt{6}}{22}\right)^9 - 9\left(\frac{9}{11} - \frac{\sqrt{6}}{22}\right)^{10}\right]
+          \end{aligned} \\
+          &= 1 - \frac{29069887257\sqrt{6}}{103749698404} \\
+          &\approx .3137
+        \end{align*}
     \end{enumerate}
   \item[21.]
     An ecologist wishes to mark off a circular sampling region having radius 10 m. However, the radius of the resulting region is actually a random variable $R$ with pdf
