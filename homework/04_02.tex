@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=4.2]{mathhw}
+\usepackage{physics}
 
 \begin{document}
 
@@ -18,20 +19,73 @@
     \begin{enumerate}
       \item[a.]
         Calculate $P(X \le 1)$.
+        \begin{align*}
+          P(X \le 1) = F(1) = \frac{1^2}{4} = \frac{1}{4}
+        \end{align*}
       \item[b.]
         Calculate $P(.5 \le X \le 1)$.
+        \begin{align*}
+          P(.5 \le X \le 1) &= F(1) - F(.5) \\
+          &= \frac{1^2}{4} - \frac{.5^2}{4} \\
+          &= \frac{1}{4} - \frac{1}{16} \\
+          &= \frac{3}{16}
+        \end{align*}
       \item[c.]
         Calculate $P(X > 1.5)$.
+        \begin{align*}
+          P(X > 1.5) &= 1 - P(X \le 1.5) \\
+          &= 1 - F(1.5) \\
+          &= 1 - \frac{1.5^2}{4} \\
+          &= 1 - \frac{9}{16} \\
+          &= \frac{7}{16}
+        \end{align*}
       \item[d.]
         What is the median checkout duration $\tilde{\mu}$? [solve $.5 = F(\tilde{\mu})$].
+        \begin{align*}
+          .5 &= F(\tilde{\mu}) = \frac{\tilde{\mu}^2}{4} \\
+          2 &= \tilde{\mu}^2 \\
+          \sqrt{2} &= \tilde{\mu}
+        \end{align*}
       \item[e.]
         Obtain the density function $f(x)$.
+        \begin{align*}
+          f(x) &= F^\prime(x) \\
+          &= \dv{x}(\frac{x^2}{4}) \\
+          &= \frac{1}{4} \cdot \dv{x^2}{x} \\
+          &= \frac{1}{4} \cdot 2x \\
+          &= \frac{x}{2}
+        \end{align*}
       \item[f.]
         Calculate $E(X)$.
+        \begin{align*}
+          E(X) &= \int_{0}^{2} x \cdot \frac{x}{2} \dd{x} \\
+          &= \frac{1}{2} \int_{0}^{2} x^2 \dd{x} \\
+          &= \frac{1}{2} \cdot \frac{x^3}{3} \bigg\rvert_{0}^{2} \\
+          &= \frac{1}{6}(2^3 - 0^3) \\
+          &= \frac{4}{3}
+        \end{align*}
       \item[g.]
         Calculate $V(X)$ and $\sigma_X$.
+        \begin{align*}
+          E(X^2) &= \int_{0}^{2} x^2 \cdot \frac{x}{2} \dd{x} \\
+          &= \frac{1}{2} \int_{0}^{2} x^3 \dd{x} \\
+          &= \frac{1}{2} \cdot \frac{x^4}{4} \bigg\rvert_{0}^{2} \\
+          &= \frac{1}{8}(2^4 - 0^3) \\
+          &= 2 \\
+          \\
+          V(X) &= E(X^2) - [E(X)]^2 \\
+          &= 2 - \left(\frac{4}{3}\right)^2 \\
+          &= \frac{18}{9} - \frac{16}{9} \\
+          &= \frac{2}{9} \\
+          \\
+          \sigma_X &= \sqrt{V(X)} = \sqrt{\frac{2}{9}} = \frac{\sqrt{2}}{3}
+        \end{align*}
       \item[h.]
         If the borrower is charged an amount $h(X) = X^2$ when checkout duration is $X$, compute the expected charge $E[h(X)]$.
+        \begin{align*}
+          E(X^2) = 2
+        \end{align*}
+        Same as the calculation in (g).
     \end{enumerate}
   \item[12.]
     The cdf for $X$ (= measurement error) of Exercise 3 is
