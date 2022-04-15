@@ -1,6 +1,7 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=4.2]{mathhw}
 \usepackage{physics}
+\usepackage[makeroom]{cancel}
 
 \begin{document}
 
@@ -99,14 +100,55 @@
     \begin{enumerate}
       \item[a.]
         Calculate $P(X < 0)$.
+        \begin{align*}
+          P(X < 0) &= F(0) \\
+          &= \frac{1}{2} + \frac{3}{32}\left(4(0) - \frac{0^3}{3}\right) \\
+          &= \frac{1}{2} + \frac{3}{32}(0) \\
+          &= \frac{1}{2}
+        \end{align*}
       \item[b.]
         Calculate $P(-1 < X < 1)$.
+        \begin{align*}
+          P(-1 < X < 1) &= F(1) - F(-1) \\
+          &= \cancel{\frac{1}{2}} + \frac{3}{32}\left(4(1) - \frac{1^3}{3}\right) \cancel{- \frac{1}{2}} - \frac{3}{32}\left(4(-1) - \frac{(-1)^3}{3}\right) \\
+          &= \frac{3}{32}\left(4 - \frac{1}{3}\right) - \frac{3}{32}\left(-4 + \frac{1}{3}\right) \\
+          &= \frac{\cancel{3}}{32} \cdot \frac{11}{\cancel{3}} + \frac{\cancel{3}}{32} \cdot \frac{11}{\cancel{3}} \\
+          &= \frac{11}{32} + \frac{11}{32} \\
+          &= \frac{11}{16}
+        \end{align*}
       \item[c.]
         Calculate $P(.5 < X)$.
+        \begin{align*}
+          P(.5 < X) &= 1 - P(X \le .5) \\
+          &= 1 - F(.5) \\
+          &= 1 - \frac{1}{2} - \frac{3}{32}\left(4 \cdot \frac{1}{2} - \frac{1}{3} \cdot \frac{1^3}{2^3}\right) \\
+          &= \frac{1}{2} - \frac{3}{32}\left(2 - \frac{1}{24}\right) \\
+          &= \frac{1}{2} - \frac{3}{32} \cdot \frac{47}{24} \\
+          &= \frac{81}{256} \\
+        \end{align*}
       \item[d.]
         Verify that $f(x)$ is as given in Exercise 3 by obtaining $F^\prime(x)$.
+        \begin{align*}
+          f(x) &= F^\prime(x) \\
+          &= \dv{x}(\frac{1}{2} + \frac{3}{32}\left(4x - \frac{x^3}{3}\right)) \\
+          &= \dv{x}(\frac{1}{2}) + \frac{3}{32}\left(4 \cdot \dv{x}{x} - \frac{1}{3} \cdot \dv{x^3}{x}\right) \\
+          &= 0 + \frac{3}{32}\left(4 \cdot 1 - \frac{1}{3} \cdot 3x^2 \right) \\
+          &= \frac{3}{32}(4 - x^2) \\
+          &= .09375(4 - x^2)
+        \end{align*}
       \item[e.]
         Verify that $\tilde{\mu} = 0$.
+        \begin{align*}
+          .5 &= F(\tilde{\mu}) = \frac{1}{2} + \frac{3}{32}\left(4\tilde{\mu} - \frac{\tilde{\mu}^3}{3}\right) \\
+          0 &= \frac{3}{32}\left(4\tilde{\mu} - \frac{\tilde{\mu}^3}{3}\right) \\
+          0 &= 4\tilde{\mu} - \frac{\tilde{\mu}^3}{3} \\
+          0 &= -\frac{\tilde{\mu}}{3}(\tilde{\mu}^2 - 12) \\
+          0 &= \tilde{\mu}(\tilde{\mu}^2 - 12)
+        \end{align*}
+        \begin{align*}
+          \tilde{\mu} = 0\ \text{or}\ \tilde{\mu}^2 - 12 = 0 \rightarrow \tilde{\mu} = \sqrt{12}
+        \end{align*}
+        $\sqrt{12}$ is not in the interval $[2,-2]$, so $\tilde{\mu} = 0$ is the only valid solution.
     \end{enumerate}
   \item[13.]
     Example 4.5 introduced the concept of time headway in traffic flow and proposed a particular distribution for $X =$ the headway between two randomly selected consecutive cars (sec). Suppose that in a different traffic environment, the distribution of time headway has the form
