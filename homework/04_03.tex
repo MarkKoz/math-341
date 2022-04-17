@@ -125,15 +125,55 @@
     In each case, determine the value of the constant $c$ that makes the probability statement correct.
     \begin{enumerate}
       \item[a.]
-        $F(c) = .9838$
+        $F(c) = .9838$ \\
+        \\
+        According to Appendix A.3, $c = 2.14$.
       \item[b.]
         $P(0 \le Z \le c) = .291$
+        \begin{align*}
+          P(0 \le Z \le c) &= .291 \\
+          \Phi(c) - \Phi(0) &= .291 \\
+          \Phi(c) - .5000 &= .291 \\
+          \Phi(c) &= .291 + .5000 \\
+          \Phi(c) &= .791
+        \end{align*}
+        According to Appendix A.3, $c = .81$.
       \item[c.]
         $P(c \le Z) = .121$
+        \begin{align*}
+          P(c \le Z) &= .121 \\
+          1 - P(Z \le c) &= .121 \\
+          1 - \Phi(c) &= .121 \\
+          \Phi(c) &= 1 - .121 \\
+          \Phi(c) &= .879
+        \end{align*}
+        According to Appendix A.3, $c = 1.17$.
       \item[d.]
         $P(-c \le Z \le c) = .668$
+        \begin{align*}
+          P(-c \le Z \le c) &= .668 \\
+          P(Z \le c) - P(Z \le -c) &= .668 \\
+          P(Z \le c) - P(Z > c) &= .668 \\
+          P(Z \le c) - [1 - P(Z \le c)] &= .668 \\
+          2P(Z \le c) - 1 &= .668 \\
+          \Phi(c) &= \frac{.668 + 1}{2} \\
+          \Phi(c) &= .8340
+        \end{align*}
+        According to Appendix A.3, $c = .97$.
       \item[e.]
         $P(c \le |Z|) = .016$
+        \begin{align*}
+          P(c \le |Z|) &= .016 \\
+          1 - P(|Z| \le c) &= .016 \\
+          P(|Z| \le c) &= 1 - .016 \\
+          P(-c \le Z \le c) &= .984 \\
+          P(Z \le c) - P(Z > c) &= .984 \\
+          P(Z \le c) - [1 - P(Z \le c)] &= .984 \\
+          2P(Z \le c) - 1 &= .984 \\
+          \Phi(c) &= \frac{.984 + 1}{2} \\
+          \Phi(c) &= .992
+        \end{align*}
+        According to Appendix A.3, $c = 2.41$.
     \end{enumerate}
   \item[30.]
     Find the following percentiles for the standard normal distribution. Interpolate where appropriate.
