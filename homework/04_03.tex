@@ -286,12 +286,52 @@
     \begin{enumerate}
       \item[a.]
         What is the probability that the size of a single droplet is less than \qty{1500}{\micro\meter}? At least \qty{1000}{\micro\meter}?
+        \begin{align*}
+          P(X < 1500) &= \Phi\left(\frac{1500 - 1050}{150}\right) \\
+          &= \Phi(3) \\
+          &\approx .9987
+        \end{align*}
+        \begin{align*}
+          P(X \ge 1000) &= 1 - \Phi\left(\frac{1000 - 1050}{150}\right) \\
+          &= 1 - \Phi(-.\bar{3}) \\
+          &\approx 1 - .6293 \\
+          &\approx .3707
+        \end{align*}
       \item[b.]
         What is the probability that the size of a single droplet is between 1000 and \qty{1500}{\micro\meter}?
+        \begin{align*}
+          P(1000 \le X \le 1500) &= \Phi\left(\frac{1500 - 1050}{150}\right) - \Phi\left(\frac{1000 - 1050}{150}\right) \\
+          &\approx .9987 - .6293 \\
+          &\approx .3694
+        \end{align*}
       \item[c.]
         How would you characterize the smallest \qty{2}{\percent} of all droplets?
+        \begin{align*}
+          P(X \le x) &= .02 \\
+          P\left(Z \le z = \frac{x - 1050}{150}\right) &= .02
+        \end{align*}
+        According to Appendix A.3, $z \approx -2.054$. Thus,
+        \begin{align*}
+          z &\approx -2.054 \\
+          \frac{x - 1050}{150} &\approx -2.054 \\
+          x - 1050 &\approx -308.1 \\
+          x &\approx 741.9
+        \end{align*}
+        The smallest \qty{2}{\percent} of all droplets are less than or equal to about \qty{741.9}{\micro\meter} in size.
       \item[d.]
         If the sizes of five independently selected droplets are measured, what is the probability that exactly two of them exceed \qty{1500}{\micro\meter}?
+        \begin{align*}
+          P(X > 1500) &= 1 - \Phi\left(\frac{1500 - 1050}{150}\right) \\
+          &= 1 - \Phi(3) \\
+          &\approx 1 - .9987 \\
+          &\approx .0013
+        \end{align*}
+        \begin{align*}
+          P(Y = 2) &= \binom{5}{2} P(X > 1500)^{2} (1 - P(X > 1500))^{5 - 2} \\
+          &\approx \binom{5}{2} .0013^{2} (1 - .0013)^{5 - 2} \\
+          &\approx 10 \times .00000169 \times .996105067803 \\
+          &\approx .0000168341756458707
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
