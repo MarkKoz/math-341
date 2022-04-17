@@ -21,28 +21,49 @@
     yticklabel style = {/pgf/number format/fixed},
   },
   histogram/.style={
-    axis lines=middle,
-    axis line style={-latex},
+    axis lines = middle,
+    axis line style = {-latex},
     xlabel near ticks,
     ylabel near ticks,
-    xtick=data,
-    xticklabel style={/pgf/number format/fixed},
-    yticklabel style={/pgf/number format/fixed},
-    enlargelimits=upper,
-    enlarge x limits=0.1,
-    area style
+    xtick = data,
+    xticklabel style = {/pgf/number format/fixed},
+    yticklabel style = {/pgf/number format/fixed},
+    enlargelimits = upper,
+    enlarge x limits = 0.1,
+    area style,
   },
   histogram2/.style = {
     ybar,
     base,
     xmajorgrids = false,
     ymajorgrids = true,
-    xtick=data,
+    xtick = data,
     enlargelimits = upper,
-    enlarge x limits=0.1,
+    enlarge x limits = 0.1,
     ymin = 0,
-  }
+  },
+  normdist/.style = {
+    no markers,
+    axis lines* = left,
+    axis on top,
+    hide y axis,
+    enlarge x limits = 0.1,
+    xtick align = outside,
+    every x tick/.style={black},
+    samples = 100,
+    smooth,
+    ymin = 0,
+  },
+  stdnormdist/.style = {
+    normdist,
+    domain = -3.5:3.5,
+    xmin = -3.5,
+    xmax = 3.5,
+  },
 }
+
+\definecolor{bookblue}{RGB}{0, 173, 239}
+\definecolor{bookgrey}{RGB}{219, 220, 222}
 
 % OBLITERATE scientific notation.
 \usepackage{siunitx}
@@ -188,3 +209,16 @@
     \end{longtblr}
   \end{center}
 }{}
+
+\newcommand{\stdnormdist}[3]{
+  \begin{tikzpicture}
+    \begin{axis}[
+      stdnormdist,
+      xtick = {#1, #2},
+      #3
+    ]
+      \addplot [fill = bookgrey, domain = #1:#2] {gauss(0, 1)} \closedcycle;
+      \addplot [thick, bookblue] {gauss(0, 1)};
+    \end{axis}
+  \end{tikzpicture}
+}
