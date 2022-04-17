@@ -242,14 +242,44 @@
     \begin{enumerate}
       \item[a.]
         $P(X \le 15)$
+        \begin{align*}
+          P(X \le 15) &= \Phi\left(\frac{15 - 15}{1.25}\right) \\
+          &= \Phi(0) \\
+          &= .5000
+        \end{align*}
       \item[b.]
         $P(X \le 17.5)$
+        \begin{align*}
+          P(X \le 17.5) &= \Phi\left(\frac{17.5 - 15}{1.25}\right) \\
+          &= \Phi(2) \\
+          &\approx .9772
+        \end{align*}
       \item[c.]
         $P(X \ge 10)$
+        \begin{align*}
+          P(X \ge 10) &= 1 - \Phi\left(\frac{10 - 15}{1.25}\right) \\
+          &= 1 - \Phi(-4) \\
+          &\approx 1 - 0 \\
+          &\approx 1
+        \end{align*}
       \item[d.]
         $P(14 \le X \le 18)$
+        \begin{align*}
+          P(14 \le X \le 18) &= \Phi\left(\frac{18 - 15}{1.25}\right) - \Phi\left(\frac{14 - 15}{1.25}\right) \\
+          &= \Phi(2.4) - \Phi(-.8) \\
+          &\approx .9918 - .2119 \\
+          &\approx .7799
+        \end{align*}
       \item[e.]
         $P(|X - 15| \le 3)$
+        \begin{align*}
+          P(|X - 15| \le 3) &= P(-3 \le X - 15 \le 3) \\
+          &= P(12 \le X \le 18) \\
+          &= \Phi\left(\frac{18 - 15}{1.25}\right) - \Phi\left(\frac{12 - 15}{1.25}\right) \\
+          &= \Phi(2.4) - \Phi(-2.4) \\
+          &\approx .9918 - .0082 \\
+          &\approx .9836
+        \end{align*}
     \end{enumerate}
   \item[36.]
     Spray drift is a constant concern for pesticide applicators and agricultural producers. The inverse relationship between droplet size and drift potential is well known. The paper ``Effects of 2,4-D Formulation and Quinclorac on Spray Droplet Size and Deposition'' (\textit{Weed Technology}, 2005: 1030–1036) investigated the effects of herbicide formulation on spray atomization. A figure in the paper suggested the normal distribution with mean \qty{1050}{\micro\meter} and standard deviation \qty{150}{\micro\meter} was a reasonable model for droplet size for water (the ``control treatment'') sprayed through a \qty{760}{\milli\liter\per\minute} nozzle.
