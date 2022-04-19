@@ -90,10 +90,6 @@
           x &= \frac{ln(2)}{.01386} \\
           x &\approx 50.0106
         \end{align*}
-        % \begin{align*}
-        %   P(X \le m) &= .5 \\
-        %   \int_{0}^{m} \lambda e^{-\lambda x} \dd{x} &= .5
-        % \end{align*}
     \end{enumerate}
   \item[65.]
     Let $X$ denote the data transfer time (ms) in a grid computing system (the time required for data transfer between a ``worker'' computer and a ``master'' computer. Suppose that $X$ has a gamma distribution with mean value 37.5 ms and standard deviation 21.6 (suggested by the article ``Computation Time of Grid Computing with Data Transfer Times that Follow a Gamma Distribution,'' \textit{Proceedings of the First International Conference on Semantics, Knowledge, and Grid}, 2005).
@@ -136,15 +132,67 @@
     \end{enumerate}
   \item[67.]
     Suppose that when a transistor of a certain type is subjected to an accelerated life test, the lifetime $X$ (in weeks) has a gamma distribution with mean 24 weeks and standard deviation 12 weeks.
+    \begin{align*}
+          \mu &= \alpha\beta = 24 \\
+          \sigma^2 &= \alpha\beta^2 = 12^2 = 144
+        \end{align*}
+        \begin{align*}
+          \alpha\beta^2 &= 144 \\
+          \frac{24}{\beta} \times \beta^2 &= 144 \\
+          24\beta &= 144 \\
+          \beta &= \frac{144}{24} \\
+          \beta &= 6
+        \end{align*}
+        \begin{align*}
+          \alpha &= \frac{24}{\beta} = \frac{24}{6} = 4
+        \end{align*}
     \begin{enumerate}
       \item[a.]
         What is the probability that a transistor will last between 12 and 24 weeks?
+        \begin{align*}
+          P(12 \le X \le 24) &= F(24; 4, 6) - F(12; 4, 6) \\
+          &= F\left(\frac{24}{6}; 4\right) - F\left(\frac{12}{6}; 4\right) \\
+          &= F(4; 4) - F(2; 4) \\
+          &\approx .567 - .143 \\
+          &\approx .424
+        \end{align*}
       \item[b.]
         What is the probability that a transistor will last at most 24 weeks? Is the median of the lifetime distribution less than 24? Why or why not?
+        \begin{align*}
+          P(X \le 24) &= F(24; 4, 6) \\
+          &\approx .567
+        \end{align*}
+        The use of the \textit{cumulative} distribution function means the probability increases as $x$ increases i.e.\ $P(X \le x) \le P(X \le x + 1)$. Thus, when $P(X \le \tilde{\mu}) \le P(X \le \mu)$, $\tilde{\mu} \le \mu$.
+        \begin{align*}
+          P(X \le \tilde{\mu}) = .5 < .567 \approx P(X \le \mu = 24) \implies \tilde{\mu} \le 24
+        \end{align*}
       \item[c.]
         What is the 99th percentile of the lifetime distribution?
+        \begin{align*}
+          F(\eta(.99); 4, 6) &= .99 \\
+          F\left(\frac{\eta(.99)}{6}; 4\right) &= .99
+        \end{align*}
+        According to Appendix A.4, $F(10; 4) \approx .990$. Thus,
+        \begin{align*}
+          \frac{\eta(.99)}{6} &\approx 10 \\
+          \eta(.99) &\approx 10 \times 6 \\
+          \eta(.99) &\approx 60
+        \end{align*}
       \item[d.]
         Suppose the test will actually be terminated after $t$ weeks. What value of $t$ is such that only .5\% of all transistors would still be operating at termination?
+        \begin{align*}
+          P(X > t) &= .005 \\
+          1 - P(X \le t) &= .005 \\
+          P(X \le t) &= .995 \\
+          F(t; 4, 6) &= .995 \\
+          F\left(\frac{t}{6}; 4\right) &= .995
+        \end{align*}
+        According to Appendix A.4, $F(11; 4) \approx .995$. Thus,
+        \begin{align*}
+          \frac{t}{6} &\approx 11 \\
+          t &\approx 11 \times 6 \\
+          t &\approx 66
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
