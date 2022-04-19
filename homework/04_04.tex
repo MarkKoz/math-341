@@ -100,10 +100,39 @@
     \begin{enumerate}
       \item[a.]
         What are the values of $\alpha$ and $\beta$?
+        \begin{align*}
+          \mu &= \alpha\beta = 37.5 \\
+          \sigma^2 &= \alpha\beta^2 = 21.6^2 = 466.56
+        \end{align*}
+        \begin{align*}
+          \alpha\beta^2 &= 466.56 \\
+          \frac{37.5}{\beta} \times \beta^2 &= 466.56 \\
+          37.5\beta &= 466.56 \\
+          \beta &= \frac{466.56}{37.5} \\
+          \beta &\approx 12.44
+        \end{align*}
+        \begin{align*}
+          \alpha &= \frac{37.5}{\beta} = \frac{37.5}{\frac{466.56}{37.5}} = \frac{1406.25}{466.56} \approx 3
+        \end{align*}
       \item[b.]
         What is the probability that data transfer time exceeds 50 ms?
+        \begin{align*}
+          P(X > 50) &= 1 - P(X \le 50) \\
+          &\approx 1 - F(50; 3, 12.44) \\
+          &\approx 1 - F\left(\frac{50}{12.44}; 3\right) \\
+          &\approx 1 - F(4; 3) \\
+          &\approx 1 - .762 \\
+          &\approx .238
+        \end{align*}
       \item[c.]
         What is the probability that data transfer time is between 50 and 75 ms?
+        \begin{align*}
+          P(50 \le X \le 75) &= F(75; 3, 12.44) - F(50; 3, 12.44) \\
+          &\approx F\left(\frac{75}{12.44}; 3\right) - .762 \\
+          &\approx F(6; 3) - .762 \\
+          &\approx .938 - .762 \\
+          &\approx .176
+        \end{align*}
     \end{enumerate}
   \item[67.]
     Suppose that when a transistor of a certain type is subjected to an accelerated life test, the lifetime $X$ (in weeks) has a gamma distribution with mean 24 weeks and standard deviation 12 weeks.
