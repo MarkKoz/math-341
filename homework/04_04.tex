@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=4.4]{mathhw}
+\usepackage{physics}
 
 \begin{document}
 
@@ -11,22 +12,88 @@
     \begin{enumerate}
       \item[a.]
         The expected time between two successive arrivals
+        \begin{align*}
+          \mu &= \frac{1}{\lambda} = 1
+        \end{align*}
       \item[b.]
         The standard deviation of the time between successive arrivals
+        \begin{align*}
+          \sigma &= \frac{1}{\lambda} = 1
+        \end{align*}
       \item[c.]
         $P(X \le 4)$
+        \begin{align*}
+          P(X \le 4) &= F(4; 1) \\
+          &= 1 - e^{-1 \times 4} \\
+          &= 1 - e^{-4} \\
+          &\approx .981684
+        \end{align*}
       \item[d.]
         $P(2 \le X \le 5)$
+        \begin{align*}
+          P(2 \le X \le 5) &= F(5; 1) - F(2; 1) \\
+          &= (1 - e^{-1 \times 5}) - (1 - e^{-1 \times 2}) \\
+          &= -e^{-5} + e^{-2} \\
+          &\approx .128597
+        \end{align*}
     \end{enumerate}
   \item[60.]
     Let $X$ denote the distance (m) that an animal moves from its birth site to the first territorial vacancy it encounters. Suppose that for banner-tailed kangaroo rats, $X$ has an exponential distribution with parameter $\lambda = .01386$ (as suggested in the article ``Competition and Dispersal from Multiple Nests,'' \textit{Ecology}, 1997: 873–883).
     \begin{enumerate}
       \item[a.]
         What is the probability that the distance is at most 100 m? At most 200 m? Between 100 and 200 m?
+        \begin{align*}
+          P(X \le 100) &= F(100; .01386) \\
+          &= 1 - e^{-.01386 \times 100} \\
+          &= 1 - e^{-1.386} \\
+          &\approx .749926
+        \end{align*}
+        \begin{align*}
+          P(X \le 200) &= F(200; .01386) \\
+          &= 1 - e^{-.01386 \times 200} \\
+          &= 1 - e^{-2.772} \\
+          &\approx .937463
+        \end{align*}
+        \begin{align*}
+          P(100 \le X \le 200) &= F(200; .01386) - F(100; .01386) \\
+          &\approx .937463 - .749926 \\
+          &\approx .187537
+        \end{align*}
       \item[b.]
         What is the probability that distance exceeds the mean distance by more than 2 standard deviations?
+        \begin{align*}
+          \mu &= \sigma = \frac{1}{\lambda} = \frac{1}{.01386}
+        \end{align*}
+        \begin{align*}
+          P(|X| > \mu + 2\sigma) &= 1 - P(|X| \le \mu + 2\sigma) \\
+          &= 1 - P(X \le 3\mu) \\
+          &= 1 - P\left(X \le \frac{1}{.01386} + \frac{2}{.01386}\right) \\
+          &= 1 - P\left(X \le \frac{3}{.01386}\right) \\
+          &= 1 - F\left(\frac{3}{.01386}; .01386\right) \\
+          &= 1 - (1 - e^{\frac{-.01386 \times 3}{.01386}}) \\
+          &= 1 - (1 - e^{-3}) \\
+          &= e^{-3} \\
+          &\approx .0497871
+        \end{align*}
+        $P(X \le \mu - 2\sigma)$ is discarded since $\mu > 0$, $F(x; \lambda) = 0$ for $x < 0$, and
+        \begin{align*}
+          x = \mu - 2\sigma = \mu - 2\mu = -\mu = < 0
+        \end{align*}
       \item[c.]
         What is the value of the median distance?
+        \begin{align*}
+          F(x; .01386) &= \frac{1}{2} \\
+          1 - e^{-.01386x} &= \frac{1}{2} \\
+          \frac{1}{e^{.01386x}} &= \frac{1}{2} \\
+          e^{.01386x} &= 2 \\
+          .01386x &= ln(2) \\
+          x &= \frac{ln(2)}{.01386} \\
+          x &\approx 50.0106
+        \end{align*}
+        % \begin{align*}
+        %   P(X \le m) &= .5 \\
+        %   \int_{0}^{m} \lambda e^{-\lambda x} \dd{x} &= .5
+        % \end{align*}
     \end{enumerate}
   \item[65.]
     Let $X$ denote the data transfer time (ms) in a grid computing system (the time required for data transfer between a ``worker'' computer and a ``master'' computer. Suppose that $X$ has a gamma distribution with mean value 37.5 ms and standard deviation 21.6 (suggested by the article ``Computation Time of Grid Computing with Data Transfer Times that Follow a Gamma Distribution,'' \textit{Proceedings of the First International Conference on Semantics, Knowledge, and Grid}, 2005).
