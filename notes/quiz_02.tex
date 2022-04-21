@@ -1,0 +1,194 @@
+\documentclass[paper=A4, pagesize, fontsize=7pt, DIV=calc]{scrartcl}
+\usepackage[margin=.25cm]{geometry}
+% \usepackage{parskip}
+\usepackage[singlespacing]{setspace}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath, amsfonts}
+
+\usepackage{physics}
+
+\RedeclareSectionCommand[
+  beforeskip=0pt,
+  afterindent=false
+]{paragraph}
+
+\begin{document}
+\begin{minipage}[t]{.45\linewidth}
+  \section{Probability Density Function}
+  \begin{align*}
+    P(a \le X \le B) = \int_{a}^{b} f(x) \dd{x}
+  \end{align*}
+
+  Legitimate pdf if
+  \begin{enumerate}
+    \item[1.]
+      $f(x) \ge 0$ for all $x$
+    \item[2.]
+      $\int_{-\infty}^{\infty} f(x) \dd{x} = $ area under the entire graph of $f(x) = 1$
+  \end{enumerate}
+
+  \subsection{Uniform Distribution}
+  \begin{align*}
+    f(x; A, B) = \begin{cases}
+      \frac{1}{B - A} & A \le x \le B \\
+      0               & \text{otherwise}
+    \end{cases}
+  \end{align*}
+
+  \begin{align*}
+    \int_{a}^{\infty} e^{-kx} \dd{x} = (1/k)e^{-k \cdot a}
+  \end{align*}
+
+  \section{Cumulative Distribution Function}
+  \begin{align*}
+    F(X) = P(X \le x) = \int_{-\infty}^{x} f(y) \dd{y}
+  \end{align*}
+
+  \subsection{Uniform CDF}
+
+  \begin{align*}
+    \int_{A}^{x} \frac{1}{B - A} \dd{y} = \frac{x - A}{B - A}
+  \end{align*}
+
+  \begin{align*}
+    F(x) = \begin{cases}
+      0                   & x < A \\
+      \frac{x - A}{B - A} & A \le x \le B \\
+      1                   & x \ge B
+    \end{cases}
+  \end{align*}
+
+  \subsection{Using $F(x)$ to Compute Probabilities}
+  \begin{align*}
+    P(X > a) &= 1 - F(a) \\
+    P(a \le X \le b) F(b) &= F(a) \\
+  \end{align*}
+
+  \subsection{Obtaining $f(x)$ from $F(x)$}
+  \begin{align*}
+    F^{\prime}(x) &= f(x) \\
+    F^{\prime}(x) &= \dv{x}\left(\frac{x - A}{B - A}\right) = \frac{1}{B - A} = f(x)
+  \end{align*}
+
+  \subsection{Percentile}
+  Let $p$ be a number between 0 and 1. The $(100p)$th percentile of the distribution of a continuous rv $X$, denoted by $\eta(p)$, is defined by
+  \begin{align*}
+    p = F(\eta(p)) = \int_{-\infty}^{\eta(p)} f(y) \dd{y}
+  \end{align*}
+
+  The median $\tilde{\mu}$ is the 50th percentile, so $.5 = F(\tilde{\mu})$.
+
+  \subsection{Expected Values}
+  \begin{align*}
+    E(X) &= \int_{-\infty}^{\infty} x \cdot f(x) \dd{x} \\
+    E[h(X)] &= \int_{-\infty}^{\infty} h(x) \cdot f(x) \dd{x} \\
+    V(X) &= \int_{-\infty}^{\infty} (x - \mu)^2 \cdot f(x) \dd{x} = E[(X - \mu)^2] \\
+    V(X) &= E(X^2) - [E(X)]^2
+  \end{align*}
+
+  \section{Normal Distribution}
+  For $\infty < \mu < \infty$ and $0 < \sigma$, the pdf of continuous rv $X$ is
+  \begin{align*}
+    f(x; \mu, \sigma) &= \frac{1}{\sqrt{2\pi}\sigma} e^{-(x - \mu)^2 / (2\sigma^2)} \\
+    P(a \le X \le b) &= \int_{a}^{b} \frac{1}{\sqrt{2\pi}\sigma} e^{-(x - \mu)^2} \dd{x}
+  \end{align*}
+
+  \subsection{Standard Normal Distribution}
+  When $\mu = 0$ and $\sigma = 1$,
+  \begin{align*}
+    f(z; 0, 1) &= \frac{1}{\sqrt{2\pi}} e^{-z^2 / 2}
+  \end{align*}
+\end{minipage}
+\begin{minipage}[t]{.45\linewidth}
+  \paragraph{percentile}
+  To find the 99th percentile of the standard normal distribution, find $z$ such that $P(Z \le z) = .9900$.
+
+  \paragraph{Critical Values}
+  $z_\alpha$ will denote the value on the $z$ axis for which $\alpha$ of the area under the $z$ curve lies to the right of $z_\alpha$. $1 - \alpha$ of the area lies to its left. Thus, $z_\alpha$ is the $100(1 - \alpha)$th percentile of the standard normal distribution. By symmetry, the area to the left of $-z_\alpha$ is also $\alpha$.
+  \begin{align*}
+    P(Z \le z_\alpha) = 1 - \alpha
+  \end{align*}
+
+  \subsection{Nonstandard Normal Distributions}
+  \begin{align*}
+    Z &= \frac{X - \mu}{\sigma} \\
+    P(a \le X \le b) &= P\left(\frac{a - \mu}{\sigma} \le Z \le \frac{b - \mu}{\sigma}\right) \\
+    &= \Phi\left(\frac{a - \mu}{\sigma}\right) - \Phi\left(\frac{b - \mu}{\sigma}\right) \\
+    P(X \le a) &= \Phi\left(\frac{a - \mu}{\sigma}\right) \\
+    P(X \ge b) &= 1 - \Phi\left(\frac{b - \mu}{\sigma}\right)
+  \end{align*}
+
+  \paragraph{Percentiles}
+  $(100p)$th percentile for normal $(\mu, \sigma)$ = $\mu + $ [$(100p)$th for standard normal] $\cdot \sigma$
+
+  \paragraph{Discrete Populations}
+  Let $X$ be a binomial rv based on $n$ trials with success probability $p$. Then if the binomial probability histogram is not too skewed, $X$ has approximately a normal distribution with $\mu = np$ and $\sigma = \sqrt{npq}$. In particular, for $x =$ a possible value of $X$,
+  \begin{align*}
+    P(X \le x) = B(x, n, p) &\approx (\text{area under the normal curve to the left of}\ x + .5) \\
+    &= \Phi\left(\frac{x + .5 - np}{\sqrt{npq}}\right)
+  \end{align*}
+  Accurate given $np \ge 10$ and $nq \ge 10$. Note $q = 1 - p$.
+
+  \subparagraph{Binomial}
+  If the sizes of five independently selected droplets are measured, what is the probability that exactly two of them exceed 1500?
+  \begin{align*}
+    P(Y = 2) &= \binom{5}{2} P(X > 1500)^{2} (1 - P(X > 1500))^{5 - 2}
+  \end{align*}
+
+  \section{Exponential Distribution}
+  For $\lambda > 0$
+  \begin{align*}
+    f(x; \lambda) &= \begin{cases}
+      \lambda e^{-\lambda x} & x \ge 0 \\
+      0                      & \text{otherwise}
+    \end{cases} \\
+    F(x; \lambda) &= \begin{cases}
+      0                  & x < 0 \\
+      1 - e^{-\lambda x} & x \ge 0
+    \end{cases}
+  \end{align*}
+  $\mu = \sigma = \frac{1}{\lambda}$
+
+  \subsection{Poisson}
+  Suppose that the number of events occurring in any time interval of length $t$ has a Poisson distribution with parameter at (where $a$, the rate of the event process, is the expected number of events occurring in 1 unit of time) and that numbers of occurrences in nonoverlapping intervals are independent of one another. Then the distribution of elapsed time between the occurrence of two successive events is exponential with parameter $\lambda = \alpha$.
+
+  \subsection{Gamma Function}
+  For $\alpha > 0$,
+  \begin{align*}
+    \Gamma(\alpha) &= \int_{0}^{\infty} x^{\alpha - 1} e^{-x} \dd{x}
+  \end{align*}
+  \begin{enumerate}
+    \item[1.]
+      For any $\alpha > 1$, $\Gamma(\alpha) = (\alpha - 1) \cdot \Gamma(\alpha - 1)$ [via integration by parts]
+    \item[2.]
+      For any positive integer, $n$, $\Gamma(n) = (n - 1)!$
+    \item[3.]
+      $\Gamma(1/2) = \sqrt{\pi}$
+  \end{enumerate}
+
+  \subsection{Gamma Distribution}
+  For $\alpha > 0$ (shape parameter), $\beta > 0$ (scale parameter),
+  \begin{align*}
+    f(x; \alpha, \beta) = \begin{cases}
+      \frac{1}{\beta\Gamma(\alpha)} x^{\alpha - 1} e^{-x/\beta} & x \ge 0 \\
+      0 & \text{otherwise}
+    \end{cases}
+  \end{align*}
+  The standard gamma distribution has $\beta = 1$:
+  \begin{align*}
+    f(x; \alpha) &= \begin{cases}
+      \frac{x^{\alpha - 1} e^{-x}}{\Gamma(\alpha)} & x \ge 0 \\
+      0                                            & \text{otherwise}
+    \end{cases} \\
+    F(x; \alpha) &= \int_{0}^{x} \frac{y^{\alpha - 1} e^{-y}}{\Gamma(\alpha)} \dd{y} \\
+    P(X \le x) &= F(x; \alpha, \beta) = F\left(\frac{x}{\beta}; \alpha\right)
+  \end{align*}
+  $E(X) = \alpha\beta$ and $\sigma^2 = \alpha\beta^2$ \\
+  A chi-squared distribution has the gamma density function as the pdf with $\alpha = v/2$ and $\beta = 2$.
+\end{minipage}
+
+\end{document}
