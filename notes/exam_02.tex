@@ -1,0 +1,270 @@
+\documentclass[paper=A4, pagesize, fontsize=7pt, DIV=calc]{scrartcl}
+\usepackage[margin=.25cm]{geometry}
+% \usepackage{parskip}
+\usepackage[singlespacing]{setspace}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath, amsfonts}
+
+\usepackage{widebar}
+\usepackage{physics}
+
+% \RedeclareSectionCommand[
+%   beforeskip=0pt,
+%   afterindent=false
+% ]{paragraph}
+
+\begin{document}
+\begin{minipage}[t]{.45\linewidth}
+  \paragraph{Random sample}
+  $X_i$'s are independent and identically distributed.
+
+  \section{Distribution of Sample Mean}
+  Let $X_1, X_2, \ldots, X_n$ be a random sample from a normal distribution with mean $\mu$ and standard deviation $\sigma$. Then
+  \begin{enumerate}
+    \item[1.]
+      For any $n$, $\widebar{X}$ and $T_o$ are normally distributed
+    \item[2.]
+      $E(\widebar{X}) = \mu_{\widebar{X}} = \mu$
+    \item[3.]
+      $V(\widebar{X}) = \sigma^2_{\widebar{X}} = \sigma^2 / n$ and $\sigma_{\widebar{X}} = \sigma / \sqrt{n}$
+    \item[4.]
+      $\widebar{X}$ based on a large $n$ tends to be closer to $\mu$
+    \item[5.]
+      $T_o = X_1 + X_2 + \cdots + X_n$, $E(T_o) = n\mu$, $V(T_o) = n\sigma^2$, and $\sigma_{T_o} = \sqrt{n}\sigma$
+  \end{enumerate}
+
+  \paragraph{Standard Error of Mean}
+  $\sigma_{\widebar{X}} = \sigma / \sqrt{n}$
+
+  \paragraph{Central Limit Theorem}
+  If $n$ is sufficiently large (around $n > 30$), $\widebar{X}$ has an approximately normal distribution with $\mu_{\widebar{X}} = \mu$ and $\sigma^2_{\widebar{X}} = \sigma^2 / n$. Also, $T_o$ has an approximately normal distribution with $\mu_{T_o} = n\mu$ and $\sigma^2_{T_o} = n\sigma^2$.
+
+  \paragraph{Empirical Rule}
+  68\% of observations fall within 1 SD of mean; 95\% within 2; 99.7\% within 3.
+
+  \section{Confidence Intervals}
+  \begin{minipage}{.33\linewidth}
+    \begin{align*}
+      Z = \frac{\widebar{X} - \mu}{\sigma / \sqrt{n}}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.33\linewidth}
+    \begin{align*}
+      \bar{x} \pm z_{\alpha / 2} \cdot \frac{\sigma}{\sqrt{n}} = 100(1 - \alpha)\%
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.33\linewidth}
+    \begin{align*}
+      n = \left(2z_{\alpha / 2} \cdot \frac{\sigma}{w}\right)^2
+    \end{align*}
+  \end{minipage}
+  Using $\bar{x}$ after observing gives a fixed interval which is the CI:
+  \begin{align*}
+    \bar{x} - 1.96 \cdot \frac{\sigma}{\sqrt{n}} < \mu < \bar{x} + 1.96 \cdot \frac{\sigma}{\sqrt{n}}\ \text{with 95\% confidence}
+  \end{align*}
+  If $\sigma$ unknown, use $s$ from previous sample or range estimate $\sigma \approx range / 4$.
+
+  \section{Large-Sample CI for a Population Mean}
+  If $n$ is sufficiently large ($n > 40$), then $\widebar{X}$ has an approximately normal distribution even if the population isn't normal or $\sigma$ is unknown. \\
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      Z = \frac{\widebar{X} - \mu}{S / \sqrt{n}}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      \widebar{X} \pm Z_{\alpha / 2} \cdot \frac{s}{\sqrt{n}} = 100(1 - \alpha)\%
+    \end{align*}
+  \end{minipage}
+
+  \section{Intervals Based on Normal Population Distribution}
+  When $\widebar{X}$ is the mean of a random sample of size $n$ from a normal distribution with mean $\mu$, the rv $T$ has a probability distribution called a $t$ distribution with $n - 1$ degrees of freedom (df or $\nu$). \\
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      T = \frac{\widebar{X} - \mu}{S / \sqrt{n}}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      \bar{x} \pm t_{\alpha / 2, n - 1} \cdot \frac{s}{\sqrt{n}} = 100(1 - \alpha)\%
+    \end{align*}
+  \end{minipage}
+  \begin{enumerate}
+    \item[1.]
+      Each $t_\nu$ curve is bell-shaped and centred at 0.
+    \item[2.]
+      Each $t_\nu$ curve is more spread out than the standard normal ($z$) curve.
+    \item[3.]
+      As $\nu$ increases, the spread of the corresponding $t_\nu$ curve decreases.
+    \item[4.]
+      As $\nu \to \infty$, the sequence of $t_\nu$ curves approach the standard normal curve.
+  \end{enumerate}
+  $t_{\alpha, \nu}$ is the $t$ critical value.
+
+  \section{Hypothesis}
+  \begin{tabular}{l|ccc}
+                 & $H_a$          & P-value             & Reject $H_0$ when... \\
+    \hline
+    Upper-tailed & $\mu > \mu_0$  & $1 - \Phi(z)$       & $z \ge z_\alpha$ \\
+    Lower-tailed & $\mu < \mu_0$  & $\Phi(z)$           & $z \le -z_\alpha$ \\
+    Two-tailed   & $\mu \ne \mu_0$ & $2[1 - \Phi(|z|)]$ & $z \ge z_{\alpha / 2}$ or $z \le -z_{\alpha / 2}$ \\
+  \end{tabular} \\
+  \\
+  With a P-value, reject $H_0$ in favour of $H_a$ when P-value $\le \alpha$.
+  \section{Probability Density Function}
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      P(a \le X \le B) = \int_{a}^{b} f(x) \dd{x}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    Legitimate pdf if
+    \begin{enumerate}
+      \item[1.]
+        $f(x) \ge 0$ for all $x$
+      \item[2.]
+        $\int_{-\infty}^{\infty} f(x) \dd{x} = $ area under the entire graph of $f(x) = 1$
+    \end{enumerate}
+  \end{minipage}
+
+  \subsection{Uniform Distribution}
+  \begin{align*}
+    f(x; A, B) = \begin{cases}
+      \frac{1}{B - A} & A \le x \le B \\
+      0               & \text{otherwise}
+    \end{cases}
+  \end{align*}
+
+  \section{Cumulative Distribution Function}
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      F(X) = P(X \le x) = \int_{-\infty}^{x} f(y) \dd{y}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      P(X > a) &= 1 - F(a) \\
+      P(a \le X \le b) &= F(b) - F(a) \\
+    \end{align*}
+  \end{minipage}
+\end{minipage}\qquad
+\begin{minipage}[t]{.45\linewidth}
+  \subsection{Uniform CDF}
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      \int_{A}^{x} \frac{1}{B - A} \dd{y} = \frac{x - A}{B - A}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      F(x) = \begin{cases}
+        0                   & x < A \\
+        \frac{x - A}{B - A} & A \le x \le B \\
+        1                   & x \ge B
+      \end{cases}
+    \end{align*}
+  \end{minipage}
+
+  \subsection{Percentile}
+  Let $p$ be a number between 0 and 1. The $(100p)$th percentile of the distribution of a continuous rv $X$, denoted by $\eta(p)$, is defined by
+  \begin{align*}
+    p = F(\eta(p)) = \int_{-\infty}^{\eta(p)} f(y) \dd{y}
+  \end{align*}
+
+  The median $\tilde{\mu}$ is the 50th percentile, so $.5 = F(\tilde{\mu})$.
+
+  \subsection{Expected Values}
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      E(X) &= \int_{-\infty}^{\infty} x \cdot f(x) \dd{x} \\
+      E[h(X)] &= \int_{-\infty}^{\infty} h(x) \cdot f(x) \dd{x}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      V(X) &= \int_{-\infty}^{\infty} (x - \mu)^2 \cdot f(x) \dd{x} = E[(X - \mu)^2] \\
+      V(X) &= E(X^2) - [E(X)]^2
+    \end{align*}
+  \end{minipage}
+
+  \section{Normal Distribution}
+  For $\infty < \mu < \infty$ and $0 < \sigma$, the pdf of continuous rv $X$ is \\
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      f(x; \mu, \sigma) &= \frac{1}{\sqrt{2\pi}\sigma} e^{-(x - \mu)^2 / (2\sigma^2)}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      P(a \le X \le b) &= \int_{a}^{b} \frac{1}{\sqrt{2\pi}\sigma} e^{-(x - \mu)^2} \dd{x}
+    \end{align*}
+  \end{minipage}
+
+  \subsection{Standard Normal Distribution}
+  When $\mu = 0$ and $\sigma = 1$,
+  \begin{align*}
+    f(z; 0, 1) &= \frac{1}{\sqrt{2\pi}} e^{-z^2 / 2}
+  \end{align*}
+
+  \paragraph{Percentile}
+  To find the 99th percentile of the standard normal distribution, find $z$ such that $P(Z \le z) = .9900$.
+
+  \paragraph{Critical Values}
+  $z_\alpha$ will denote the value on the $z$ axis for which $\alpha$ of the area under the $z$ curve lies to the right of $z_\alpha$. $1 - \alpha$ of the area lies to its left. Thus, $z_\alpha$ is the $100(1 - \alpha)$th percentile of the standard normal distribution. By symmetry, the area to the left of $-z_\alpha$ is also $\alpha$.
+  \begin{align*}
+    P(Z \le z_\alpha) = 1 - \alpha
+  \end{align*}
+
+  \subsection{Nonstandard Normal Distributions}
+  \begin{align*}
+    Z &= \frac{X - \mu}{\sigma} \\
+    P(a \le X \le b) &= P\left(\frac{a - \mu}{\sigma} \le Z \le \frac{b - \mu}{\sigma}\right) \\
+    &= \Phi\left(\frac{a - \mu}{\sigma}\right) - \Phi\left(\frac{b - \mu}{\sigma}\right) \\
+    P(X \le a) &= \Phi\left(\frac{a - \mu}{\sigma}\right) \\
+    P(X \ge b) &= 1 - \Phi\left(\frac{b - \mu}{\sigma}\right)
+  \end{align*}
+
+  \paragraph{Percentiles}
+  $(100p)$th percentile for normal $(\mu, \sigma)$ = $\mu + $ [$(100p)$th for standard normal] $\cdot \sigma$
+
+  \paragraph{Discrete Populations}
+  Let $X$ be a binomial rv based on $n$ trials with success probability $p$. Then if the binomial probability histogram is not too skewed, $X$ has approximately a normal distribution with $\mu = np$ and $\sigma = \sqrt{npq}$. In particular, for $x =$ a possible value of $X$,
+  \begin{align*}
+    P(X \le x) = B(x, n, p) &\approx (\text{area under the normal curve to the left of}\ x + .5) \\
+    &= \Phi\left(\frac{x + .5 - np}{\sqrt{npq}}\right)
+  \end{align*}
+  Accurate given $np \ge 10$ and $nq \ge 10$. Note $q = 1 - p$.
+
+  \section{Exponential Distribution}
+  For $\lambda > 0$ \\
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      f(x; \lambda) &= \begin{cases}
+        \lambda e^{-\lambda x} & x \ge 0 \\
+        0                      & \text{otherwise}
+      \end{cases}
+    \end{align*}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \begin{align*}
+      F(x; \lambda) &= \begin{cases}
+        0                  & x < 0 \\
+        1 - e^{-\lambda x} & x \ge 0
+      \end{cases}
+    \end{align*}
+  \end{minipage}
+  $\mu = \sigma = \frac{1}{\lambda}$
+
+  \section{CL Table}
+  \begin{tabular}{l|cccccc}
+    CL (\%)              & 90    & 95   & 97.5 & 99   & 99.5 & 99.9 \\
+    $\alpha$ (tail area) & .1    & .05  & .025 & .01  & .005 & .001 \\
+    $z_{\alpha / 2}$     & 1.645 & 1.96 & 2.33 & 2.58 & 3.08 & 3.27
+  \end{tabular}
+\end{minipage}
+
+\end{document}
