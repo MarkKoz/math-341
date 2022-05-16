@@ -117,10 +117,29 @@
     \begin{enumerate}
       \item[a.]
         What is the probability that at least two of these students select a defective calculator?
+        \\
+        There are two outcomes: a student chooses a defective calculator, or a student chooses a functional calculator. Because there are only two outcomes, and sampling is done \textit{without} replacement, the hypergeometric distribution $h(x; n, M, N)$ should be used. Let $n = 4$, $M = 7$, and $N = 24$.
+        \begin{align*}
+          P(X \ge 2) &= \sum_{x = 2}^{4} \frac{\binom{M}{x} \binom{N - M}{n - x}}{\binom{N}{n}} \\
+          &= \sum_{x = 2}^{4} \frac{\binom{7}{x} \binom{24 - 7}{4 - x}}{\binom{24}{4}} \\
+          &= \frac{\binom{7}{2} \binom{17}{2}}{\binom{24}{4}} + \frac{\binom{7}{3} \binom{17}{1}}{\binom{24}{4}} + \frac{\binom{7}{4} \binom{17}{0}}{\binom{24}{4}} \\
+          &= \frac{(21 \cdot 136) + (35 \cdot 17) + (35 \cdot 1)}{10626} \\
+          &= \frac{2856 + 595 + 35}{10626} \\
+          &= \frac{3486}{10626} \\
+          &\approx .3281
+        \end{align*}
       \item[b.]
         What is the probability that at most one of these students select a defective calculator?
+        \begin{align*}
+          P(X \le 1) &= 1 - P(X \ge 2) \\
+          &\approx 1 - .3281 \\
+          &\approx .6719
+        \end{align*}
       \item[c.]
         What is the pmf of defective calculator?
+        \begin{align*}
+          h(x; 4, 7, 24) &= \frac{\binom{7}{x} \binom{17}{4 - x}}{10626}
+        \end{align*}
     \end{enumerate}
   \item[4.]
     If a symmetric die is tossed 36 times, by using normal approximation find the probability that
