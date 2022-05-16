@@ -236,6 +236,18 @@
     \end{enumerate}
   \item[7.]
     If $A$ and $B$ are independent events, show that so are events $A^c$ and $B^c$.
+    \begin{align*}
+      P(A^c \cap B^c) &= P((A \cup B)^c) \\
+      &= 1 - P(A \cup B) \\
+      &= 1 - [P(A) + P(B) - P(A \cap B)] \\
+      &= 1 - P(A) - P(B) + P(A \cap B) \\
+      &= 1 - P(A) - P(B) + P(A) \cdot P(B) \\
+      &= [1 - P(A)] - [P(B) - P(A) \cdot P(B)] \\
+      &= [1 - P(A)] - P(B)[1 - P(A)] \\
+      &= [1 - P(A)] \cdot [1 - P(B)] \\
+      &= P(A^c) \cdot P(B^c)
+    \end{align*}
+    It has been shown that $P(A^c \cap B^c) = P(A^c) \cdot P(B^c)$. Thus, $A^c$ and $B^c$ are independent events.
   \item[8.]
     A certain chemical pollutant in the Genesee River has been constant for several years with mean 34 ppm (parts per million) and standard deviation $\sigma = 8$ ppm. A group of factory representatives whose companies discharge liquids into the river is now claiming that they have lowered the average with improved filtration devices. A group of environmentalists will test to see if this is true at the 0.01 level of significance. Assume that their sample of size 50 gives a mean of 32.5 ppm. \\
     Perform a hypothesis test and state your decision.
