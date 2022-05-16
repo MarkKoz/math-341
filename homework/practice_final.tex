@@ -146,10 +146,32 @@
     \begin{enumerate}
       \item[a.]
         it comes up number 3 more than 5 times;
+        \begin{align*}
+          P(X > 5) &= 1 - P(X \le 5) \\
+          &\approx 1 - \Phi\left(\frac{5 + .5 - np}{\sqrt{npq}}\right) \\
+          &\approx 1 - \Phi\left(\frac{5.5 - \frac{36}{6}}{\sqrt{\frac{36}{6} \cdot \frac{5}{6}}}\right) \\
+          &\approx 1 - \Phi\left(\frac{5.5 - 6}{\sqrt{5}}\right) \\
+          &\approx 1 - \Phi(-.22) \\
+          &\approx 1 - .4129 \\
+          &\approx .5871
+        \end{align*}
       \item[b.]
-         the number of 3s is between 5 and 10 (inclusive);
+        the number of 3s is between 5 and 10 (inclusive);
+        \begin{align*}
+          P(5 \le X \le 10) &\approx \Phi\left(\frac{10 + .5 - 6}{\sqrt{5}}\right) - \Phi\left(\frac{5 + .5 - 6}{\sqrt{5}}\right) \\
+          &\approx \Phi(2.01) - \Phi(-.22) \\
+          &\approx .9978 - .4129 \\
+          &\approx .5849
+        \end{align*}
       \item[c.]
         the number of 6s is exactly 5.
+        \begin{align*}
+          P(X = 5) &\approx \Phi\left(\frac{5 + .5 - 6}{\sqrt{5}}\right) - \Phi\left(\frac{5 - .5 - 6}{\sqrt{5}}\right) \\
+          &\approx \Phi(-.22)  - \Phi(-.67) \\
+          &\approx .4129 - .2514 \\
+          &\approx .1615
+        \end{align*}
+        Note the probability ($\frac{1}{6}$) for rolling a 6 is the same as for a 3 or any other number since the die is symmetric.
     \end{enumerate}
   \item[5.]
     The programmer tests the code until three successive results. Suppose that the success probability is 0.7.
