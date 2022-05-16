@@ -1,6 +1,7 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=]{mathhw}
 \usepackage{physics}
+\usepackage{istgame}
 
 \title{MATH 341 - Practice Final}
 
@@ -72,11 +73,44 @@
     A company that manufactures video games produces two models Xbox Series S and Xbox Series X. Over the past month, 40\% of the video games sold have been Series S. Of those buying the Series S, 30\% purchase an extended warranty, whereas 50\% of all Series X purchasers do so.
     \begin{enumerate}
       \item[a.]
-        What is a probability that a randomly selected purchaser is Series X and does not have an extended warranty? [ Draw the tree diagram].
+        What is a probability that a randomly selected purchaser is Series X and does not have an extended warranty? [Draw the tree diagram].
+        \begin{align*}
+          P(W^\prime|X) \cdot P(X) = P(W^\prime \cap X) = .30
+        \end{align*}
+        \begin{istgame}
+          \xtdistance{30mm}{30mm}
+          \setistgrowdirection'{east}
+
+          \istroot(0)+20mm..40mm+
+            \istb{P(S) = .40}[above,sloped]
+            \istb{P(X) = .60}[below,sloped]
+          \endist
+
+          \istroot(1)(0-1)<180>
+            \istb{P(W|S) = .30}[above,sloped]{P(W|S) \cdot P(S) = P(W \cap S) = .12}
+            \istb{P(W^\prime|S) = .70}[below,sloped]{P(W^\prime|S) \cdot P(S) = P(W^\prime \cap S) = .28}
+          \endist
+
+          \istroot(2)(0-2)<0>
+            \istb{P(W|X) = .50}[above,sloped]{P(W|X) \cdot P(X) = P(W \cap X) = .30}
+            \istb{P(W^\prime|X) = .50}[below,sloped]{P(W^\prime|X) \cdot P(X) = P(W^\prime \cap X) = .30}
+          \endist
+        \end{istgame}
       \item[b.]
         What is a probability that a randomly selected purchaser does not have an extended warranty?
+        \begin{align*}
+          P(W^\prime) &= P(W^\prime \cap X) + P(W^\prime \cap S) \\
+          &= .28 + .30 \\
+          &= .58
+        \end{align*}
       \item[c.]
         If a randomly selected purchaser has an extended warranty, how likely is it that he or she has an Xbox Series S?
+        \begin{align*}
+          P(S|W) &= \frac{P(S \cap W)}{P(W)} \\
+          &= \frac{.12}{1 - P(W^\prime)} \\
+          &= \frac{.12}{.42} \\
+          &\approx .2857
+        \end{align*}
     \end{enumerate}
   \item[3.]
     CSUN Statistics department purchased 24 TI scientific calculators from a dealer in order to have a supply on hand for tests for use by students who forget to bring their own. Although the department was not aware of this, seven of the calculators were defective and gave incorrect answers to calculations. When a test is being written, students who have forgotten their own calculators are allowed to select at random one of the Department's. Suppose at the first test of the term, four students forgot to bring their calculators.
