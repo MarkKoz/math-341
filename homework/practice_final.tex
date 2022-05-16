@@ -178,10 +178,41 @@
     \begin{enumerate}
       \item[a.]
         What is the probability that he or she will test the code four times?
+        \\
+        The probability of $n = 4$ trials given $r = 3$ successes can be determined by using the negative binomial distribution with $x = n - r = 1$ failure.
+        \begin{align*}
+          P(X = 1) &= nb(x; r, p) \\
+          &= \binom{x + r - 1}{x} p^r (1 - p)^x \\
+          &= \binom{1 + 3 - 1}{1} .7^3 (1 - .7)^1 \\
+          &= \binom{3}{1} \times .343 \times .3^1 \\
+          &= 3 \times .343 \times .3 \\
+          &= .3087
+        \end{align*}
       \item[b.]
         What are the mean and SD of number of tests?
+        \\
+        Because the number of tests is discrete, the ceiling function is used on the mean.
+        \begin{align*}
+          E(X) &= \bigg\lceil \frac{r}{p} \bigg\rceil = \bigg\lceil \frac{3}{.7} \bigg\rceil = 5
+        \end{align*}
+        \begin{align*}
+          \sigma &= \sqrt{V(X)} \\
+          &= \sqrt{\frac{r(1 - p)}{p^2}} \\
+          &= \sqrt{\frac{3(1 - .7)}{.7^2}} \\
+          &= \frac{\sqrt{.9}}{.7} \\
+          &\approx 1.36
+        \end{align*}
       \item[c.]
         What is the probability that the number of tests is at most 4?
+        \\
+        Note that the minimum number of trials for 3 successes is 3 trials. Again, $x = n - r$ is used.
+        \begin{align*}
+          P(X \le 1) &= P(X = 0) + P(X = 1) \\
+          &= \binom{0 + 3 - 1}{0} .7^3 (1 - .7)^0 + .3087 \\
+          &= (1 \times .343 \times 1) + .3087 \\
+          &= .343 + .3087 \\
+          &= .6517
+        \end{align*}
     \end{enumerate}
   \item[6.]
     In a sample of 123 hip surgeries of a certain type, the average surgery time was 136.9 minutes with a standard deviation of 22.6 minutes.
