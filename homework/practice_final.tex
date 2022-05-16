@@ -1,5 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage[section=]{mathhw}
+\usepackage{physics}
 
 \title{MATH 341 - Practice Final}
 
@@ -18,10 +19,54 @@
     \begin{enumerate}
       \item[a.]
         Find the value of $k$ which makes $f(x)$ a legitimate pdf.
+        \begin{align*}
+          1 &= \int_{10}^{\infty} \frac{k}{x^4} \dd{x} \\
+          &= k \int_{10}^{\infty} x^{-4} \dd{x} \\
+          &= -\frac{k}{3} \cdot x^{-3} \big\rvert_{10}^{\infty} \\
+          &= -\frac{k}{3} \left[\lim_{b \to \infty} b^{-3} - 10^{-3}\right] \\
+          &= -\frac{k}{3} [0 - 10^{-3}] \\
+          &= \frac{k}{3 \cdot 10^3} \\
+          3000 &= k
+        \end{align*}
       \item[b.]
         Find the mean income and the standard deviation of income.
+        \begin{align*}
+          E(X) &= \int_{10}^{\infty} x \cdot \frac{3000}{x^4} \dd{x} \\
+          &= 3000 \int_{10}^{\infty} x^{-3} \dd{x} \\
+          &= -\frac{3000}{2} \cdot x^{-2} \big\rvert_{10}^{\infty} \\
+          &= -1500 \left[\lim_{b \to \infty} b^{-2} - 10^{-2}\right] \\
+          &= -1500 [0 - 10^{-2}] \\
+          &= 1500 \cdot 10^{-2} \\
+          &= 15
+        \end{align*}
+        \begin{align*}
+          E(X^2) &= \int_{10}^{\infty} x^2 \cdot \frac{3000}{x^4} \dd{x} \\
+          &= 3000 \int_{10}^{\infty} x^{-2} \dd{x} \\
+          &= -3000 \cdot x^{-1} \big\rvert_{10}^{\infty} \\
+          &= -3000 \left[\lim_{b \to \infty} b^{-1} - 10^{-1}\right] \\
+          &= -3000 [0 - 10^{-1}] \\
+          &= 3000 \cdot 10^{-1} \\
+          &= 300
+        \end{align*}
+        \begin{align*}
+          \sigma &= \sqrt{V(X)} \\
+          &= \sqrt{E(X^2) - [E(X)]^2} \\
+          &= \sqrt{300 - 15^2} \\
+          &= \sqrt{75} \\
+          &\approx 8.66
+        \end{align*}
       \item[c.]
         Find $P(20 < X \le 40)$.
+        \begin{align*}
+          P(20 < X \le 40) &= \int_{20}^{40} \frac{3000}{x^4} \dd{x} \\
+          &= 3000 \int_{20}^{40} x^{-4} \dd{x} \\
+          &= -\frac{3000}{3} \cdot x^{-3} \big\rvert_{20}^{40} \\
+          &= -1000 [40^{-3} - 20^{-3}] \\
+          &= -\frac{1000}{64000} + \frac{1000}{8000} \\
+          &= -\frac{1}{64} + \frac{8}{64} \\
+          &= \frac{7}{64} \\
+          &= -.109375
+        \end{align*}
     \end{enumerate}
   \item[2.]
     A company that manufactures video games produces two models Xbox Series S and Xbox Series X. Over the past month, 40\% of the video games sold have been Series S. Of those buying the Series S, 30\% purchase an extended warranty, whereas 50\% of all Series X purchasers do so.
