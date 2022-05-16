@@ -219,8 +219,20 @@
     \begin{enumerate}
       \item[a.]
         Find a 98\% confidence interval for the mean time.
+        \begin{align*}
+          \bar{x} \pm z_{\alpha / 2} \cdot \frac{s}{\sqrt{n}} &= 136.9 \pm z_{.01} \cdot \frac{22.6}{\sqrt{123}} \\
+          &\approx 136.9 \pm 2.33 \cdot 2.04 \\
+          &\approx 136.9 \pm 4.75 \\
+          &\approx (132.15, 141.65)
+        \end{align*}
       \item[b.]
         Determine the minimum required sample size if you want to be 95\% confident that the sample mean is within 2.5 minutes of the population mean.
+        \begin{align*}
+          n &= \bigg\lceil \left(2z_{\alpha / 2} \cdot \frac{s}{w}\right)^2 \bigg\rceil \\
+          &= \bigg\lceil \left(z_{.025} \cdot \frac{22.6}{2.5}\right)^2 \bigg\rceil \\
+          &\approx \big\lceil (1.96 \cdot 9.04)^2 \big\rceil \\
+          &\approx 314
+        \end{align*}
     \end{enumerate}
   \item[7.]
     If $A$ and $B$ are independent events, show that so are events $A^c$ and $B^c$.
