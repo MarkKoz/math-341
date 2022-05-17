@@ -287,10 +287,32 @@
     \begin{enumerate}
       \item[a.]
         the student will correctly answer the first question after the 4th attempt;
+        \begin{align*}
+          P(FFFS) &= P(F)^3 \cdot P(S) \\
+          &= (1 - .75)^3 \cdot .75 \\
+          &= .25^3 \cdot .75 \\
+          &\approx .0117
+        \end{align*}
       \item[b.]
         the student will correctly answer three questions after 10 total attempts.
+        \begin{align*}
+          P(X = 3) &= \binom{n}{x} p^r (1 - p)^{n - x} \\
+          &= \binom{10}{3} .75^3 (1 - .75)^{10 - 3} \\
+          &= \binom{10}{3} \times .75^3 \times .25^7 \\
+          &\approx .0031
+        \end{align*}
       \item[c.]
         What are the average number and SD of attempts up to when the student answers all the questions correctly?
+        \begin{align*}
+          E(X) &= \bigg\lceil \frac{r}{p} \bigg\rceil = \bigg\lceil \frac{6}{.75} \bigg\rceil = 8
+        \end{align*}
+        \begin{align*}
+          \sigma &= \sqrt{V(X)} \\
+          &= \sqrt{\frac{r(1 - p)}{p^2}} \\
+          &= \sqrt{\frac{6(1 - .75)}{.75^2}} \\
+          &= \frac{\sqrt{1.5}}{.75} \\
+          &\approx 1.633
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
