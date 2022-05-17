@@ -256,9 +256,9 @@
       H_0&: \mu = 34 \\
       H_a&: \mu < 34
     \end{align*}
-    $\sigma$ is known, but it is unknown whether the population is normal. However, $n = 50 > 30$, so case II applies and $z$ can be used.
+    $\sigma$ is known, but it is unknown whether the population is normal, so neither case I nor case III apply. However, $n = 50 \ge 30$, so case II applies and $z$ can be used.
     \begin{align*}
-      z &= \frac{\bar{x} - \mu}{\sigma / \sqrt{n}} \\
+      z &= \frac{\bar{x} - \mu}{s / \sqrt{n}} \\
       &= \frac{32.5 - 34}{8 / \sqrt{50}} \\
       &\approx -1.326
     \end{align*}
@@ -268,6 +268,20 @@
     There is not statistically significant evidence to support the claim that the average has been lowered.
   \item[9.]
     Researchers studying the effects of diet on growth would like to know if a vegetarian diet affects the height of a child. The average height for all six-year old children is 42.5 inches. The researchers randomly selected 12 vegetarian children that are six years old. The average height of those six-year old vegetarian children is 45.75 inches with a standard deviation of 3.8 inches. Conduct a hypothesis test to determine whether there is overwhelming evidence at $\alpha = .05$ that six-year old vegetarian children are not the same height as other six-year old children. Assume that the height of six-year old children is approximately normally distributed.
+    \begin{align*}
+      H_0&: \mu = 42.5 \\
+      H_a&: \mu \ne 42.5
+    \end{align*}
+    $\sigma$ is unknown so case I doesn't apply. $n = 12 < 30$, so case II doesn't apply. However, it is assumed the population is normal, so case III applies and $t$ can be used.
+    \begin{align*}
+      t &= \frac{\bar{x} - \mu}{s / \sqrt{n}} \\
+      &= \frac{45.75 - 42.5}{3.8 / \sqrt{12}} \\
+      &\approx 2.963
+    \end{align*}
+    \begin{align*}
+      t \approx 2.963 \ge 2.201 \approx t_{.025, 11} = t_{\alpha / 2, n - 1}
+    \end{align*}
+    There is statistically significant evidence to support the claim that six-year old vegetarian children are not the same height as other six-year old children.
   \item[10.]
     The Online Exam from Applied Statistics consists of 6 questions. Statistics show that there is a 75\% chance that the student will answer to any one of Exam problems correctly. If the number of attempts for each question is unlimited, find the following probabilities
     \begin{enumerate}
